@@ -2,16 +2,19 @@
 
 Check IVs to see what to keep for PVP
 
-This is based HUGELY on two things I did not write:
+This is based HUGELY on things I did not write:
 
 * All of Ryan Swag's PVP IV [Deep Dives](https://gamepress.gg/pokemongo/pvp-iv-deep-dive-full-series)
 * Lots of stats and move data from [PvPoke](https://pvpoke.com/)
+* [Poke Genie](https://twitter.com/pokegenieinfo?lang=en)
 
 This grew out of my Discord quiz bot (https://github.com/mglerner/PoGoQuizBot)
 
 I'll try to document things more later, but you'll need to be able to install python and jupyter notebooks to make the most of this.
 
 1. Clone this repository.
+2. Export your pokegenie data to a csv called `poke_genie_export.csv` in the current directory
+3. Launch the notebook
 
 ## Notes for me
 
