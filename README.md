@@ -15,7 +15,15 @@ I'll try to document things more later, but you'll need to be able to install py
 
 ## Notes for me
 
-* git subtree pull --prefix external/pvpoke git@github.com:pvpoke/pvpoke.git master --squash
+You add a subtree wtih
+
+`git subtree add --prefix external/pvpoke git@github.com:pvpoke/pvpoke.git master --squash`
+
+And you update it with
+
+`git subtree pull --prefix external/pvpoke git@github.com:pvpoke/pvpoke.git master --squash`
+
+(read [this](https://www.atlassian.com/git/tutorials/git-subtree) for more info on subtrees)
 
 ## Other data
 
