@@ -1,0 +1,162 @@
+[
+	{
+		"id": "22-10-litwick",
+		"title": "Litwick Community Day Guide for PvP",
+		"description": "Will Litwick be able to haunt its way into PvP this Community Day? Let's shed some light on how Chandelure performs in PvP!",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "October 12, 2022"
+	},
+	{
+		"id": "22-08-zigzagoon",
+		"title": "Galarian Zigzagoon Community Day Guide for PvP",
+		"description": "Obstagoon is already a top tier Pokemon for PvP! Will Obstruct elevate it even further?",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "August 12, 2022"
+	},
+	{
+		"id": "22-07-shadow-pokemon-pvp",
+		"title": "Best Shadow Pokemon to TM for PvP",
+		"description": "When a Team Rocket event arrives, which Shadow Pokemon should you prepare for trouble? Check out the top Shadow Pokemon in each league!",
+		"path": "infographics",
+		"tags": ["Infographic"],
+		"date": "July 9, 2022"
+	},
+	{
+		"id": "22-06-deino",
+		"title": "Deino Community Day Guide for PvP",
+		"description": "Are three heads better than one? Find out how Brutal Swing Hydreigon will impact the meta and which PvP Pokemon and IV's to look for this Community Day!",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "June 22, 2022"
+	},
+	{
+		"id": "22-06-season-11-master-league-starter-pack",
+		"title": "Master League Starter Pack for Season 11",
+		"description": "Check out the best legendary and non-legendary Pokemon to get started in Master League for GO Battle League Season 11!",
+		"path": "infographics",
+		"tags": ["Infographic", "Starter Pack"],
+		"date": "June 14, 2022"
+	},
+	{
+		"id": "22-06-season-11-ultra-league-starter-pack",
+		"title": "Ultra League Starter Pack for Season 11",
+		"description": "Check out the premiere and budget picks to get started in Ultra League for GO Battle League Season 11!",
+		"path": "infographics",
+		"tags": ["Infographic", "Starter Pack"],
+		"date": "June 6, 2022"
+	},
+	{
+		"id": "22-05-season-11-great-league-starter-pack",
+		"title": "Great League Starter Pack for Season 11",
+		"description": "Check out the premiere and budget picks to get started in Great League for GO Battle League Season 11!",
+		"path": "infographics",
+		"tags": ["Infographic", "Starter Pack"],
+		"date": "May 30, 2022"
+	},
+	{
+		"id": "22-05-geodude",
+		"title": "Alolan Geodude Community Day Guide for PvP",
+		"description": "The Alolan Geodude family is ready to rock! Which leagues and Pokemon should you be on the lookout for and how impactful will Rollout be on the meta?",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "May 19, 2022"
+	},
+	{
+		"id": "22-05-friend-trade-tier-list",
+		"title": "Sh!tty Friend Trade Tier List",
+		"description": "Whether you meet new friends or that one person who doesn't open your gifts, here's a list of PvP trade ideas with low friendship level!",
+		"path": "infographics",
+		"tags": ["Infographic"],
+		"date": "May 14, 2022"
+	},
+	{
+		"id": "22-05-latias-latios-counters",
+		"title": "Latias and Latios Counters for Master League",
+		"description": "See which Latias and Latios raid counters also double as top Master League picks!",
+		"path": "infographics",
+		"tags": ["Infographic"],
+		"date": "May 3, 2022"
+	},
+	{
+		"id": "22-04-stufful",
+		"title": "Stufful Community Day Guide for PvP",
+		"description": "Learn about the brand new Pokemon Stufful, and how its evolution may perform in PvP!",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "April 22, 2022"
+	},
+	{
+		"id": "developer-notes-1-27-0",
+		"title": "PvPoke Developer Notes - Update 1.27.0",
+		"description": "Get an overview on updates to the core simulation logic and default settings, including baiting behavior and optimized move timing.",
+		"path": "development",
+		"tags": ["Development"],
+		"date": "April 16, 2022"
+	},
+	{
+		"id": "tournament-guide",
+		"title": "Strategy Guide for Tournament Play",
+		"description": "How do you build a team for tournament play and pick your Pokemon for battle? Get an in depth look at tournament strategies with advice from veteran trainers!",
+		"path": "strategy",
+		"tags": ["Strategy"],
+		"date": "March 25, 2022"
+	},
+	{
+		"id": "22-03-great-league-meta-snapshot",
+		"title": "Great League Tournament Meta Snapshot, March 2022",
+		"description": "Get a preview of the Pokemon GO Championship Series meta for your regional tournament.",
+		"path": "infographics",
+		"tags": ["Infographic"],
+		"date": "March 19, 2022"
+	},
+	{
+		"id": "22-03-sandshrew",
+		"title": "Sandshrew Community Day Guide for PvP",
+		"description": "Learn about Sandshrew's upcoming Community Day and how both of its Alolan and Kanto families will be relevant for PvP!",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "March 10, 2022"
+	},
+	{
+		"id": "22-02-hoppip",
+		"title": "Hoppip Community Day Guide for PvP",
+		"description": "Learn about Hoppip's upcoming Community Day, how Acrobatics will be relevant for PvP, and which Jumpluff IV's to look out for.",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "February 10, 2022"
+	},
+	{
+		"id": "best-elite-tm-candidates-pvp",
+		"title": "Best Elite TM Candidates for PvP",
+		"description": "Which exclusive moves and Pokemon are the best for your PvP team? Find the best use for your Elite Fast and Charged TM's.",
+		"path": "strategy",
+		"tags": ["Strategy"],
+		"date": "February 10, 2022"
+	},
+	{
+		"id": "guide-to-fast-move-registration",
+		"title": "Guide to Fast Move Mechanics",
+		"description": "How exactly do Fast Moves work and register? This guide will walk through some of PvP's mysterious nuts and bolts.",
+		"path": "strategy",
+		"tags": ["Strategy", "Mechanics"],
+		"date": "February 10, 2022"
+	},
+	{
+		"id": "ultimate-guide-to-team-building",
+		"title": "Ultimate Team Building Guide by PolymersUp",
+		"description": "Learn the fundamentals of building a good team and how to use the PvPoke Team Builder to its full potential.",
+		"path": "strategy",
+		"tags": ["Strategy"],
+		"date": "August 11, 2020"
+	},
+	{
+		"id": "developing-trainer-battle-ai",
+		"title": "Developing an AI for Pokemon GO Trainer Battles",
+		"description": "How does the AI on the site's training battles work? Read all about how I approached development and strategies the AI uses to mimic player behavior.",
+		"path": "development",
+		"tags": ["Development"],
+		"date": "July 30, 2019"
+	}
+]
