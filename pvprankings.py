@@ -49,6 +49,9 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Mareanie','Toxapex'],
         ['Croagunk','Toxicroak'],
         ['Phantump','Trevenant'],
+        ['Hoothoot','Noctowl'],
+        ['Chinchou','Lanturn'],
+        ['Chespin','Quilava','Chesnaught'],
         )
 
 
@@ -214,10 +217,10 @@ def mons_to_consider(df,mon):
 
 
     all_results = [_mons_to_consider(df,mon) for mon in evolution_line]
-#    print(evolution_line)
-#    print(all_results[0])
-#    print(all_results[1])
-#    print(all_results[2])
+    #print(evolution_line)
+    #print(all_results[0])
+    #print(all_results[1])
+    #print(all_results[2])
     result = pd.concat(all_results)
     return result
 
@@ -258,30 +261,32 @@ def _mons_to_consider(df,mon):
 
 #'':{'attack':,'defense':,'hp':},
 RS_INFO = {
-    'Jumpluff':{'Great':
-                    {
-                    'Top 12 amazing stat product':{'attack':0,'defense':157.31,'hp':0,'onlytop':12},
-                    'Slight attack, high def':{'attack':97.6,'defense':156.3,'hp':0},
-                    'Slight attack, balanced bulk':{'attack':97.6,'defense':150,'hp':151},
-                    }
-                },
+    'Jumpluff':{
+        'Great':
+        {
+            'Top 12 amazing stat product':{'attack':0,'defense':157.31,'hp':0,'onlytop':12},
+        'Slight attack, high def':{'attack':97.6,'defense':156.3,'hp':0},
+        'Slight attack, balanced bulk':{'attack':97.6,'defense':150,'hp':151},
+        }
+        },
     'Walrein':{
-        'article':'https://gamepress.gg/pokemongo/walrein-pvp-iv-deep-dive#topic-372706',
+        'article':'https://gamepress.gg/pokemongo/walrein-pvp-iv-deep-dive',
         'videos':('https://www.youtube.com/watch?v=yJUjtPAPkEM',),
+        'extrainfo':"""For the HP, 151 covers the majority of pertinent matchups. However, 154 HP enables the Toxapex 0-0 and 157 can enable the Bastiodon 2-1 and Swampert 2-2 (full bait). These matchups give credence towards forgoing the Azumarill Atk, and instead focusing on Bulk. Do note that only the Rank 1 can achieve the Bastiodon and Swampert matchups without forgoing the Rank 1 Umbreon Defense Breakpoint for the 2-2. 
+
+All of this suggests that the Best Walrein PvP IVs for the Great League are either the Rank 84 (1/11/2) or the Rank 31 (0/13/2). The former covering Azumarill better, the latter covering Umbreon better. The Rank 23 (2/13/8) is great too. If Azumarill or slightly Atk weighted Umbreon aren’t a concern of yours, the Rank 1 (0/12/15) is also good. """,
         'Great':
         {
             'GOD TIER':{'attack':114.46,'defense':114.75,'hp':148},
-        'All Attack Breakpoints':{'attack':114.45,'defense':113,'hp':148},
-        'Azumarill Attack, Rank 1 Umbreon Def':{'attack':113.77,'defense':114.75,'hp':148},
-        'Azumarill Attack':{'attack':113.77,'defense':113,'hp':148},
-        'Waterfall, Pidgeot + Talonflame slayer':{'attack':114.62,'defense':113,'hp':148},
-        'Waterfall, Pidgeot only, may bring down to 112.13 Atk':{'attack':113.16,'defense':113,'hp':148},
+            'Azu slayer (112.06 atk, 114.75 def, 151 hp)':{'attack':112.06,'defense':114.75,'hp':151},
+            'All Attack Breakpoints':{'attack':114.46,'defense':113,'hp':148},
+
         },
         'Ultra':
         {
+            'Mirror slayer HP':{'attack':145.28,'defense':145,'hp':201},
+            'Mirror slayer Def':{'attack':145.28,'defense':147,'hp':199},
             'Best of the best':{'attack':147.45,'defense':145.3,'hp':197},
-            'Mirror masters':{'attack':147,'defense':145.3,'hp':197},
-            '>147.75 and still ties most 0-0 mirrors':{'attack':147.76,'defense':143.89,'hp':197},
             },
         'Master':
         {
@@ -316,13 +321,15 @@ RS_INFO = {
             'Froslass Slayer + OK Def':{'attack':122.5,'defense':117.88,'hp':122},
             'Froslass Slayer + Big Def':{'attack':122.5,'defense':121.13,'hp':122},
             'Big Bulk':{'attack':0,'defense':121.13,'hp':123},
+            'Shadow big bulk':{'attack':0,'defense':120.46,'hp':122},
             },
-            'Ultra':
-            {
+        'Ultra':
+        {
             'Galar Stunfisk Slayer':{'attack':159.2,'defense':157.25,'hp':152},                
             'Huge Defense':{'attack':0,'defense':160.82,'hp':156},                
             'As good as Rank 1 Bulk':{'attack':0,'defense':158.05,'hp':156},
-                },
+            'Shadow General Blend':{'attack':161.59,'defense':155.28,'hp':153},
+        },
         },
     'Dewgong':{
         'article':'https://gamepress.gg/pokemongo/dewgong-pvp-iv-deep-dive',
@@ -470,7 +477,7 @@ RS_INFO = {
             'Super Premium Atk ':{'attack':115.5,'defense':123.56,'hp':137},
             'Premium Atk (115.5 Atk slightly better, 123.56 Def 137 HP better)':{'attack':115,'defense':123.3,'hp':135},
             'Bulk focus':{'attack':0,'defense':126,'hp':137},
-            'All':{'attack':0.,'defense':0,'hp':0},
+            #'All':{'attack':0.,'defense':0,'hp':0},
             },
         'Ultra':
         {
@@ -480,7 +487,7 @@ RS_INFO = {
             'General Atk+':{'attack':148,'defense':163.8,'hp':172},
             'Mirror Focus':{'attack':149.1,'defense':0,'hp':172},
             'Bulk Focus':{'attack':0,'defense':166.8,'hp':174},
-            'All':{'attack':0.,'defense':0,'hp':0},
+            #'All':{'attack':0.,'defense':0,'hp':0},
             },
             },
     'Medicham':{
@@ -587,6 +594,68 @@ Gotta check the actual article on all of these. Ryan Swag lists individual IVs, 
 #            '':{'attack':,'defense':,'hp':},
             }
         },
+    'Noctowl':{
+        'article':'https://gamepress.gg/pokemongo/noctowl-pvp-iv-deep-dive',
+        'videos':('https://www.youtube.com/watch?v=sdagO7Z8p6w&t=85s',),
+        'extrainfo':'''
+        People use slight atk and azu slayer primarily. not a9 slayer.
+
+        For Atk:
+
+            * Rank 24 >= Rank 4 > Rank 40/41 > All else
+            * 104.8 Atk for 127.7 Def (Rank 2 GFisk)
+            * You can thrift on Def, just be cautious about sinking below 117.58
+
+        For Azu Slayer
+
+           * Ranks 67 & 68 have notable bulk
+           * >105.8 Atk can get Charge Move Priority on Medicham which can be significant
+               * 169 HP or 168 HP + >118.75 Def have higher Medicham 2-2 consistency
+           * >106 Atk gets the GFisk Breakpoint on the Rank 3 (0/15/11) (the highest reasonably Def weighted GFisk)
+
+        For A9 Slayer
+
+           * Enables the 2-2 vs nearly all Alolan Nineales
+               * 138.9 Def weights will require >107 Atk
+           * The Top 5 of the group have bulk balanced to the 0-0 mirror & potentially the Venusaur 0-1
+           * The 2/0/15 can also 2-1 Tapu Fini
+               * The Alolan Ninetales flip can also be achieved with high enough Def, but given the wide Atk Range of Alolan Ninetales + the HP drop, the high HP low Def versions are generally more useful
+
+''',
+        'Great':{
+            'Slight Atk':{'attack':104.23,'defense':118.27,'hp':171},
+            'Azu Slayer':{'attack':105.2,'defense':117.58,'hp':168},
+            'A9 Slayer':{'attack':106.36,'defense':0,'hp':172},
+            },
+        },
+    'Chesnaught':{
+        'article':'https://gamepress.gg/pokemongo/chesnaught-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+The tables below feature the IV spreads that meet some of the more important stat checks highlighted in the article. It’s important to review the guide itself to make sure you’re getting what you want out of your Chesnaught. For example, you may want a slightly higher Def or HP weight for more consistency.
+        
+Bulk Focus (122.21 Def, 127 HP)
+
+    * 129 HP can potentially 1-0 Pelipper
+    * The Rank 1 can 0-1 some low Atk Galarian Stunfisk with only Frenzy Plant
+    * ~119.35 Atk can 0-1 & 1-1 Scrafty more consistently
+
+Froslass Slayer (121.89 Atk, 117.7 Def, 125 HP)
+
+    * Generally Def>Atk=HP
+
+Froslass Slayer, Def focus (121.89 Atk, 122.21 Def, 122 HP)
+
+    * The 6/3/5 is also viable, but pushes it
+
+
+''',
+        'Great':{
+            'Bulk focus 122.21 def, 127 hp':{'attack':0,'defense':122.21,'hp':127},
+            'frosslass slayer 121.89 atk, 117.7 def, 125 hp':{'attack':121.89,'defense':117.7,'hp':125},
+            'frosslass slayer, def focus (121.89 atk, 122.21 def, 122 hp':{'attack':121.89,'defense':122.21,'hp':122},
+            },
+        },
         
 
     }
@@ -611,7 +680,7 @@ def display_rs_info(df,mon):
         }
     # Maybe rename this
     # TODO: Add ability to sort by atk or blkprod.
-    def get_mons(attack,defense,hp,mine,*,level_max=99):    
+    def get_mons(attack,defense,hp,mine,*,level_max=99):
         these = mine[mine.attack >= attack]
         these = these[these.defense >= defense]
         these = these[these.stamina >= hp]
