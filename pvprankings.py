@@ -44,6 +44,7 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Zigzagoon (Galarian)','Linoone (Galarian)'],
         ['Meditite','Medicham'],
         ['Dunsparce'],
+        ['Dedenne'],
         ['Stunfisk (Galarian)'],
         ['Lickitung'],#,'Lickilicky'],
         ['Mareanie','Toxapex'],
@@ -52,6 +53,13 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Hoothoot','Noctowl'],
         ['Chinchou','Lanturn'],
         ['Chespin','Quilava','Chesnaught'],
+        ['Swablu','Altaria'],
+        ['Yamask (Galarian)','Runerigus'],
+        ['Yamask','Cofagrigus'],
+        ['Slowpoke','Slowbro'],
+#        ['Slowpoke','Slowking'], # No need for this it's the same stats as bro.
+#        ['Slowpoke (Galarian)','Slowbro (Galarian)'],
+#        ['Slowpoke (Galarian)','Slowking (Galarian)'],
         )
 
 
@@ -482,11 +490,15 @@ All of this suggests that the Best Walrein PvP IVs for the Great League are eith
         'Ultra':
         {
             'Unicorn':{'attack':148,'defense':166.8,'hp':172},
-            'Bare minimum':{'attack':148,'defense':0,'hp':172},
-            'General Atk':{'attack':146.95,'defense':163.8,'hp':172},
-            'General Atk+':{'attack':148,'defense':163.8,'hp':172},
-            'Mirror Focus':{'attack':149.1,'defense':0,'hp':172},
-            'Bulk Focus':{'attack':0,'defense':166.8,'hp':174},
+            'General Atk (146.95 Atk, 163.8 Def, 172 HP)':{'attack':146.95,'defense':163.8,'hp':172},
+            'General Atk+ (147.89 Atk, 163.8 Def, 172 HP)':{'attack':147.89,'defense':163.8,'hp':172},
+            'Mirror Focus (149.1 Atk, 172 HP)':{'attack':149.1,'defense':172,'hp':172},
+            'Bulk Focus (166.8 Def, 174 HP)':{'attack':0,'defense':166.8,'hp':174},
+#            'Bare minimum':{'attack':148,'defense':0,'hp':172},
+#            'General Atk':{'attack':146.95,'defense':163.8,'hp':172},
+#            'General Atk+':{'attack':148,'defense':163.8,'hp':172},
+#            'Mirror Focus':{'attack':149.1,'defense':0,'hp':172},
+#            'Bulk Focus':{'attack':0,'defense':166.8,'hp':174},
             #'All':{'attack':0.,'defense':0,'hp':0},
             },
             },
@@ -499,6 +511,18 @@ All of this suggests that the Best Walrein PvP IVs for the Great League are eith
             'Premium Cut':{'attack':105.87,'defense':138.64,'hp':140},
             'The few worthwhile best buddies':{'attack':105.38,'defense':140.3,'hp':142},
             'The Mirror Slayers (note: the drop in bulk may cause trouble in other matchups. Simply going for CMP may be better)':{'attack':108,'defense':137.64,'hp':0},
+            }
+        },
+    'Dedenne':{
+        'article':'',
+        'videos':('https://www.youtube.com/watch?v=gT7Op0zMJJU',),
+        'extrainfo':'HP key, then def, then atk.',
+        'Great':{
+            'Basic':{'attack':123.17,'defense':109,'hp':133},
+            'Scrafty':{'attack':123.17,'defense':109.86,'hp':133},
+            'Better atk lap/pidg':{'attack':124.59,'defense':109,'hp':133},
+            'Best':{'attack':124.59,'defense':109.86,'hp':133},
+            'Just HP def':{'attack':0,'defense':109.86,'hp':133},
             }
         },
     'Dunsparce':{
@@ -654,6 +678,145 @@ Froslass Slayer, Def focus (121.89 Atk, 122.21 Def, 122 HP)
             'Bulk focus 122.21 def, 127 hp':{'attack':0,'defense':122.21,'hp':127},
             'frosslass slayer 121.89 atk, 117.7 def, 125 hp':{'attack':121.89,'defense':117.7,'hp':125},
             'frosslass slayer, def focus (121.89 atk, 122.21 def, 122 hp':{'attack':121.89,'defense':122.21,'hp':122},
+            },
+        },
+    'Altaria':{
+        'article':'https://gamepress.gg/pokemongo/altaria-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+        
+
+The Trevenant Slayer (102.97 Atk, 149.02 Def, 139 HP)
+
+    * For general safety, sort list by Def
+    * See the Great League Altaria section for details
+
+Bulk + Trevenant maybe (101.95 Atk, 151.63, 139 HP)
+
+    * When you don’t want to forgo the bulk life and don’t expect to see high Def Trevenant
+    * For tie breakers, 140 HP is generally better and 153.95+ Def is more useful than 141 HP
+    * Table is cut at top 15 to reduce “false positives” for this “premium bulk”
+
+Bulk Focus (153.95 Def, 139 HP)
+
+    * Aside from the Rank’s 1, 2, & 7, you should probably just go for the Atk weighted builds
+
+''',
+        'Great':{
+            'The Trevenant Slayer (102.97 Atk, 149.02 Def, 139 HP)':{'attack':102.97,'defense':149.02,'hp':139},
+            'Bulk + Trevenant maybe (101.95 Atk, 151.63, 139 HP)':{'attack':101.95,'defense':151.63,'hp':139},
+            'Bulk Focus (153.95 Def, 139 HP)':{'attack':121.89,'defense':122.21,'hp':122},
+            },
+        },
+
+    'Cofagrigus':{
+        'article':'https://gamepress.gg/pokemongo/cofagrigus-pvp-iv-deep-dive#topic-357026',
+        'videos':('',),
+        'extrainfo':'''
+        rank 1 or 2 way better
+''',
+        'Great':{
+            '':{'attack':109,'defense':162,'hp':106},
+            'Best':{'attack':111.32,'defense':164.56,'hp':106},
+            },
+        'Ultra':{
+            '':{'attack':145.21,'defense':208,'hp':138},
+            },
+        },
+    'Runerigus':{
+        'article':'https://gamepress.gg/pokemongo/cofagrigus-pvp-iv-deep-dive#topic-357026',
+        'videos':('',),
+        'extrainfo':'''
+        rank 1 or 2 way better
+''',
+        'Great':{
+            '':{'attack':109,'defense':162,'hp':106},
+            'Best':{'attack':111.32,'defense':164.56,'hp':106},
+            },
+        'Ultra':{
+            '':{'attack':145.21,'defense':208,'hp':138},
+            },
+        },
+
+
+### Remember to buddy up the G versions during the event and catch 30 psychics with each.
+
+        
+    'Slowbro':{
+        'article':'https://gamepress.gg/pokemongo/slowpoke-family-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+Slowbro & Slowking 118.4 Def, 144 HP
+
+    * Higher HP is generally better
+
+Shadow Slowbro & Slowking 113.7 Atk, 117.8 Def, 141 HP
+
+    * 113.7 Atk covers the Rank 1 and 2 Galarian Stunfisk, 114.95 covers the Rank 3
+    * In general, HP > Def
+''',
+        'Great':{
+            '118.4 Def, 144 HP':{'attack':0,'defense':118.4,'hp':144},
+            },
+#        'Ultra':{
+#            '':{'attack':102.97,'defense':149.02,'hp':139},
+#            },
+        },
+        
+    'Slowbro (Galarian)':{
+        'article':'https://gamepress.gg/pokemongo/slowpoke-family-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+Galarian Slowbro Generalist/Mirror 118.48 Atk, 108.83 Def, 144 HP
+
+    * HP > Def > Atk
+
+Galarian Slowbro Bulk Focus 109 Def, 146 HP
+
+    * 147 HP for Shadow Victreebel 0-1 consistency
+    * The Rank 2 (0/15/10) may 2-1 high bulk Umbreon
+''',
+        'Great':{
+            'Galarian Slowbro Generalist/Mirror 118.48 Atk, 108.83 Def, 144 HP':{'attack':118.48,'defense':108.83,'hp':144},
+            'Galarian Slowbro Bulk Focus 109 Def, 146 HP':{'attack':0,'defense':109,'hp':146},
+            'Anything':{'attack':110,'defense':100,'hp':144},
+            },
+#        'Ultra':{
+#            '':{'attack':102.97,'defense':149.02,'hp':139},
+#            },
+        },
+        
+    'Slowking (Galarian)':{
+        'article':'https://gamepress.gg/pokemongo/slowpoke-family-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+Galarian Slowbro Generalist/Mirror 118.48 Atk, 108.83 Def, 144 HP
+
+    * HP > Def > Atk
+
+Galarian Slowbro Bulk Focus 109 Def, 146 HP
+
+    * 147 HP for Shadow Victreebel 0-1 consistency
+    * The Rank 2 (0/15/10) may 2-1 high bulk Umbreon
+''',
+        'Great':{
+            'Galarian Slowking Mirror Slayer 116.7 Atk, 117.5 Def, 138 HP':{'attack':116.7,'defense':117.5,'hp':138},
+            },
+#        'Ultra':{
+#            '':{'attack':102.97,'defense':149.02,'hp':139},
+#            },
+        },
+        
+    'Bogus':{
+        'article':'',
+        'videos':('',),
+        'extrainfo':'''
+''',
+        'Great':{
+            '':{'attack':102.97,'defense':149.02,'hp':139},
+            },
+        'Ultra':{
+            '':{'attack':102.97,'defense':149.02,'hp':139},
             },
         },
         
