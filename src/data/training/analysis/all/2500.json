@@ -1,442 +1,381 @@
 {
     "properties": {
-        "lastUpdated": "September 23, 2022",
-        "totalPerformers": 26330,
-        "totalTeams": 5347
+        "lastUpdated": "May 6, 2023",
+        "totalPerformers": 21997,
+        "totalTeams": 3818
     },
     "performers": [{
-            "pokemon": "nidoqueen_shadow PJ+EP/PF",
-            "individualScore": 133.37,
-            "games": 161,
-            "teamScore": 530.64
+            "pokemon": "gliscor WA+Eq/NS",
+            "individualScore": 127.88,
+            "games": 226,
+            "teamScore": 546.81
         },
         {
-            "pokemon": "giratina_altered DB+AP/DC",
-            "individualScore": 127.52,
-            "games": 173,
-            "teamScore": 530.36
-        },
-        {
-            "pokemon": "stunfisk_galarian MS+Eq/RS",
-            "individualScore": 114.43,
-            "games": 159,
-            "teamScore": 524.26
-        },
-        {
-            "pokemon": "registeel LO+FB/ZC",
-            "individualScore": 112.08,
-            "games": 981,
-            "teamScore": 517.48
-        },
-        {
-            "pokemon": "buzzwole C+Lu/SP",
-            "individualScore": 118.39,
-            "games": 432,
-            "teamScore": 516.6
-        },
-        {
-            "pokemon": "tapu_fini WG+M/S",
-            "individualScore": 126.64,
-            "games": 885,
-            "teamScore": 513.58
-        },
-        {
-            "pokemon": "trevenant SC+SB/SeB",
-            "individualScore": 117.2,
-            "games": 2068,
-            "teamScore": 513.21
-        },
-        {
-            "pokemon": "nidoqueen PJ+EP/PF",
-            "individualScore": 127.91,
-            "games": 749,
-            "teamScore": 512.52
-        },
-        {
-            "pokemon": "giratina_altered SC+AP/DC",
-            "individualScore": 120.65,
-            "games": 338,
-            "teamScore": 511.57
-        },
-        {
-            "pokemon": "ninetales_alolan Ch+Psh/WBI",
-            "individualScore": 119.91,
-            "games": 243,
-            "teamScore": 508.48
-        },
-        {
-            "pokemon": "umbreon Sn+FoP/P",
-            "individualScore": 95.05,
-            "games": 232,
-            "teamScore": 506.37
-        },
-        {
-            "pokemon": "talonflame I+BrB/FmC",
-            "individualScore": 124.14,
-            "games": 1455,
-            "teamScore": 505.18
+            "pokemon": "jellicent H+S/SB",
+            "individualScore": 107.29,
+            "games": 284,
+            "teamScore": 539.62
         },
         {
             "pokemon": "cobalion DK+SE/SSw",
-            "individualScore": 118.74,
-            "games": 1173,
-            "teamScore": 505.17
-        },
-        {
-            "pokemon": "articuno IS+AP/IW",
-            "individualScore": 116.87,
-            "games": 314,
-            "teamScore": 504.56
-        },
-        {
-            "pokemon": "deoxys_defense C+PB/RS",
-            "individualScore": 135.12,
-            "games": 246,
-            "teamScore": 504.09
-        },
-        {
-            "pokemon": "registeel LO+FB/FC",
-            "individualScore": 117.11,
-            "games": 155,
-            "teamScore": 503.53
-        },
-        {
-            "pokemon": "walrein PS+Eq/ISp",
-            "individualScore": 116.89,
-            "games": 1702,
-            "teamScore": 503.53
-        },
-        {
-            "pokemon": "cresselia PC+GK/M",
-            "individualScore": 125.45,
-            "games": 699,
-            "teamScore": 501.76
-        },
-        {
-            "pokemon": "empoleon W+DrlP/HC",
-            "individualScore": 104.87,
-            "games": 222,
-            "teamScore": 501.47
-        },
-        {
-            "pokemon": "regirock LO+FB/SE",
-            "individualScore": 116.32,
-            "games": 240,
-            "teamScore": 501
-        },
-        {
-            "pokemon": "giratina_altered DB+DC/SS",
-            "individualScore": 135.49,
-            "games": 350,
-            "teamScore": 500.89
-        },
-        {
-            "pokemon": "giratina_altered SC+DC/SS",
-            "individualScore": 125.11,
-            "games": 1356,
-            "teamScore": 500.68
-        },
-        {
-            "pokemon": "pidgeot G+BrB/FrD",
-            "individualScore": 127.9,
-            "games": 428,
-            "teamScore": 500.19
-        },
-        {
-            "pokemon": "scrafty C+FoP/PUP",
-            "individualScore": 109.29,
-            "games": 919,
-            "teamScore": 499.93
-        },
-        {
-            "pokemon": "umbreon Sn+FoP/LR",
-            "individualScore": 112.5,
-            "games": 242,
-            "teamScore": 498.74
-        },
-        {
-            "pokemon": "drapion PSt+AT/Cr",
-            "individualScore": 105.31,
-            "games": 243,
-            "teamScore": 498.63
-        },
-        {
-            "pokemon": "escavalier C+DR/Mh",
-            "individualScore": 113.72,
-            "games": 1040,
-            "teamScore": 496.64
+            "individualScore": 122.44,
+            "games": 1396,
+            "teamScore": 536.71
         },
         {
             "pokemon": "cresselia PC+FS/M",
-            "individualScore": 120.44,
-            "games": 467,
-            "teamScore": 496.44
+            "individualScore": 111.97,
+            "games": 669,
+            "teamScore": 536.07
+        },
+        {
+            "pokemon": "pidgeot WA+BrB/FrD",
+            "individualScore": 138.47,
+            "games": 1045,
+            "teamScore": 533.39
+        },
+        {
+            "pokemon": "registeel LO+FB/ZC",
+            "individualScore": 110.76,
+            "games": 928,
+            "teamScore": 520.12
+        },
+        {
+            "pokemon": "muk_alolan_shadow PJ+DP/SW",
+            "individualScore": 108.36,
+            "games": 151,
+            "teamScore": 518.63
+        },
+        {
+            "pokemon": "articuno IS+AP/IW",
+            "individualScore": 122.71,
+            "games": 180,
+            "teamScore": 517.23
+        },
+        {
+            "pokemon": "cresselia PC+GK/M",
+            "individualScore": 103.47,
+            "games": 916,
+            "teamScore": 514.71
+        },
+        {
+            "pokemon": "perrserker SC+CC/FoP",
+            "individualScore": 99.71,
+            "games": 385,
+            "teamScore": 514.38
+        },
+        {
+            "pokemon": "pidgeot G+BrB/FrD",
+            "individualScore": 116.98,
+            "games": 305,
+            "teamScore": 509.06
+        },
+        {
+            "pokemon": "charizard WA+BB/DC",
+            "individualScore": 124.58,
+            "games": 794,
+            "teamScore": 507.61
+        },
+        {
+            "pokemon": "tapu_fini WG+M/S",
+            "individualScore": 132.85,
+            "games": 543,
+            "teamScore": 507.42
+        },
+        {
+            "pokemon": "trevenant SC+SB/SeB",
+            "individualScore": 107.46,
+            "games": 1509,
+            "teamScore": 499.41
+        },
+        {
+            "pokemon": "giratina_altered DB+DC/SS",
+            "individualScore": 136.35,
+            "games": 539,
+            "teamScore": 499.31
         },
         {
             "pokemon": "virizion DK+LB/SSw",
-            "individualScore": 107.93,
-            "games": 741,
-            "teamScore": 495.78
+            "individualScore": 112.65,
+            "games": 385,
+            "teamScore": 496.79
         },
         {
-            "pokemon": "muk_alolan PJ+AS/DP",
-            "individualScore": 112.21,
-            "games": 648,
-            "teamScore": 492.68
+            "pokemon": "giratina_altered SC+DC/SS",
+            "individualScore": 113.39,
+            "games": 794,
+            "teamScore": 492.15
         },
         {
-            "pokemon": "togekiss Ch+AP/Ft",
-            "individualScore": 103.05,
-            "games": 711,
-            "teamScore": 491.74
+            "pokemon": "obstagoon C+NS/Ob",
+            "individualScore": 106.78,
+            "games": 640,
+            "teamScore": 490.49
         },
         {
             "pokemon": "obstagoon C+CrC/NS",
-            "individualScore": 108.34,
-            "games": 454,
-            "teamScore": 490.04
+            "individualScore": 110.12,
+            "games": 351,
+            "teamScore": 489.89
         },
         {
-            "pokemon": "gyarados DB+AT/Cr",
-            "individualScore": 116.1,
-            "games": 207,
-            "teamScore": 489.9
-        },
-        {
-            "pokemon": "charizard DB+BB/DC",
-            "individualScore": 116.07,
-            "games": 675,
-            "teamScore": 487.32
-        },
-        {
-            "pokemon": "dragonite DT+DC/Hu",
-            "individualScore": 123.69,
-            "games": 285,
-            "teamScore": 487.27
+            "pokemon": "regirock LO+FB/SE",
+            "individualScore": 121.83,
+            "games": 201,
+            "teamScore": 487.06
         },
         {
             "pokemon": "swampert MS+Eq/HC",
-            "individualScore": 111.89,
-            "games": 2016,
-            "teamScore": 485.17
+            "individualScore": 113.94,
+            "games": 1789,
+            "teamScore": 483.9
         },
         {
-            "pokemon": "obstagoon C+NS/O",
-            "individualScore": 105.03,
-            "games": 756,
-            "teamScore": 481.53
+            "pokemon": "talonflame I+BrB/FmC",
+            "individualScore": 123.62,
+            "games": 882,
+            "teamScore": 483.66
         },
         {
-            "pokemon": "venusaur VW+FP/SlB",
-            "individualScore": 110.23,
-            "games": 869,
-            "teamScore": 480.07
+            "pokemon": "deoxys_defense C+PB/RS",
+            "individualScore": 137.56,
+            "games": 167,
+            "teamScore": 483.61
         },
         {
-            "pokemon": "muk_alolan Sn+DP/SW",
-            "individualScore": 113.05,
-            "games": 202,
-            "teamScore": 479.68
+            "pokemon": "escavalier C+DR/Mh",
+            "individualScore": 120.43,
+            "games": 456,
+            "teamScore": 482.14
         },
         {
-            "pokemon": "granbull Ch+CC/Cr",
-            "individualScore": 120.54,
-            "games": 151,
-            "teamScore": 478.85
+            "pokemon": "muk_alolan PJ+AS/DP",
+            "individualScore": 111.49,
+            "games": 631,
+            "teamScore": 480.85
         },
         {
-            "pokemon": "machamp C+CrC/Pbk",
-            "individualScore": 106.02,
-            "games": 365,
-            "teamScore": 470.66
+            "pokemon": "scrafty C+FoP/PUP",
+            "individualScore": 111.68,
+            "games": 548,
+            "teamScore": 478.87
+        },
+        {
+            "pokemon": "empoleon W+DrlP/HC",
+            "individualScore": 89.26,
+            "games": 180,
+            "teamScore": 478.3
+        },
+        {
+            "pokemon": "walrein PS+Eq/ISp",
+            "individualScore": 114.92,
+            "games": 1283,
+            "teamScore": 478.19
         },
         {
             "pokemon": "melmetal TS+RS/SP",
-            "individualScore": 106.89,
-            "games": 416,
-            "teamScore": 469.09
+            "individualScore": 106.03,
+            "games": 477,
+            "teamScore": 475.65
         },
         {
-            "pokemon": "abomasnow PS+EB/WBI",
-            "individualScore": 114.5,
-            "games": 158,
-            "teamScore": 466.57
+            "pokemon": "buzzwole C+Lu/SP",
+            "individualScore": 97.05,
+            "games": 196,
+            "teamScore": 474.3
+        },
+        {
+            "pokemon": "umbreon Sn+FoP/LR",
+            "individualScore": 107.01,
+            "games": 188,
+            "teamScore": 473.05
+        },
+        {
+            "pokemon": "togekiss Ch+AP/Ft",
+            "individualScore": 96.78,
+            "games": 581,
+            "teamScore": 469.85
+        },
+        {
+            "pokemon": "charizard DB+BB/DC",
+            "individualScore": 100.18,
+            "games": 418,
+            "teamScore": 463.4
+        },
+        {
+            "pokemon": "granbull Ch+CC/Cr",
+            "individualScore": 121.22,
+            "games": 209,
+            "teamScore": 459.48
+        },
+        {
+            "pokemon": "machamp C+CrC/Pbk",
+            "individualScore": 105.96,
+            "games": 293,
+            "teamScore": 458.27
+        },
+        {
+            "pokemon": "nidoqueen PJ+EP/PF",
+            "individualScore": 134.34,
+            "games": 305,
+            "teamScore": 457.46
+        },
+        {
+            "pokemon": "venusaur VW+FP/SlB",
+            "individualScore": 102.14,
+            "games": 615,
+            "teamScore": 455.13
         }
     ],
     "teams": [{
-            "team": "trevenant SC/SB/SeB|registeel LO/FB/ZC|talonflame I/BrB/FmC",
-            "teamScore": 579.42,
-            "games": 24
+            "team": "registeel LO/FB/ZC|pidgeot G/BrB/FrD|virizion DK/LB/SSw",
+            "teamScore": 592.77,
+            "games": 22
         },
         {
-            "team": "walrein PS/Eq/ISp|cobalion DK/SE/SSw|trevenant SC/SB/SeB",
-            "teamScore": 568.2,
-            "games": 25
+            "team": "tapu_fini WG/M/S|charizard_shadow WA/BB/DC|gliscor_shadow WA/Eq/NS",
+            "teamScore": 589.96,
+            "games": 28
         },
         {
-            "team": "muk_alolan PJ/AS/DP|trevenant SC/SB/SeB|walrein PS/Eq/ISp",
-            "teamScore": 561.88,
-            "games": 26
+            "team": "gliscor_shadow WA/Eq/NS|jellicent H/S/SB|registeel LO/FB/ZC",
+            "teamScore": 588.76,
+            "games": 21
         },
         {
-            "team": "deoxys_defense C/PB/RS|stunfisk_galarian MS/Eq/RS|trevenant SC/SB/SeB",
-            "teamScore": 559.48,
-            "games": 23
+            "team": "pidgeot WA/BrB/FrD|cobalion DK/SE/SSw|trevenant SC/SB/SeB",
+            "teamScore": 570.19,
+            "games": 27
         },
         {
-            "team": "ninetales_alolan Ch/DG/WBI|stunfisk_galarian MS/Eq/RS|trevenant SC/SB/SeB",
-            "teamScore": 557.54,
-            "games": 24
-        },
-        {
-            "team": "talonflame I/BrB/FmC|cresselia PC/GK/M|stunfisk_galarian MS/Eq/RS",
-            "teamScore": 555.78,
-            "games": 32
-        },
-        {
-            "team": "buzzwole C/Lu/SP|giratina_altered SC/DC/SS|talonflame I/BrB/FmC",
-            "teamScore": 541.59,
-            "games": 82
-        },
-        {
-            "team": "kommo_o DT/CC/DC|talonflame I/BrB/FmC|walrein PS/Eq/ISp",
-            "teamScore": 537.46,
-            "games": 35
-        },
-        {
-            "team": "walrein PS/Eq/ISp|cresselia PC/GK/M|talonflame I/BrB/FmC",
-            "teamScore": 536.75,
-            "games": 32
-        },
-        {
-            "team": "machamp C/CrC/RS|muk PJ/DP/TP|walrein PS/Eq/ISp",
-            "teamScore": 536.53,
+            "team": "gliscor_shadow WA/Eq/NS|cobalion DK/SE/SSw|jellicent H/S/SB",
+            "teamScore": 565.43,
             "games": 30
         },
         {
-            "team": "cofagrigus SC/DP/SB|skarmory AS/BrB/SA|tapu_fini WG/M/S",
-            "teamScore": 531.33,
+            "team": "jellicent H/S/SB|escavalier C/DR/Mh|umbreon Sn/FoP/LR",
+            "teamScore": 560.36,
+            "games": 25
+        },
+        {
+            "team": "tapu_fini WG/M/S|giratina_altered DB/DC/SS|registeel LO/FB/ZC",
+            "teamScore": 554.41,
+            "games": 39
+        },
+        {
+            "team": "jellicent H/BuB/SB|galvantula VS/D/Lu|mandibuzz AS/AA/DP",
+            "teamScore": 545.76,
+            "games": 34
+        },
+        {
+            "team": "charizard WA/BB/DC|escavalier C/DR/Mh|umbreon Sn/FoP/LR",
+            "teamScore": 544,
+            "games": 30
+        },
+        {
+            "team": "tapu_fini WG/M/S|gliscor WA/Eq/NS|trevenant SC/SB/SeB",
+            "teamScore": 543.41,
+            "games": 22
+        },
+        {
+            "team": "giratina_altered DB/DC/SS|drapion_shadow PSt/AT/Cr|muk_alolan PJ/AS/DP",
+            "teamScore": 543.41,
+            "games": 54
+        },
+        {
+            "team": "deoxys_defense C/PB/RS|stunfisk_galarian MS/Eq/RS|walrein PS/Eq/ISp",
+            "teamScore": 542.08,
+            "games": 25
+        },
+        {
+            "team": "charizard_shadow WA/BB/DC|kommo_o DT/CC/DC|scrafty C/FoP/PUP",
+            "teamScore": 541.88,
             "games": 24
         },
         {
-            "team": "nidoqueen_shadow PJ/EP/PF|articuno IS/AP/IW|scrafty C/FoP/PUP",
-            "teamScore": 530.25,
-            "games": 57
+            "team": "giratina_altered DB/DC/SS|charizard WA/BB/DC|mewtwo_armored Cf/DyP/Pst",
+            "teamScore": 537.56,
+            "games": 25
         },
         {
-            "team": "muk_alolan Sn/DP/SW|swampert MS/Eq/HC|sylveon Ch/M/Psh",
-            "teamScore": 530.03,
-            "games": 31
+            "team": "charizard_shadow WA/BB/DC|cobalion DK/SE/SSw|virizion DK/SE/SSw",
+            "teamScore": 536.65,
+            "games": 86
         },
         {
-            "team": "deoxys_defense C/PB/RS|drapion PSt/Cr/SlB|mandibuzz Sn/AA/FoP",
-            "teamScore": 522.84,
-            "games": 43
+            "team": "pidgeot WA/BrB/FrD|cobalion DK/SE/SSw|jellicent H/S/SB",
+            "teamScore": 532.64,
+            "games": 39
         },
         {
-            "team": "giratina_altered SC/DC/SS|cresselia PC/GK/M|escavalier C/DR/Mh",
-            "teamScore": 520.75,
-            "games": 24
+            "team": "pidgeot WA/BrB/FrD|cobalion DK/SE/SSw|cresselia PC/GK/M",
+            "teamScore": 531.69,
+            "games": 64
         },
         {
-            "team": "walrein PS/Eq/ISp|giratina_altered DB/AP/DC|muk_alolan PJ/AS/DP",
-            "teamScore": 520.49,
-            "games": 37
+            "team": "articuno IS/AP/IW|registeel LO/FB/ZC|trevenant SC/SB/SeB",
+            "teamScore": 524.3,
+            "games": 23
         },
         {
-            "team": "tapu_fini WG/M/S|cobalion DK/SE/SSw|trevenant SC/SB/SeB",
-            "teamScore": 519.75,
-            "games": 36
+            "team": "charizard WA/BB/DC|obstagoon C/NS/Ob|registeel LO/FB/ZC",
+            "teamScore": 520.29,
+            "games": 21
+        },
+        {
+            "team": "swampert MS/Eq/HC|charizard WA/BB/DC|walrein PS/Eq/ISp",
+            "teamScore": 514.19,
+            "games": 26
         },
         {
             "team": "tapu_fini WG/M/S|registeel LO/FB/ZC|talonflame I/BrB/FmC",
-            "teamScore": 519.67,
-            "games": 187
+            "teamScore": 511,
+            "games": 109
         },
         {
-            "team": "ninetales_alolan Ch/Psh/WBI|stunfisk_galarian MS/Eq/RS|trevenant SC/SB/SeB",
-            "teamScore": 515.5,
-            "games": 24
+            "team": "talonflame I/BrB/FmC|perrserker SC/CC/FoP|swampert MS/Eq/HC",
+            "teamScore": 507.6,
+            "games": 60
         },
         {
-            "team": "tapu_fini WG/M/S|giratina_altered SC/DC/SS|registeel LO/FB/ZC",
-            "teamScore": 512.77,
-            "games": 152
-        },
-        {
-            "team": "registeel LO/FB/ZC|giratina_altered SC/AP/DC|virizion DK/LB/SSw",
-            "teamScore": 511.43,
-            "games": 35
-        },
-        {
-            "team": "nidoqueen PJ/EP/PF|buzzwole C/Lu/SP|trevenant SC/SB/SeB",
-            "teamScore": 510.6,
-            "games": 183
-        },
-        {
-            "team": "registeel LO/FB/ZC|giratina_altered SC/AP/DC|umbreon Sn/FoP/P",
-            "teamScore": 508.22,
-            "games": 69
-        },
-        {
-            "team": "giratina_altered SC/DC/SS|ninetales_alolan Ch/Psh/WBI|togekiss Ch/AP/Ft",
-            "teamScore": 507.3,
-            "games": 155
-        },
-        {
-            "team": "pidgeot G/BrB/FrD|cobalion DK/SE/SSw|virizion DK/LB/SSw",
-            "teamScore": 506.65,
-            "games": 211
-        },
-        {
-            "team": "deoxys_defense C/PB/RS|obstagoon C/CrC/NS|venusaur VW/FP/SlB",
-            "teamScore": 504.31,
-            "games": 158
-        },
-        {
-            "team": "muk_alolan PJ/AS/DP|giratina_altered SC/DC/SS|machamp_shadow C/CrC/RS",
-            "teamScore": 503.96,
-            "games": 24
-        },
-        {
-            "team": "nidoqueen PJ/EP/PF|scrafty C/FoP/PUP|umbreon Sn/FoP/LR",
-            "teamScore": 503.72,
-            "games": 179
-        },
-        {
-            "team": "tapu_fini WG/M/S|talonflame I/BrB/FmC|trevenant SC/SB/SeB",
-            "teamScore": 503.41,
-            "games": 177
-        },
-        {
-            "team": "talonflame I/BrB/FmC|greedent BS/BS/Cr|scrafty C/FoP/PUP",
-            "teamScore": 499.5,
-            "games": 40
-        },
-        {
-            "team": "escavalier C/DR/Mh|giratina_altered SC/DC/SS|walrein PS/Eq/ISp",
-            "teamScore": 497.4,
-            "games": 154
-        },
-        {
-            "team": "pidgeot G/BrB/FrD|cobalion DK/SE/SSw|regirock LO/FB/SE",
-            "teamScore": 496.99,
-            "games": 148
+            "team": "poliwrath_shadow MS/DyP/Sc|drapion_shadow PSt/Cr/SlB|muk_alolan_shadow PJ/DP/SW",
+            "teamScore": 506.71,
+            "games": 21
         },
         {
             "team": "obstagoon C/CrC/NS|giratina_altered SC/DC/SS|trevenant SC/SB/SeB",
-            "teamScore": 496.31,
-            "games": 119
+            "teamScore": 503.72,
+            "games": 94
         },
         {
-            "team": "trevenant SC/SB/SeB|registeel LO/FB/ZC|swampert MS/Eq/HC",
-            "teamScore": 495.83,
-            "games": 181
+            "team": "walrein PS/Eq/ISp|charizard WA/BB/DC|swampert MS/Eq/HC",
+            "teamScore": 502.87,
+            "games": 54
         },
         {
-            "team": "trevenant SC/SB/SeB|drapion PSt/AT/Cr|walrein PS/Eq/ISp",
-            "teamScore": 494.19,
-            "games": 147
+            "team": "escavalier C/DR/Mh|giratina_altered SC/DC/SS|walrein PS/Eq/ISp",
+            "teamScore": 501.29,
+            "games": 126
+        },
+        {
+            "team": "tapu_fini WG/M/S|giratina_altered SC/DC/SS|registeel LO/FB/ZC",
+            "teamScore": 500.63,
+            "games": 93
+        },
+        {
+            "team": "pidgeot G/BrB/FrD|cobalion DK/SE/SSw|virizion DK/LB/SSw",
+            "teamScore": 492.55,
+            "games": 139
+        },
+        {
+            "team": "tapu_fini WG/M/S|talonflame I/BrB/FmC|trevenant SC/SB/SeB",
+            "teamScore": 492.34,
+            "games": 114
+        },
+        {
+            "team": "pidgeot G/BrB/FrD|cobalion DK/SE/SSw|regirock LO/FB/SE",
+            "teamScore": 490.02,
+            "games": 130
         }
     ]
 }

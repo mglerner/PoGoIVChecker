@@ -4,6 +4,8 @@
 		<?php require_once 'cupselect.php'; ?>
 	<?php endif; ?>
 
+	<a class="swap" href="#">Swap</a>
+
 	<div class="poke-stats">
 		<div class="custom-options">
 			<h3 class="section-title">Pokemon (<span class="poke-count">0</span> / <span class="poke-max-count">100</span>)</h3>
@@ -22,7 +24,7 @@
 			<h3 class="section-title">Quick Fill</h3>
 			<select class="quick-fill-select">
 				<option value="new">New Custom Group</option>
-				<option value="littlegeneral" type="littlegeneral" class="hide multi-battle">Little Cup Meta</option>
+				<option value="littlegeneral" type="little" class="hide multi-battle">Little League Meta (General)</option>
 				<option value="great" type="great" class="multi-battle">Great League Meta</option>
 				<option value="ultra" type="ultra" class="hide multi-battle">Ultra League Meta</option>
 				<option value="master" type="master" class="hide multi-battle">Master League Meta</option>

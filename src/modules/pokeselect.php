@@ -1,14 +1,28 @@
 <div class="poke single">
 	<a class="random" href="#">Random</a>
 	<a class="swap" href="#">Swap</a>
-	<input class="poke-search" type="text" placeholder="Search name">
+
+	<div class="poke-search-container flex">
+		<input class="poke-search" type="text" placeholder="Search name">
+		<a href="#" class="search-info" title="Search Help" context="pokeselect">?</a>
+	</div>
+
 	<select class="poke-select">
 		<option disabled selected value="">Select a Pokemon</option>
 	</select>
 
+	<div class="form-select-container">
+		<div class="form-select-border"></div>
+		<select class="form-select">
+			<option value="" selected disabled>Select another form</option>
+		</select>
+		<a class="form-link" href="#"></a>
+	</div>
+
 	<?php include 'pokebox.php'; ?>
 
 	<div class="poke-stats">
+
 		<h3 class="cp"><span class="identifier" title="Shadow"></span> cp <span class="stat"></span></h3>
 		<div class="types"></div>
 		<div class="stat-container attack clear">
@@ -124,7 +138,7 @@
 				</div>
 			</div>
 			<div class="shadow-section">
-				<h3 class="section-title">Pokemon Form</h3>
+				<h3 class="section-title">Shadow Form</h3>
 				<div class="form-group shadow-picker">
 					<div class="option on" value="normal">Normal</div>
 					<div class="option" value="shadow">Shadow</div>
@@ -148,6 +162,12 @@
 				</div>
 				<div class="check optimize-timing on"><span></span>Optimize move timing</div>
 			</div>
+		</div>
+
+		<div class="custom-ranking-options">
+			<h3 class="section-title">Ranking Weight Multiplier</h3>
+			<input class="ranking-weight" type="number" placeholder="Weight" min="0" value="1" />
+			<div class="legacy">Matchup scores against this Pokemon will be multiplied by the value above. Default is 1. Use values of 2-10 depending on meta relevancy. Use 0 to remove all weighting.</div>
 		</div>
 
 		<a href="#" class="clear-selection">Clear Selection</a>
@@ -204,5 +224,23 @@
 		<div class="center flex">
 			<div class="button add-move">Add move</div>
 		</div>
+	</div>
+
+	<div class="pokeselector-search-help article hide">
+		<p>You can use the following keyboard commands when selecting a Pokemon:</p>
+		<table cellspacing="0">
+			<tr>
+				<td><strong>&uarr;</strong></td>
+				<td>Navigate up alphabetically (to select a related form)</td>
+			</tr>
+			<tr>
+				<td><strong>&darr;</strong></td>
+				<td>Navigate down alphabetically (to select a related form)</td>
+			</tr>
+			<tr>
+				<td><strong>Enter</strong></td>
+				<td>Multi-Select: Add or save changes to the current Pokemon. You can press Enter again to bring up a new Add Pokemon window.</td>
+			</tr>
+		</table>
 	</div>
 </div>

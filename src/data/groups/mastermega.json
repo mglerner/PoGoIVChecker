@@ -35,9 +35,17 @@
     "fastMove": "SHADOW_CLAW",
     "chargedMoves": ["SHADOW_BALL", "OMINOUS_WIND"]
 }, {
-    "speciesId": "groudon",
+    "speciesId": "groudon_primal",
     "fastMove": "MUD_SHOT",
-    "chargedMoves": ["EARTHQUAKE", "FIRE_PUNCH"]
+    "chargedMoves": ["PRECIPICE_BLADES", "FIRE_PUNCH"]
+}, {
+    "speciesId": "gardevoir_mega",
+    "fastMove": "CHARM",
+    "chargedMoves": ["SYNCHRONOISE", "SHADOW_BALL"]
+}, {
+    "speciesId": "salamence_mega",
+    "fastMove": "DRAGON_TAIL",
+    "chargedMoves": ["OUTRAGE", "FIRE_BLAST"]
 }, {
     "speciesId": "gyarados",
     "fastMove": "DRAGON_BREATH",
@@ -47,9 +55,9 @@
     "fastMove": "INCINERATE",
     "chargedMoves": ["EARTHQUAKE", "BRAVE_BIRD"]
 }, {
-    "speciesId": "kyogre",
+    "speciesId": "kyogre_primal",
     "fastMove": "WATERFALL",
-    "chargedMoves": ["SURF", "BLIZZARD"]
+    "chargedMoves": ["SURF", "THUNDER"]
 }, {
     "speciesId": "kyogre",
     "fastMove": "WATERFALL",
@@ -73,7 +81,7 @@
 }, {
     "speciesId": "mamoswine",
     "fastMove": "POWDER_SNOW",
-    "chargedMoves": ["AVALANCHE", "BULLDOZE"]
+    "chargedMoves": ["AVALANCHE", "HIGH_HORSEPOWER"]
 }, {
     "speciesId": "melmetal",
     "fastMove": "THUNDER_SHOCK",
@@ -109,18 +117,18 @@
 }, {
     "speciesId": "togekiss",
     "fastMove": "CHARM",
-    "chargedMoves": ["ANCIENT_POWER", "FLAMETHROWER"]
+    "chargedMoves": ["ANCIENT_POWER", "AURA_SPHERE"]
 }, {
     "speciesId": "yveltal",
     "fastMove": "SNARL",
     "chargedMoves": ["DARK_PULSE", "FOCUS_BLAST"]
 }, {
-    "speciesId": "zacian_hero",
-    "fastMove": "QUICK_ATTACK",
-    "chargedMoves": ["CLOSE_COMBAT", "PLAY_ROUGH"]
+    "speciesId": "xerneas",
+    "fastMove": "GEOMANCY",
+    "chargedMoves": ["CLOSE_COMBAT", "MOONBLAST"]
 }, {
     "speciesId": "zacian_hero",
-    "fastMove": "QUICK_ATTACK",
+    "fastMove": "SNARL",
     "chargedMoves": ["CLOSE_COMBAT", "WILD_CHARGE"]
 }, {
     "speciesId": "zarude",
@@ -137,7 +145,7 @@
 }, {
     "speciesId": "ampharos_mega",
     "fastMove": "VOLT_SWITCH",
-    "chargedMoves": ["THUNDER_PUNCH", "DRAGON_PULSE"]
+    "chargedMoves": ["BRUTAL_SWING", "ZAP_CANNON"]
 }, {
     "speciesId": "charizard_mega_y",
     "fastMove": "DRAGON_BREATH",
@@ -165,7 +173,7 @@
 }, {
     "speciesId": "slowbro_mega",
     "fastMove": "CONFUSION",
-    "chargedMoves": ["PSYCHIC", "ICE_BEAM"]
+    "chargedMoves": ["SURF", "ICE_BEAM"]
 }, {
     "speciesId": "aerodactyl_mega",
     "fastMove": "ROCK_THROW",
@@ -173,7 +181,7 @@
 }, {
     "speciesId": "steelix_mega",
     "fastMove": "DRAGON_TAIL",
-    "chargedMoves": ["CRUNCH", "EARTHQUAKE"]
+    "chargedMoves": ["PSYCHIC_FANGS", "EARTHQUAKE"]
 }, {
     "speciesId": "houndoom_mega",
     "fastMove": "SNARL",
@@ -185,5 +193,21 @@
 }, {
     "speciesId": "aggron_mega",
     "fastMove": "DRAGON_TAIL",
-    "chargedMoves": ["HEAVY_SLAM", "THUNDER"]
+    "chargedMoves": ["THUNDER", "METEOR_BEAM"]
+}, {
+    "speciesId": "blaziken_mega",
+    "fastMove": "COUNTER",
+    "chargedMoves": ["BLAZE_KICK", "BLAST_BURN"]
+}, {
+    "speciesId": "sceptile_mega",
+    "fastMove": "BULLET_SEED",
+    "chargedMoves": ["LEAF_BLADE", "EARTHQUAKE"]
+}, {
+    "speciesId": "swampert_mega",
+    "fastMove": "MUD_SHOT",
+    "chargedMoves": ["HYDRO_CANNON", "EARTHQUAKE"]
+}, {
+    "speciesId": "rayquaza_mega",
+    "fastMove": "DRAGON_TAIL",
+    "chargedMoves": ["BREAKING_SWIPE", "DRAGON_ASCENT"]
 }]

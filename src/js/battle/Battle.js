@@ -1100,7 +1100,6 @@ function Battle(){
 			);
 		}
 
-
 		// Check if opponent can KO in your fast move cooldown
 		while (queue.length != 0) {
 
@@ -1174,7 +1173,7 @@ function Battle(){
 
 		// If you can't throw a fast move and live, throw whatever move you can with the most damage
 		if (turnsToLive != -1) {
-			if(poke.hp <= opponent.fastMove.damage && opponent.fastMove.cooldown == 500){
+			if(poke.hp <= opponent.fastMove.damage * 2 && opponent.fastMove.cooldown == 500){
 				turnsToLive--;
 			}
 
@@ -1192,17 +1191,26 @@ function Battle(){
 				var maxDamageMoveIndex = 0;
 				var prevMoveDamage = -1;
 
-				for(var n = 0; n < poke.activeChargedMoves.length; n++) {
+				for(var n = poke.activeChargedMoves.length; n >= 0; n--) {
 
 					// Find highest damage available move
 					if (chargedMoveReady[n] == 0) {
 						var moveDamage = self.calculateDamage(poke, opponent, poke.activeChargedMoves[n]);
+
+						// If this move deals more damage than the other move, use it
 						if ((moveDamage > prevMoveDamage) && (prevMoveDamage < opponent.hp)){
 							maxDamageMoveIndex = poke.chargedMoves.indexOf(poke.activeChargedMoves[n]);
 							prevMoveDamage = moveDamage;
 						}
+
+						// If the Pokemon can fire two of this move and deal more damage, use it
+						if(poke.energy >= poke.activeChargedMoves[n].energy * 2 && poke.stats.atk > opponent.stats.atk && moveDamage * 2 > prevMoveDamage){
+							maxDamageMoveIndex = poke.chargedMoves.indexOf(poke.activeChargedMoves[n]);
+							prevMoveDamage = moveDamage * 2;
+						}
 					}
 				}
+
 
 				// If no moves available, throw fast move
 				if (prevMoveDamage == -1) {
@@ -1229,7 +1237,7 @@ function Battle(){
 
 		// Throw a lethal Charged Move if it will faint the opponent
 
-		if(! poke.farmEnergy){
+		if(! poke.farmEnergy && opponent.shields == 0){
 			for(var n = 0; n < poke.activeChargedMoves.length; n++) {
 				var move = poke.activeChargedMoves[n];
 				var moveIndex = poke.chargedMoves.indexOf(poke.activeChargedMoves[n]);
@@ -1259,14 +1267,29 @@ function Battle(){
 			var targetCooldown = 500; // Look to throw moves when opponent is at this cooldown or lower
 
 			if(poke.fastMove.cooldown >= 2000){
-				targetCooldown = 1000
+				targetCooldown = 1000;
 			}
 
 			if((poke.fastMove.cooldown >= 1500)&&(opponent.fastMove.cooldown == 2500)){
-				targetCooldown = 1000
+				targetCooldown = 1000;
 			}
 
-			if ( (! (poke.fastMove.cooldown % opponent.fastMove.cooldown == 0 || opponent.fastMove.cooldown % poke.fastMove.cooldown == 0) || (poke.fastMove.cooldown == 500 && opponent.fastMove.cooldown > 500)) && ((opponent.cooldown == 0) || (opponent.cooldown > targetCooldown)) ) {
+			if((poke.fastMove.cooldown == 1000)&&(opponent.fastMove.cooldown == 2000)){
+				targetCooldown = 1000;
+			}
+
+			// Don't optimize timing for Pokemon with the same duration moves
+			if(poke.fastMove.cooldown == opponent.fastMove.cooldown){
+				targetCooldown = 0;
+			}
+
+			// Don't optimize timing for Pokemon with longer, even duration moves (ie 4 vs 2, 3 vs 1)
+			if(poke.fastMove.cooldown % opponent.fastMove.cooldown == 0 && poke.fastMove.cooldown > opponent.fastMove.cooldown){
+				targetCooldown = 0;
+			}
+
+			// Perform additional checks to execute optimal timing
+			if( (opponent.cooldown == 0 || opponent.cooldown > targetCooldown) && targetCooldown > 0) {
 				var optimizeTiming = true;
 
 				// Don't optimize if we're about to faint from a fast move
@@ -1339,6 +1362,8 @@ function Battle(){
 				if(poke.hp <= opponent.fastMove.damage * fastMovesInFastMove){
 					optimizeTiming = false;
 				}
+
+
 
 				if(optimizeTiming){
 					useChargedMove = false;
@@ -1872,6 +1897,11 @@ function Battle(){
 
 		// Bandaid to force more efficient move of the similar energy if chosen move is self debuffing
 		if (poke.activeChargedMoves.length > 1 && poke.activeChargedMoves[0].energy - 10 <= finalState.moves[0].energy && poke.activeChargedMoves[0].dpe > finalState.moves[0].dpe && finalState.moves[0].selfDebuffing && (! poke.activeChargedMoves[0].selfDebuffing)) {
+			finalState.moves[0] = poke.activeChargedMoves[0];
+		}
+
+		// Bandaid to force more efficient move of the similar energy if one move is self buffing
+		if (poke.activeChargedMoves.length > 1 && poke.activeChargedMoves[0].energy - finalState.moves[0].energy <= 5 && poke.activeChargedMoves[0].dpe > finalState.moves[0].dpe && poke.activeChargedMoves[0].selfBuffing) {
 			finalState.moves[0] = poke.activeChargedMoves[0];
 		}
 
@@ -2737,7 +2767,7 @@ function Battle(){
 			if(attacker.energy + chargedMove.energy >= chargedMove.energy){
 				var chargedDamage = self.calculateDamage(attacker, defender, chargedMove);
 
-				if((chargedDamage >= defender.hp / 1.5)&&(fastDPT > 1.5)){
+				if((chargedDamage >= defender.hp / 1.4)&&(fastDPT > 1.5)){
 					useShield = true;
 					shieldWeight = 4
 				}
@@ -2747,7 +2777,7 @@ function Battle(){
 					shieldWeight = 4
 				}
 
-				if((chargedDamage >= defender.hp / 2)&&(fastDPT > 1.5)){
+				if((chargedDamage >= defender.hp / 2)&&(fastDPT > 2)){
 					shieldWeight = 12
 				}
 			}
@@ -2887,13 +2917,25 @@ function Battle(){
 
 	this.getRatingColor = function(rating){
 		var winColors = [
-			[93,71,165],
-			[0,143,187]
+			[74,85,169],
+			[11,118,215]
 		]; // rgb
 		var lossColors = [
-			[186,0,143],
-			[93,71,165]
+			[199,12,112],
+			[111,56,160]
 		]; // rgb
+
+		if(settings.colorblindMode){
+			winColors = [
+				[59,113,227],
+				[26,133,255]
+			]; // rgb
+
+			lossColors = [
+				[212,17,89],
+				[178,39,120]
+			]; // rgb
+		}
 
 		// Apply a gradient to bar color
 		var colors = (rating <= 500) ? lossColors : winColors;
@@ -2912,6 +2954,22 @@ function Battle(){
 		}
 
 		return color;
+	}
+
+	// Returns whether a battle rating was a win, close win, tie, close loss, or loss
+
+	this.getRatingClass = function(rating){
+		if(rating == 500){
+			return "tie";
+		} else if( (rating < 500) && (rating > 250)){
+			return "close-loss";
+		} else if( rating <= 250){
+			return "loss";
+		} else if( (rating > 500) && (rating < 750)){
+			return "close-win";
+		} else if( rating >= 750){
+			return "win";
+		}
 	}
 
 	// Convert timeine to user-editable actions

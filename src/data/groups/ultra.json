@@ -1,4 +1,24 @@
 [{
+    "speciesId": "aurorus",
+    "fastMove": "POWDER_SNOW",
+    "chargedMoves": ["WEATHER_BALL_ICE", "METEOR_BEAM"]
+}, {
+    "speciesId": "buzzwole",
+    "fastMove": "COUNTER",
+    "chargedMoves": ["SUPER_POWER", "LUNGE"]
+}, {
+    "speciesId": "charizard",
+    "fastMove": "WING_ATTACK",
+    "chargedMoves": ["DRAGON_CLAW", "BLAST_BURN"]
+}, {
+    "speciesId": "charizard_shadow",
+    "fastMove": "WING_ATTACK",
+    "chargedMoves": ["DRAGON_CLAW", "BLAST_BURN"]
+}, {
+    "speciesId": "cobalion",
+    "fastMove": "DOUBLE_KICK",
+    "chargedMoves": ["SACRED_SWORD", "STONE_EDGE"]
+}, {
     "speciesId": "cofagrigus",
     "fastMove": "SHADOW_CLAW",
     "chargedMoves": ["SHADOW_BALL", "DARK_PULSE"]
@@ -14,6 +34,10 @@
     "speciesId": "drapion",
     "fastMove": "POISON_STING",
     "chargedMoves": ["AQUA_TAIL", "CRUNCH"]
+}, {
+    "speciesId": "dubwool",
+    "fastMove": "DOUBLE_KICK",
+    "chargedMoves": ["BODY_SLAM", "PAYBACK"]
 }, {
     "speciesId": "empoleon",
     "fastMove": "WATERFALL",
@@ -31,6 +55,10 @@
     "fastMove": "SHADOW_CLAW",
     "chargedMoves": ["DRAGON_CLAW", "SHADOW_SNEAK"]
 }, {
+    "speciesId": "gliscor",
+    "fastMove": "WING_ATTACK",
+    "chargedMoves": ["NIGHT_SLASH", "EARTHQUAKE"]
+}, {
     "speciesId": "granbull",
     "fastMove": "CHARM",
     "chargedMoves": ["CLOSE_COMBAT", "CRUNCH"]
@@ -39,13 +67,17 @@
     "fastMove": "BULLET_SEED",
     "chargedMoves": ["BODY_SLAM", "CRUNCH"]
 }, {
+    "speciesId": "guzzlord",
+    "fastMove": "DRAGON_TAIL",
+    "chargedMoves": ["DRAGON_CLAW", "CRUNCH"]
+}, {
     "speciesId": "gyarados",
     "fastMove": "DRAGON_BREATH",
     "chargedMoves": ["AQUA_TAIL", "CRUNCH"]
 }, {
     "speciesId": "jellicent",
     "fastMove": "HEX",
-    "chargedMoves": ["SHADOW_BALL", "ICE_BEAM"]
+    "chargedMoves": ["SHADOW_BALL", "SURF"]
 }, {
     "speciesId": "machamp",
     "fastMove": "COUNTER",
@@ -65,16 +97,29 @@
     "chargedMoves": ["POISON_FANG", "EARTH_POWER"]
 }, {
     "speciesId": "ninetales_alolan",
+    "fastMove": "POWDER_SNOW",
+    "chargedMoves": ["WEATHER_BALL_ICE", "PSYSHOCK"]
+}, {
+    "speciesId": "ninetales_alolan_shadow",
     "fastMove": "CHARM",
-    "chargedMoves": ["WEATHER_BALL_ICE", "DAZZLING_GLEAM"]
+    "chargedMoves": ["WEATHER_BALL_ICE", "DAZZLING_GLEAM"],
+    "shadowType": "shadow"
 }, {
     "speciesId": "obstagoon",
     "fastMove": "COUNTER",
     "chargedMoves": ["NIGHT_SLASH", "OBSTRUCT"]
 }, {
+    "speciesId": "pidgeot",
+    "fastMove": "WING_ATTACK",
+    "chargedMoves": ["FEATHER_DANCE", "BRAVE_BIRD"]
+}, {
     "speciesId": "poliwrath",
-    "fastMove": "MUD_SHOT",
-    "chargedMoves": ["DYNAMIC_PUNCH", "ICE_PUNCH"]
+    "fastMove": "COUNTER",
+    "chargedMoves": ["SCALD", "ICE_PUNCH"]
+}, {
+    "speciesId": "greninja",
+    "fastMove": "WATER_SHURIKEN",
+    "chargedMoves": ["HYDRO_CANNON", "NIGHT_SLASH"]
 }, {
     "speciesId": "registeel",
     "fastMove": "LOCK_ON",
@@ -138,28 +183,19 @@
     "fastMove": "VINE_WHIP",
     "chargedMoves": ["FRENZY_PLANT", "SLUDGE_BOMB"]
 }, {
-    "speciesId": "walrein",
-    "fastMove": "POWDER_SNOW",
-    "chargedMoves": ["ICICLE_SPEAR", "EARTHQUAKE"]
-}, {
-    "speciesId": "machamp",
-    "fastMove": "COUNTER",
-    "chargedMoves": ["CROSS_CHOP", "ROCK_SLIDE"],
-    "shadowType": "shadow"
-}, {
     "speciesId": "virizion",
     "fastMove": "DOUBLE_KICK",
     "chargedMoves": ["LEAF_BLADE", "SACRED_SWORD"]
 }, {
-    "speciesId": "cobalion",
-    "fastMove": "DOUBLE_KICK",
-    "chargedMoves": ["SACRED_SWORD", "STONE_EDGE"]
+    "speciesId": "walrein",
+    "fastMove": "POWDER_SNOW",
+    "chargedMoves": ["ICICLE_SPEAR", "EARTHQUAKE"]
 }, {
-    "speciesId": "buzzwole",
-    "fastMove": "COUNTER",
-    "chargedMoves": ["SUPER_POWER", "LUNGE"]
+    "speciesId": "golisopod",
+    "fastMove": "SHADOW_CLAW",
+    "chargedMoves": ["X_SCISSOR", "LIQUIDATION"]
 }, {
-    "speciesId": "dubwool",
-    "fastMove": "DOUBLE_KICK",
-    "chargedMoves": ["BODY_SLAM", "PAYBACK"]
+    "speciesId": "sandslash_alolan",
+    "fastMove": "SHADOW_CLAW",
+    "chargedMoves": ["ICE_PUNCH", "DRILL_RUN"]
 }]

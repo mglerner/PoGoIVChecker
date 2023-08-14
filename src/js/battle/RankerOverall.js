@@ -145,7 +145,7 @@ var RankerMaster = (function () {
 
 					var r = rankings[i];
 					var pokemon = new Pokemon(r.speciesId, 0, battle);
-					pokemon.initialize();
+					pokemon.initialize(true);
 					pokemon.selectMove("fast", r.moveset[0]);
 					pokemon.selectMove("charged", r.moveset[1], 0);
 
@@ -170,10 +170,6 @@ var RankerMaster = (function () {
 
 					rankings[i].scores.push(consistencyScore);
 
-					if(cup == "beam"){
-						rankings[i].scores.push(beaminess);
-					}
-
 					sortedScores.push(scores[0],
 						scores[1],
 						Math.max(scores[2], scores[3]),
@@ -184,7 +180,19 @@ var RankerMaster = (function () {
 
 					rankings[i].score = Math.pow( Math.pow(sortedScores[0], 12) * Math.pow(sortedScores[1], 6) * Math.pow(sortedScores[2], 4) * Math.pow(sortedScores[3], 2) * Math.pow(consistencyScore, 2), (1/26));
 
+					if(scores[4] <= 75 && consistencyScore <= 75){
+						rankings[i].score = Math.pow( Math.pow(rankings[i].score, 14) * Math.pow(scores[4], 1) * Math.pow(consistencyScore, 1), (1/16));
+					}
+
 					rankings[i].score = Math.floor(rankings[i].score*10) / 10;
+
+					// Add Pokemon stats
+					rankings[i].stats = {
+						product: Math.round(pokemon.stats.atk * pokemon.stats.def * pokemon.stats.hp * (1/1000)),
+						atk: Math.floor(pokemon.stats.atk * 10) / 10,
+						def: Math.floor(pokemon.stats.def * 10) / 10,
+						hp: pokemon.stats.hp
+					}
 				}
 
 				rankings.sort((a,b) => (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0));
