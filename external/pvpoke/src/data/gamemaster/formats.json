@@ -10,15 +10,6 @@
 		"hideRankings": true
 	},
 	{
-		"title": "Master League (Megas)",
-		"cup": "mega",
-		"cp": 10000,
-		"meta": "mastermega",
-		"showCup": false,
-		"showFormat": false,
-		"showMeta": true
-	},
-	{
 		"title": "ML Overused",
 		"cup": "overused",
 		"cp": 10000,
@@ -28,91 +19,64 @@
 		"showMeta": true
 	},
 	{
-		"title": "Gymbreakers Invitational 2022",
-		"cup": "gymbreakers",
-		"cp": 1500,
-		"meta": "gymbreakers",
-		"showCup": false,
-		"showFormat": false,
-		"showMeta": true
-	},
-	{
-		"title": "Premier Classic (Ultra League)",
-		"cup": "premierclassic",
+		"title": "Ultra Premier",
+		"cup": "premier",
 		"cp": 2500,
-		"meta": "ultrapremierclassic",
+		"meta": "premierultra",
 		"showCup": false,
 		"showFormat": false,
 		"showMeta": true
 	},
 	{
-		"title": "Premier Classic (Master League)",
-		"cup": "premierclassic",
+		"title": "Master League (Megas)",
+		"cup": "mega",
 		"cp": 10000,
-		"meta": "masterpremierclassic",
+		"meta": "mastermega",
 		"showCup": false,
 		"showFormat": false,
 		"showMeta": true
 	},
 	{
-		"title": "Halloween Cup (Great)",
-		"cup": "halloween",
-		"cp": 1500,
-		"meta": "halloween",
+		"title": "Master Premier",
+		"cup": "premier",
+		"cp": 10000,
+		"meta": "premiermaster",
+		"showCup": true,
+		"showFormat": false,
+		"showMeta": true
+	},
+	{
+		"title": "Little Jungle Cup",
+		"cup": "littlejungle",
+		"cp": 500,
+		"meta": "littlejungle",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
 	},
 	{
-		"title": "Halloween Cup (Ultra)",
-		"cup": "halloween",
+		"title": "Fantasy Cup (Ultra League)",
+		"cup": "fantasy",
 		"cp": 2500,
-		"meta": "halloweenultra",
+		"meta": "fantasyultra",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
 	},
 	{
-		"title": "Willpower Cup",
-		"cup": "willpower",
+		"title": "Gymbreakers (Ragnar)",
+		"cup": "ragnargymbreakers",
 		"cp": 1500,
-		"meta": "willpower",
+		"meta": "ragnargymbreakers",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
 	},
 	{
-		"title": "Silph Factions (Primeval)",
-		"cup": "primeval",
+		"title": "Gymbreakers (Vanguard)",
+		"cup": "vanguardgymbreakers",
 		"cp": 1500,
-		"meta": "primeval",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
-		"title": "Silph Factions (Timeless)",
-		"cup": "timelessfactions",
-		"cp": 1500,
-		"meta": "timeless",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
-		"title": "Silph Factions (Sorcerous)",
-		"cup": "sorcerousfactions",
-		"cp": 1500,
-		"meta": "sorcerous",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
-		"title": "Silph Factions (Celestial)",
-		"cup": "celestial",
-		"cp": 2500,
-		"meta": "celestial",
+		"meta": "vanguardgymbreakers",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true

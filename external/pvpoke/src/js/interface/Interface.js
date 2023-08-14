@@ -86,7 +86,7 @@ var InterfaceMaster = (function () {
 				$(".battle-btn").on("click", function(e){
 					startBattle();
 				});
-				$(".bulk-btn").on("click", function(e){
+				$(".summary").on("click", ".bulk-btn", function(e){
 					startBattle(true);
 				});
 				$(".continue-container .button").on("click", continueBattle);
@@ -95,6 +95,7 @@ var InterfaceMaster = (function () {
 				$(".poke.single").on("mousemove",".move-bar",moveBarHover);
 				$(".multi-battle-sort").on("click", sortMultiBattleResults);
 				$(".battle-results.matrix .ranking-categories a").on("click", selectMatrixMode);
+				$(".battle-results.matrix select.breakpoint-mode").on("change", selectMatrixBreakpointMode);
 				$("body").on("click", ".battle-results.matrix a.difference", jumpToMatrixColumn);
 				$("body").on("mousemove",mainMouseMove);
 				$("body").on("mousedown",mainMouseMove);
@@ -109,9 +110,11 @@ var InterfaceMaster = (function () {
 
 				// Details battle viewing
 
-				$("body").on("click", ".battle-details .rating-table a.rating.star", viewShieldBattle);
-				$("body").on("click", ".section.summary a.rating.star", viewBulkBattle);
+				$("body").on("click", ".battle-details .rating-table a.rating", viewShieldBattle);
+				$("body").on("click", ".section.summary a.rating", viewBulkBattle);
 				$("body").on("click", ".breakpoints-section .button, .cmp-section .button", selectBreakpointIVs);
+				$("body").on("change", "select.breakpoint-move", selectBreakpointMove);
+				$("body").on("change", "select.bulkpoint-move", selectBulkpointMove);
 
 				// Sandbox mode
 
@@ -340,7 +343,7 @@ var InterfaceMaster = (function () {
 						description = "loses";
 					}
 
-					$(".battle-results .summary").html("<div><span class=\"name\">"+pokemon[0].speciesName+"</span> "+description+" in <span class=\"time\">"+durationSeconds+"s</span> with a battle rating of <span class=\"rating star\">"+rating+"</span></div>");
+					$(".battle-results .summary").html("<div class=\"battle-summary-line\"><span class=\"name\">"+pokemon[0].speciesName+"</span> "+description+" in <span class=\"time\">"+durationSeconds+"s</span> with a battle rating of <span class=\"rating\"><span></span>"+rating+"</span></div>");
 
 					if(turnMargin >= 20){
 						turnMargin = "20+";
@@ -360,14 +363,13 @@ var InterfaceMaster = (function () {
 						attr = "medium";
 					}
 
-					$(".battle-results .summary").append("<div class=\"turn-margin-description\"><span class=\"turn-margin\" value=\""+attr+"\">"+turnMargin + " turn(s)</span> of difference can flip this scenario. " + marginSummary + "</div>");
+					const turnMarginDisplay = `${turnMargin} turn` + ((turnMargin === 1) ? "" : "s")
+					$(".battle-results .summary").append("<div class=\"turn-margin-description\"><span class=\"turn-margin\" value=\""+attr+"\">" + turnMarginDisplay + "</span> of difference can flip this scenario. " + marginSummary + "</div>");
 
 					var color = battle.getRatingColor(rating);
-					$(".battle-results .summary .rating").first().css("background-color", "rgb("+color[0]+","+color[1]+","+color[2]+")");
 
-					if(rating < 500){
-						$(".battle-results .summary .rating").addClass("loss");
-					}
+					$(".battle-results .summary .rating").first().css("background-color", "rgb("+color[0]+","+color[1]+","+color[2]+")");
+					$(".battle-results .summary .rating").addClass(battle.getRatingClass(rating));
 
 					$(".continue-container").show();
 					$(".continue-container .name").html(winner.pokemon.speciesName + " (" + winner.hp + " HP, " + winner.energy + " energy)");
@@ -375,6 +377,8 @@ var InterfaceMaster = (function () {
 					$(".battle-results .summary").html("Simultaneous knockout in <span class=\"time\">"+durationSeconds+"s</span>");
 					$(".continue-container").hide();
 				}
+
+				$(".battle-results .summary").append('<button class="bulk-btn button">Explore Win Conditions</button>');
 
 				// Display bulk sim data
 
@@ -388,50 +392,49 @@ var InterfaceMaster = (function () {
 
 					var bestRating = bulkResults.best.getBattleRatings()[0];
 					var bestColor = battle.getRatingColor(bestRating);
+					var bestClass = battle.getRatingClass(bestRating);
 
 					var medianRating = bulkResults.median.getBattleRatings()[0];
 					var medianColor = battle.getRatingColor(medianRating);
+					var medianClass = battle.getRatingClass(medianRating);
 
 					var worstRating = bulkResults.worst.getBattleRatings()[0];
 					var worstColor = battle.getRatingColor(worstRating);
+					var worstClass = battle.getRatingClass(worstRating);
 
-					$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Worst</div><a href=\"#\" class=\"rating star worst\">"+worstRating+"</a></div>");
-
-					if(worstRating >= 500){
-						$outcomes.find("a.worst").addClass("win");
-					}
+					$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Worst</div><a href=\"#\" class=\"rating worst\"><span></span>"+worstRating+"</a></div>");
 
 					if((bulkResults.medianLoss)&&(bulkResults.medianWin)){
 						var medianLossRating = bulkResults.medianLoss.getBattleRatings()[0];
 						var medianLossColor = battle.getRatingColor(medianLossRating);
+						var medianLossClass = battle.getRatingClass(medianLossRating);
 
-						$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Median<br>Loss</div><a href=\"#\" class=\"rating star median-loss\">"+medianLossRating+"</a></div>");
+						$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Median<br>Loss</div><a href=\"#\" class=\"rating median-loss\"><span></span>"+medianLossRating+"</a></div>");
 						$outcomes.find(".rating.median-loss").css("background-color", "rgb("+medianLossColor[0]+","+medianLossColor[1]+","+medianLossColor[2]+")");
+						$outcomes.find(".rating.median-loss").addClass(medianLossClass);
 					}
 
-					$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Median</div><a href=\"#\" class=\"rating star median\">"+medianRating+"</a></div>");
-
-					if(medianRating >= 500){
-						$outcomes.find("a.median").addClass("win");
-					}
+					$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Median</div><a href=\"#\" class=\"rating median\"><span></span>"+medianRating+"</a></div>");
 
 					if((bulkResults.medianLoss)&&(bulkResults.medianWin)){
 						var medianWinRating = bulkResults.medianWin.getBattleRatings()[0];
 						var medianWinColor = battle.getRatingColor(medianWinRating);
+						var medianWinClass = battle.getRatingClass(medianWinRating);
 
-						$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Median<br>Win</div><a href=\"#\" class=\"rating star median-win win\">"+medianWinRating+"</a></div>");
+						$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Median<br>Win</div><a href=\"#\" class=\"rating median-win\"><span></span>"+medianWinRating+"</a></div>");
 						$outcomes.find(".rating.median-win").css("background-color", "rgb("+medianWinColor[0]+","+medianWinColor[1]+","+medianWinColor[2]+")");
+						$outcomes.find(".rating.median-win").addClass(medianWinClass);
 					}
 
-					$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Best</div><a href=\"#\" class=\"rating star best\">"+bestRating+"</a></div>");
-
-					if(bestRating >= 500){
-						$outcomes.find("a.best").addClass("win");
-					}
+					$outcomes.append("<div class=\"outcome\"><div class=\"outcome-label\">Best</div><a href=\"#\" class=\"rating best\"><span></span>"+bestRating+"</a></div>");
 
 					$outcomes.find(".rating.best").css("background-color", "rgb("+bestColor[0]+","+bestColor[1]+","+bestColor[2]+")");
 					$outcomes.find(".rating.median").css("background-color", "rgb("+medianColor[0]+","+medianColor[1]+","+medianColor[2]+")");
 					$outcomes.find(".rating.worst").css("background-color", "rgb("+worstColor[0]+","+worstColor[1]+","+worstColor[2]+")");
+
+					$outcomes.find(".rating.best").addClass(bestClass);
+					$outcomes.find(".rating.median").addClass(medianClass);
+					$outcomes.find(".rating.worst").addClass(worstClass);
 
 					$(".battle-results .bulk-summary").append($outcomes);
 
@@ -481,14 +484,20 @@ var InterfaceMaster = (function () {
 					document.title = pokes[0].speciesName + " vs. " + pokes[1].speciesName + " - Battle | PvPoke";
 
 					// Push state to browser history so it can be navigated, only if not from URL parameters
+					gtag('event', 'Lookup', {
+					  'category': 'Simulation',
+					  'speciesId' : pokes[0].speciesId
+					});
 
 					gtag('event', 'Lookup', {
-					  'event_category' : 'Simulation',
-					  'event_label' : pokes[0].speciesId
+					  'category': 'Simulation',
+					  'speciesId' : pokes[1].speciesId
 					});
-					gtag('event', 'Lookup', {
-					  'event_category' : 'Simulation',
-					  'event_label' : pokes[1].speciesId
+
+					gtag('event', 'page_view', {
+					  page_title: document.title,
+					  page_location: link,
+					  pageview_type: 'virtual'
 					});
 
 					if(get){
@@ -502,10 +511,6 @@ var InterfaceMaster = (function () {
 					var data = {cp: cp, p1: pokes[0].speciesId, p2: pokes[1].speciesId, s: pokes[0].startingShields+""+pokes[1].startingShields, m1: moveStrs[0], m2: moveStrs[1], h1: pokes[0].startHp, h2: pokes[1].startHp, e1: pokes[0].startEnergy, e2: pokes[1].startEnergy };
 
 					window.history.pushState(data, "Battle", url);
-
-					// Send Google Analytics pageview
-
-					gtag('config', UA_ID, {page_location: (host+url), page_path: url});
 				}
 			}
 
@@ -620,6 +625,8 @@ var InterfaceMaster = (function () {
 				$(".rating-table .name-1.name").html(pokemon[0].speciesName.charAt(0)+".");
 				$(".battle-details .name-2").html(pokemon[1].speciesName);
 
+				$(".rating-table .rating, .stats-table .rating").removeClass("win close-win tie close-loss loss");
+
 				if(! sandbox){
 
 					for(var i = 0; i < 3; i++){
@@ -651,14 +658,9 @@ var InterfaceMaster = (function () {
 							rating = b.getBattleRatings()[0];
 							color = b.getRatingColor(rating);
 
-							$(".rating-table .battle-"+i+"-"+n).html(rating);
+							$(".rating-table .battle-"+i+"-"+n).html("<span></span>" + rating);
+							$(".rating-table .battle-"+i+"-"+n).addClass(battle.getRatingClass(rating));
 							$(".rating-table .battle-"+i+"-"+n).css("background-color", "rgb("+color[0]+","+color[1]+","+color[2]+")");
-
-							if(rating > 500){
-								$(".rating-table .battle-"+i+"-"+n).addClass("win");
-							} else{
-								$(".rating-table .battle-"+i+"-"+n).removeClass("win");
-							}
 						}
 					}
 
@@ -678,14 +680,9 @@ var InterfaceMaster = (function () {
 					color = battle.getRatingColor(rating);
 
 
-					$(".stats-table .rating.star").eq(i).html(rating);
-					$(".stats-table .rating.star").eq(i).css("background-color", "rgb("+color[0]+","+color[1]+","+color[2]+")");
-
-					if(rating > 500){
-						$(".stats-table .rating.star").eq(i).addClass("win");
-					} else{
-						$(".stats-table .rating.star").eq(i).removeClass("win");
-					}
+					$(".stats-table .rating").eq(i).html("<span></span>"+rating);
+					$(".stats-table .rating").eq(i).addClass(battle.getRatingClass(rating));
+					$(".stats-table .rating").eq(i).css("background-color", "rgb("+color[0]+","+color[1]+","+color[2]+")");
 				}
 
 				// Gather battle stats from timeline
@@ -756,58 +753,28 @@ var InterfaceMaster = (function () {
 				}
 
 				// Calculate breakpoints and bulkpoints
-				var breakpoints = pokemon[0].calculateBreakpoints(pokemon[1]);
-
-				// Output to table
-
 				$(".breakpoints-section .name-attacker").html(pokemon[0].speciesName);
 				$(".breakpoints-section .name-defender").html(pokemon[1].speciesName);
-				$(".stats-table.breakpoints .name-fast").html(pokemon[0].fastMove.name + " Damage");
-				$(".stats-table.breakpoints .output").html('<tr></tr>');
 
-				for(var i = breakpoints.length-1; i >= 0; i--){
-					var attack = Math.round(breakpoints[i].attack * 100) / 100;
-					var guaranteedAttack = Math.round(breakpoints[i].guaranteedAttack * 100) / 100;
+				$("select.breakpoint-move option, select.bulkpoint-move option").remove();
 
-					if(guaranteedAttack == -1){
-						guaranteedAttack = "-";
-					}
+				$("select.breakpoint-move").append("<option value=\""+pokemon[0].fastMove.moveId+"\">"+pokemon[0].fastMove.name+"</option>");
 
-					// Find the best combinations that reaches this value
-					var combinations = pokemon[0].generateIVCombinations("overall", 1, 2, [{stat: "atk", value: breakpoints[i].attack}]);
-
-					$(".stats-table.breakpoints .output").append("<tr class=\"toggle\"><td>"+breakpoints[i].damage+"</td><td>"+attack+"</td><td>"+guaranteedAttack+"</td><td class=\"ivs\"><div class=\"button\" level=\""+combinations[0].level+"\" atk=\""+combinations[0].ivs.atk+"\" def=\""+combinations[0].ivs.def+"\" hp=\""+combinations[0].ivs.hp+"\">"+combinations[0].level+ " "+combinations[0].ivs.atk+"/"+combinations[0].ivs.def+"/"+combinations[0].ivs.hp+"</div></td></tr>");
-
-					if(breakpoints[i].damage == pokemon[0].fastMove.damage){
-						$(".stats-table.breakpoints .output tr").last().addClass("bold");
-					}
-
+				for(var i = 0; i < pokemon[0].chargedMoves.length; i++){
+					$("select.breakpoint-move").append("<option value=\""+pokemon[0].chargedMoves[i].moveId+"\">"+pokemon[0].chargedMoves[i].name+"</option>");
 				}
 
-				var bulkpoints = pokemon[0].calculateBulkpoints(pokemon[1]);
+				$("select.bulkpoint-move").append("<option value=\""+pokemon[1].fastMove.moveId+"\">"+pokemon[1].fastMove.name+"</option>");
 
-				$(".stats-table.bulkpoints .name-fast").html(pokemon[1].fastMove.name + " Damage");
-				$(".stats-table.bulkpoints .output").html('<tr></tr>');
-
-				for(var i = 0; i < bulkpoints.length; i++){
-					var defense = Math.round(bulkpoints[i].defense * 100) / 100;
-					var guaranteedDefense = Math.round(bulkpoints[i].guaranteedDefense * 100) / 100;
-
-					if(guaranteedDefense == -1){
-						guaranteedDefense = "-";
-					}
-
-
-					// Find the best combinations that reaches this value
-					var combinations = pokemon[0].generateIVCombinations("overall", 1, 2, [{stat: "def", value: bulkpoints[i].defense}]);
-
-					$(".stats-table.bulkpoints .output").append("<tr class=\"toggle\"><td>"+bulkpoints[i].damage+"</td><td>"+defense+"</td><td>"+guaranteedDefense+"</td><td class=\"ivs\"><div class=\"button\" level=\""+combinations[0].level+"\" atk=\""+combinations[0].ivs.atk+"\" def=\""+combinations[0].ivs.def+"\" hp=\""+combinations[0].ivs.hp+"\">"+combinations[0].level+ " "+combinations[0].ivs.atk+"/"+combinations[0].ivs.def+"/"+combinations[0].ivs.hp+"</div></td></tr>");
-
-					if(bulkpoints[i].damage == pokemon[1].fastMove.damage){
-						$(".stats-table.bulkpoints .output tr").last().addClass("bold");
-					}
-
+				for(var i = 0; i < pokemon[1].chargedMoves.length; i++){
+					$("select.bulkpoint-move").append("<option value=\""+pokemon[1].chargedMoves[i].moveId+"\">"+pokemon[1].chargedMoves[i].name+"</option>");
 				}
+
+
+				// List each Pokemon's moves for breakpoint and bulkpoint analysis
+
+				var breakpoints = self.displayBreakpoints(pokemon[0].fastMove);
+				var bulkpoints = self.displayBulkpoints(pokemon[1].fastMove);
 
 				// Find a golden combination that reaches the best breakpoint and bulkpoint if one exists
 
@@ -851,6 +818,166 @@ var InterfaceMaster = (function () {
 					$(".stats-table.cmp .output").append("<tr class=\"toggle\"><td>Can't win<br>CMP</td><td>Can't win<br>CMP</td><td>Can't win<br>CMP</td></tr>");
 				}
 
+				// Display optimal move timing chart
+
+				$(".optimal-timing-section .name-attacker").html(pokemon[0].speciesName);
+				$(".optimal-timing-section .name-defender").html(pokemon[1].speciesName);
+
+				var targetCooldown = 500;
+
+				// Optimal timing is N/A when duration is the same
+				if(pokemon[0].fastMove.cooldown == pokemon[1].fastMove.cooldown){
+					targetCooldown = 0;
+				}
+
+				// Optimal timing is N/A when the opponent has a shorter move that is divisible into your move
+				if(pokemon[0].fastMove.cooldown % pokemon[1].fastMove.cooldown == 0){
+					targetCooldown = 0;
+				}
+
+				// Pokemon with 2 turn moves can only throw on turn 2 of a 4 turn move
+				if(pokemon[0].fastMove.cooldown == 1000 && pokemon[1].fastMove.cooldown == 2000){
+					targetCooldown = 1000;
+				}
+
+				var displayCycles = 0;
+
+				var optimalTimes = []; // Array that stores integer counts of Fast Moves that provide optimal timing
+				var opponentFastCount = 0;
+
+				for(var i = 1; displayCycles < 3; i++){
+					var targetTurn = (pokemon[1].fastMove.cooldown * i) - targetCooldown; // Target the last turn of the move
+
+					if(targetCooldown > 0 && targetTurn > 0 && targetTurn % pokemon[0].fastMove.cooldown == 0){ // If this turn is divisible by your Fast Move duration
+						optimalTimes.push(targetTurn / pokemon[0].fastMove.cooldown); // Number of moves you need to use to reach this optimal turn
+						displayCycles++;
+					} else if(targetCooldown == 0){
+						displayCycles++;
+					}
+
+					opponentFastCount = i;
+				}
+
+				if(targetCooldown == 0){
+					opponentFastCount = (displayCycles * pokemon[0].fastMove.cooldown) / pokemon[1].fastMove.cooldown;
+				}
+
+
+				// Display fast moves on timeline
+				if(optimalTimes.length > 0){
+					displayCycles = optimalTimes[2];
+				}
+
+				for(i = 0; i < displayCycles; i++){
+					var $fastItem = $('<div class="item fast '+pokemon[0].fastMove.type+'"></div>');
+					$fastItem.css("flex", pokemon[0].fastMove.cooldown / 500 + "");
+
+					if(pokemon[0].fastMove.cooldown > 500){
+						for(var n = 0; n < pokemon[0].fastMove.cooldown / 500; n++){
+							$fastItem.append('<div class="chunk"></div>')
+						}
+					}
+
+					if(optimalTimes.indexOf(i) == -1){
+						$fastItem.addClass("fade");
+					} else{
+						$fastItem.addClass("throw");
+					}
+
+					$(".optimal-timing-section .timeline").eq(0).append($fastItem);
+				}
+
+				// Add an empty chunk at the end for a Charged Move space
+				$(".optimal-timing-section p").hide();
+
+				if(targetCooldown > 0){
+					$fastItem = $('<div class="item fast throw '+pokemon[0].fastMove.type+'"><div class="chunk"></div></div>');
+					$fastItem.css("flex", targetCooldown / 500 + "");
+					$(".optimal-timing-section .timeline").eq(0).append($fastItem);
+
+					$(".optimal-timing-section .optimal-1").html(optimalTimes[0]);
+					$(".optimal-timing-section .optimal-2").html(optimalTimes[1]);
+					$(".optimal-timing-section .optimal-3").html(optimalTimes[2]);
+
+					$(".optimal-timing-section p.timing-most-optimal").show();
+				} else{
+					$(".optimal-timing-section p.timing-none").show();
+				}
+
+				for(i = 0; i < opponentFastCount; i++){
+					$fastItem = $('<div class="item fast '+pokemon[1].fastMove.type+'"></div>');
+					$fastItem.css("flex", pokemon[1].fastMove.cooldown / 500 + "");
+
+					if(pokemon[1].fastMove.cooldown > 500){
+						for(var n = 0; n < pokemon[1].fastMove.cooldown / 500; n++){
+							$fastItem.append('<div class="chunk"></div>')
+						}
+					}
+
+					$(".optimal-timing-section .timeline").eq(1).append($fastItem);
+				}
+			}
+
+			// Display breakpoint values in the breakpoint table
+			this.displayBreakpoints = function(move){
+				// Output to table
+				var attacker = pokeSelectors[0].getPokemon();
+				var defender = pokeSelectors[1].getPokemon();
+				var breakpoints = attacker.calculateBreakpoints(defender, move);
+
+				$(".stats-table.breakpoints .output").html('<tr></tr>');
+
+				for(var i = breakpoints.length-1; i >= 0; i--){
+					var attack = Math.round(breakpoints[i].attack * 100) / 100;
+					var guaranteedAttack = Math.round(breakpoints[i].guaranteedAttack * 100) / 100;
+
+					if(guaranteedAttack == -1){
+						guaranteedAttack = "-";
+					}
+
+					// Find the best combinations that reaches this value
+					var combinations = attacker.generateIVCombinations("overall", 1, 2, [{stat: "atk", value: breakpoints[i].attack}]);
+
+					$(".stats-table.breakpoints .output").append("<tr class=\"toggle\"><td>"+breakpoints[i].damage+"</td><td>"+attack+"</td><td>"+guaranteedAttack+"</td><td class=\"ivs\"><div class=\"button\" level=\""+combinations[0].level+"\" atk=\""+combinations[0].ivs.atk+"\" def=\""+combinations[0].ivs.def+"\" hp=\""+combinations[0].ivs.hp+"\">"+combinations[0].level+ " "+combinations[0].ivs.atk+"/"+combinations[0].ivs.def+"/"+combinations[0].ivs.hp+"</div></td></tr>");
+
+					if(breakpoints[i].damage == move.damage){
+						$(".stats-table.breakpoints .output tr").last().addClass("bold");
+					}
+
+				}
+
+				return breakpoints;
+			}
+
+			this.displayBulkpoints = function(move){
+				// Output to table
+				var attacker = pokeSelectors[1].getPokemon();
+				var defender = pokeSelectors[0].getPokemon();
+				var bulkpoints = defender.calculateBulkpoints(attacker, move);
+
+				$(".stats-table.bulkpoints .output").html('<tr></tr>');
+
+				for(var i = 0; i < bulkpoints.length; i++){
+					var defense = Math.round(bulkpoints[i].defense * 100) / 100;
+					var guaranteedDefense = Math.round(bulkpoints[i].guaranteedDefense * 100) / 100;
+
+					if(guaranteedDefense == -1){
+						guaranteedDefense = "-";
+					}
+
+
+					// Find the best combinations that reaches this value
+					var combinations = defender.generateIVCombinations("overall", 1, 2, [{stat: "def", value: bulkpoints[i].defense}]);
+
+					$(".stats-table.bulkpoints .output").append("<tr class=\"toggle\"><td>"+bulkpoints[i].damage+"</td><td>"+defense+"</td><td>"+guaranteedDefense+"</td><td class=\"ivs\"><div class=\"button\" level=\""+combinations[0].level+"\" atk=\""+combinations[0].ivs.atk+"\" def=\""+combinations[0].ivs.def+"\" hp=\""+combinations[0].ivs.hp+"\">"+combinations[0].level+ " "+combinations[0].ivs.atk+"/"+combinations[0].ivs.def+"/"+combinations[0].ivs.hp+"</div></td></tr>");
+
+					if(bulkpoints[i].damage == attacker.fastMove.damage){
+						$(".stats-table.bulkpoints .output tr").last().addClass("bold");
+					}
+
+				}
+
+				return bulkpoints;
 			}
 
 			// Process selected Pokemon through the team ranker
@@ -968,7 +1095,12 @@ var InterfaceMaster = (function () {
 						battleLink += poke.startHp +  "/" + poke.startEnergy + "/";
 					}
 
-					var $el = $("<div class=\"rank " + pokemon.types[0] + "\" type-1=\""+pokemon.types[0]+"\" type-2=\""+pokemon.types[1]+"\" data=\""+pokemon.speciesId+"\"><div class=\"name-container\"><span class=\"number\">#"+(i+1)+"</span><span class=\"name\">"+pokemon.speciesName+"</span></div><div class=\"rating-container\"><div class=\"rating star\">"+r.opRating+"</span></div><a target=\"_blank\" href=\""+battleLink+"\"></a><div class=\"clear\"></div></div><div class=\"details\"></div>");
+					var $el = $("<div class=\"rank " + pokemon.types[0] + "\" type-1=\""+pokemon.types[0]+"\" type-2=\""+pokemon.types[1]+"\" data=\""+pokemon.speciesId+"\"><div class=\"name-container\"><span class=\"number\">#"+(i+1)+"</span><span class=\"name\">"+pokemon.speciesName+"</span></div><div class=\"rating-container\"><a class=\"rating\" target=\"_blank\" href=\""+battleLink+"\"><span></span>"+r.opRating+"<i></i></span></a><div class=\"clear\"></div></div><div class=\"details\"></div>");
+
+					var ratingColor = battle.getRatingColor(r.opRating);
+					var ratingClass = battle.getRatingClass(r.opRating);
+					$el.find(".rating").addClass(ratingClass);
+					$el.find(".rating").css("background", "rgb("+ratingColor[0]+","+ratingColor[1]+","+ratingColor[2]+")");
 
 					// Add moveset details if set
 
@@ -1041,8 +1173,8 @@ var InterfaceMaster = (function () {
 				// Push state to browser history so it can be navigated, only if not from URL parameters
 
 				gtag('event', 'Lookup', {
-				  'event_category' : 'Simulation',
-				  'event_label' : pokemon.speciesId
+				  'category' : 'Simulation',
+				  'speciesId' : pokemon.speciesId
 				});
 
 				document.title = poke.speciesName + " Multi-Battle | PvPoke";
@@ -1060,8 +1192,11 @@ var InterfaceMaster = (function () {
 				window.history.pushState(data, "Battle", url);
 
 				// Send Google Analytics pageview
-
-				gtag('config', UA_ID, {page_location: (host+url), page_path: url});
+				gtag('event', 'page_view', {
+				  page_title: document.title,
+				  page_location: link,
+				  pageview_type: 'virtual'
+				});
 			}
 
 			// Process both groups of Pokemon through the team ranker
@@ -1094,8 +1229,7 @@ var InterfaceMaster = (function () {
 				// Push state to browser history so it can be navigated, only if not from URL parameters
 
 				gtag('event', 'Lookup', {
-				  'event_category' : 'Simulation',
-				  'event_label' : 'Matrix'
+				  'category' : 'Matrix'
 				});
 			}
 
@@ -1161,25 +1295,44 @@ var InterfaceMaster = (function () {
 						r.matchups[n].difference = false; // Store whether or not this matchups is different or flipped from the base value
 						r.matchups[n].matchupIndex = n;
 
-						var $cell = $("<td><a class=\"rating star\" href=\"#\" target=\"blank\"><span></span></a></td>");
+						var $cell = $("<td><a class=\"rating\" href=\"#\" target=\"blank\"><span></span></a></td>");
 						var rating = r.matchups[n].rating;
 						var displayStat = r.matchups[n].rating;
 						var baseValue = rankings[0].matchups[n].rating;
 						var color = battle.getRatingColor(rating);
+						var ratingClass = battle.getRatingClass(rating);
 
 						// Determine values to display and any flipped matchups
 						switch(self.matrixMode){
 							case "battle":
 								if(baseValue <= 500 && displayStat > 500){
 									r.matchups[n].difference = "win";
+								} if(baseValue < 500 && displayStat == 500){
+									r.matchups[n].difference = "win";
 								} else if(baseValue >= 500 && displayStat < 500){
+									r.matchups[n].difference = "lose";
+								} else if(baseValue > 500 && displayStat == 500){
 									r.matchups[n].difference = "lose";
 								}
 								break;
 
 							case "breakpoint":
-								displayStat = r.matchups[n].breakpoint;
-								baseValue = rankings[0].matchups[n].breakpoint;
+								var breakpointMode = $(".battle-results.matrix .breakpoint-mode option:selected").val();
+
+								if(breakpointMode == "fast"){
+									displayStat = r.matchups[n].breakpoint;
+									baseValue = rankings[0].matchups[n].breakpoint;
+								} else if(breakpointMode == "cm1"){
+									displayStat = r.matchups[n].breakpointCM1;
+									baseValue = rankings[0].matchups[n].breakpointCM1;
+								} else if(breakpointMode == "cm2"){
+									displayStat = r.matchups[n].breakpointCM2;
+									baseValue = rankings[0].matchups[n].breakpointCM2;
+								}
+
+								if(displayStat == 0){
+									displayStat = "-";
+								}
 
 								if(displayStat > baseValue){
 									r.matchups[n].difference = "win";
@@ -1189,8 +1342,22 @@ var InterfaceMaster = (function () {
 								break;
 
 							case "bulkpoint":
-								displayStat = r.matchups[n].bulkpoint;
-								baseValue = rankings[0].matchups[n].bulkpoint;
+								breakpointMode = $(".battle-results.matrix .breakpoint-mode option:selected").val();
+
+								if(breakpointMode == "fast"){
+									displayStat = r.matchups[n].bulkpoint;
+									baseValue = rankings[0].matchups[n].bulkpoint;
+								} else if(breakpointMode == "cm1"){
+									displayStat = r.matchups[n].bulkpointCM1;
+									baseValue = rankings[0].matchups[n].bulkpointCM2;
+								} else if(breakpointMode == "cm2"){
+									displayStat = r.matchups[n].bulkpointCM2;
+									baseValue = rankings[0].matchups[n].bulkpointCM2;
+								}
+
+								if(displayStat == 0){
+									displayStat = "-";
+								}
 
 								if(displayStat > baseValue){
 									r.matchups[n].difference = "lose";
@@ -1242,12 +1409,9 @@ var InterfaceMaster = (function () {
 							}
 						}
 
-						$cell.find("a").html(displayStat);
+						$cell.find("a").html("<span></span>"+displayStat);
 						$cell.find("a").css("background-color", "rgb("+color[0]+","+color[1]+","+color[2]+")");
-
-						if(rating > 500){
-							$cell.find("a").addClass("win");
-						}
+						$cell.find("a").addClass(ratingClass);
 
 						var pokeStr = pokemon.generateURLPokeStr();
 						var moveStr = pokemon.generateURLMoveStr();
@@ -1276,14 +1440,11 @@ var InterfaceMaster = (function () {
 
 					if(self.matrixMode == "battle"){
 						var color = battle.getRatingColor(displayAverage);
-						var $cell = $("<td><a class=\"rating average star\" target=\"blank\"><span>"+displayAverage+"</span></a></td>");
+						var ratingClass = battle.getRatingClass(displayAverage);
+						var $cell = $("<td><a class=\"rating "+ratingClass + " average\" target=\"blank\"><span></span>"+displayAverage+"</a></td>");
 
 						$cell.find("a").css("background-color", "rgb("+color[0]+","+color[1]+","+color[2]+")");
 						$row.append($cell);
-
-						if(displayAverage > 500){
-							$cell.find("a").addClass("win");
-						}
 					} else{
 						var $cell = $("<td class=\"matrix-average\">"+displayAverage+"</td>");
 						$row.append($cell);
@@ -1333,6 +1494,12 @@ var InterfaceMaster = (function () {
 				$(".battle-results.matrix").first().find("p").hide();
 				$(".battle-results.matrix").first().find("p."+self.matrixMode).show();
 
+				if(self.matrixMode == "breakpoint" || self.matrixMode == "bulkpoint"){
+					$(".battle-results.matrix select.breakpoint-mode").show();
+				} else{
+					$(".battle-results.matrix select.breakpoint-mode").hide();
+				}
+
 				// Update download link with new data
 				var filename = multiSelectors[0].getSelectedGroup() + " vs " + multiSelectors[1].getSelectedGroup() + ".csv";
 				var filedata = '';
@@ -1358,6 +1525,15 @@ var InterfaceMaster = (function () {
 
 				self.displayMatrixResults(matrixResults);
 			}
+
+			// Event handler for changing the battle mode
+
+			function selectMatrixBreakpointMode(e){
+				e.preventDefault();
+
+				self.displayMatrixResults(matrixResults);
+			}
+
 
 			// Jump to a specific column in the matrix results table to highlight a matchup
 
@@ -1867,6 +2043,32 @@ var InterfaceMaster = (function () {
 				window.history.pushState(data, "Battle", url);
 			}
 
+			// Helper function for making sure Multi Battle displays valid metas
+
+			function updateMultiBattleMetas() {
+				var cp = parseInt($(".league-select option:selected").val());
+				var cupSelect = $(".cup-select");
+				// only show groups with same cp as selected. update whenever league changes
+				cupSelect.find("option").each(function(index, element) {
+					element = $(element);
+					// always show open league and custom
+					if (element.attr("value") === "all" || element.attr("value") === "custom") {
+						element.show();
+						return;
+					}
+					var optionCP = parseInt(element.attr("cp"))
+					if (optionCP === cp) {
+						element.show();
+					} else {
+						element.hide();
+					}
+				});
+				// Load default meta group when switching to Multi Battle
+				if((self.battleMode == "multi") && (! settingGetParams)){
+					cupSelect.trigger("change");
+				}
+			}
+
 			// Event handler for changing the league select
 
 			function selectLeague(e){
@@ -1898,10 +2100,7 @@ var InterfaceMaster = (function () {
 					battle.setCup("classic");
 				}
 
-				// Load default meta group when switching to Multi Battle
-				if((self.battleMode == "multi") && (! settingGetParams)){
-					$(".cup-select").trigger("change");
-				}
+				updateMultiBattleMetas()
 
 				gm.loadRankingData(self, "overall", parseInt($(".league-select option:selected").val()), cupName);
 			}
@@ -1936,7 +2135,7 @@ var InterfaceMaster = (function () {
 					}
 
 					document.title = "Battle | PvPoke";
-					$("#favicon").attr("href", webRoot+"img/favicon.png");
+					//$("#favicon").attr("href", webRoot+"img/favicon.png");
 				}
 
 				if(self.battleMode == "matrix"){
@@ -1946,17 +2145,17 @@ var InterfaceMaster = (function () {
 
 					// Update document title and favicon
 					document.title = "Matrix | PvPoke";
-					$("#favicon").attr("href", webRoot+"img/favicon_matrix.png");
+					//$("#favicon").attr("href", webRoot+"img/favicon_matrix.png");
 				}
 
 				if(self.battleMode == "multi"){
 					document.title = "Multi-Battle | PvPoke";
-					$("#favicon").attr("href", webRoot+"img/favicon_multi_battle.png");
+					//$("#favicon").attr("href", webRoot+"img/favicon_multi_battle.png");
 				}
 
 				// Load default meta group when switching to Multi Battle
 				if((self.battleMode == "multi") && (! settingGetParams)){
-					$(".cup-select").trigger("change");
+					updateMultiBattleMetas()
 				}
 
 				// When moving between Multi and Matrix, move multi custom group to the right Matrix group
@@ -1987,13 +2186,23 @@ var InterfaceMaster = (function () {
 			function swapSelectedPokemon(e){
 				e.preventDefault();
 
-				var pokemonA = pokeSelectors[0].getPokemon();
-				var pokemonB = pokeSelectors[1].getPokemon();
+				if(self.battleMode == "single"){
+					// Swap individual Pokemon
+					var pokemonA = pokeSelectors[0].getPokemon();
+					var pokemonB = pokeSelectors[1].getPokemon();
 
-				if(pokemonA && pokemonB){
-					pokeSelectors[0].setSelectedPokemon(pokemonB);
-					pokeSelectors[1].setSelectedPokemon(pokemonA);
+					if(pokemonA && pokemonB){
+						pokeSelectors[0].setSelectedPokemon(pokemonB);
+						pokeSelectors[1].setSelectedPokemon(pokemonA);
+					}
+				} else if(self.battleMode == "matrix"){
+					var matrixA = multiSelectors[0].getPokemonList();
+					var matrixB = multiSelectors[1].getPokemonList();
+
+					multiSelectors[0].setPokemonList(matrixB);
+					multiSelectors[1].setPokemonList(matrixA);
 				}
+
 			}
 
 			// Animate amount of damage from the selected Charged Move on the opposing Pokemon
@@ -2022,7 +2231,7 @@ var InterfaceMaster = (function () {
 
 				$(".advanced-section").removeClass("active");
 				$(".battle-results").hide();
-				$(".battle-btn").html("Generating...");
+				$(".battle-btn .btn-label").html("Generating...");
 
 				// This is stupid but the visual updates won't execute until Javascript has completed the entire thread
 
@@ -2090,7 +2299,7 @@ var InterfaceMaster = (function () {
 
 					$("html, body").animate({ scrollTop: $(".battle-results."+self.battleMode).offset().top - 185 }, 500);
 
-					$(".battle-btn").html("Battle");
+					$(".battle-btn .btn-label").html("Battle");
 
 				}, 17);
 			}
@@ -2163,11 +2372,11 @@ var InterfaceMaster = (function () {
 				}
 
 				var width = $tooltip.width();
-				var left = (e.pageX - $(".section").first().offset().left) + 10;
+				var left = (e.pageX - $(".section").first().offset().left) + 25;
 				var top = e.pageY - 20;
 
 				if( left > ($(".timeline-container").width() - width - 10) ){
-					left -= width;
+					left -= width + 35;
 				}
 
 				$tooltip.css("left",left+"px");
@@ -2286,13 +2495,15 @@ var InterfaceMaster = (function () {
 			function viewShieldBattle(e){
 				e.preventDefault();
 
+				var $target = $(e.target).closest(".rating");
+
 				if(animating){
 					clearInterval(timelineInterval);
 
 					animating = false;
 				}
 
-				var shields = $(e.target).attr("shields").split(",");
+				var shields = $target.attr("shields").split(",");
 
 
 				pokeSelectors[0].setShields(shields[1]);
@@ -2306,15 +2517,17 @@ var InterfaceMaster = (function () {
 			function viewBulkBattle(e){
 				e.preventDefault();
 
-				if($(e.target).hasClass("best")){
+				var $target = $(e.target).closest(".rating");
+
+				if($target.hasClass("best")){
 					battle = bulkResults.best;
-				} else if($(e.target).hasClass("worst")){
+				} else if($target.hasClass("worst")){
 					battle = bulkResults.worst;
-				} else if($(e.target).hasClass("median")){
+				} else if($target.hasClass("median")){
 					battle = bulkResults.median;
-				} else if($(e.target).hasClass("median-win")){
+				} else if($target.hasClass("median-win")){
 					battle = bulkResults.medianWin;
-				} else if($(e.target).hasClass("median-loss")){
+				} else if($target.hasClass("median-loss")){
 					battle = bulkResults.medianLoss;
 				}
 
@@ -2360,6 +2573,24 @@ var InterfaceMaster = (function () {
 
 				$("html, body").animate({ scrollTop: $(".poke").offset().top - 30 }, 500);
 
+			}
+
+			// Select a move in the breakpoint or bulkpoint dropdown
+			function selectBreakpointMove(e){
+				var moveId = $(e.target).find("option:selected").val();
+				var attacker = pokeSelectors[0].getPokemon();
+				var move = attacker.getMoveById(moveId);
+
+				self.displayBreakpoints(move);
+			}
+
+			// Select a move in the breakpoint or bulkpoint dropdown
+			function selectBulkpointMove(e){
+				var moveId = $(e.target).find("option:selected").val();
+				var attacker = pokeSelectors[1].getPokemon();
+				var move = attacker.getMoveById(moveId);
+
+				self.displayBulkpoints(move);
 			}
 
 			// Toggle multi-battle result sort

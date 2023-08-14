@@ -91,7 +91,7 @@ var RankerMaster = (function () {
 
 				}
 
-				console.log("List generated in: " + (Date.now() - startTime));
+				console.log("List generated in: " + (Date.now() - startTime) + "ms");
 
 			}
 
@@ -411,6 +411,10 @@ var RankerMaster = (function () {
 					iterations = 1;
 				}
 
+				if((cup.name == "factionsmaster")&&(battle.getCP() == 10000)){
+					iterations = 1;
+				}
+
 				if((cup.name == "mega")&&(battle.getCP() == 10000)){
 					iterations = 1;
 				}
@@ -451,6 +455,14 @@ var RankerMaster = (function () {
 					iterations = 1;
 				}
 
+				if(cup.name == "elementremix"){
+					iterations = 1;
+				}
+
+				if(cup.name == "single"){
+					iterations = 1;
+				}
+
 				if(cup.name == "halloween"){
 					iterations = 1;
 				}
@@ -483,6 +495,10 @@ var RankerMaster = (function () {
 					iterations = 1;
 				}
 
+				if((cup.name == "halloween")&&(battle.getCP() == 2500)){
+					iterations = 1;
+				}
+
 				if(cup.name == "holiday"){
 					iterations = 1;
 				}
@@ -507,7 +523,7 @@ var RankerMaster = (function () {
 					iterations = 1;
 				}
 
-				if(cup.name == "river"){
+				if(cup.name == "mountain"){
 					iterations = 1;
 				}
 

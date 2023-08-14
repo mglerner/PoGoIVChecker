@@ -167,7 +167,11 @@ var InterfaceMaster = (function () {
 
 				// Send Google Analytics pageview
 
-				gtag('config', UA_ID, {page_location: (host+url), page_path: url});
+				gtag('event', 'page_view', {
+				  page_title: document.title,
+				  page_location: (host+"moves/"+moveMode+"/"),
+				  pageview_type: 'virtual'
+				});
 			}
 
 			// Refilter moves after being sorted
@@ -223,14 +227,12 @@ var InterfaceMaster = (function () {
 					var cycleDamage = Math.round( (fastDamage + chargedDamage) * 10) / 10;
 					var cycleDPT = Math.round( (cycleDamage / (cycleDuration / 500)) * 100) / 100;
 
-					var cycle1Count = Math.ceil( (chargedMove.energy * 1) / fastMove.energyGain);
-					var cycle2Count = Math.ceil( (chargedMove.energy * 2) / fastMove.energyGain) - cycle1Count;
-					var cycle3Count = Math.ceil( (chargedMove.energy * 3) / fastMove.energyGain) - cycle1Count - cycle2Count;
+					var moveCounts = Pokemon.calculateMoveCounts(fastMove, chargedMove);
 
 					movesetStats.push({ title: "Fast Damage", value: fastDamage});
 					movesetStats.push({ title: "Charged Damage", value: chargedDamage});
 					movesetStats.push({ title: "Total Damage", value: cycleDamage});
-					movesetStats.push({ title: "Fast Moves", value: cycle1Count + " - " + cycle2Count + " - " + cycle3Count});
+					movesetStats.push({ title: "Fast Moves", value: moveCounts[0] + " - " + moveCounts[1] + " - " + moveCounts[2] + " - " + moveCounts[3]});
 					movesetStats.push({ title: "Cycle Duration", value: cycleDurationStr});
 					movesetStats.push({ title: "Damage Per Turn", value: cycleDPT});
 				}

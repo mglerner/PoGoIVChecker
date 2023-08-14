@@ -26,15 +26,38 @@ var InterfaceMaster = (function () {
 				battle = new Battle();
 
 				// Load initial overrides
-
-				$.getJSON( webRoot+"data/overrides/all/1500.json?v="+siteVersion, function( data ){
-					if(ranker.setMoveOverrides){
-						ranker.setMoveOverrides(1500, "all", data);
-						console.log("Ranking overrides loaded [" + data.length + "]");
+				$.ajax({
+					dataType: "json",
+					url: webRoot + "data/overrides/all/1500.json?v=" + siteVersion,
+					mimeType: "application/json",
+					success: function(data) {
+						if (ranker.setMoveOverrides) {
+							ranker.setMoveOverrides(1500, "all", data);
+							console.log("Ranking overrides loaded [" + data.length + "]");
+						}
+					},
+					error: function(request, error) {
+						console.log("Request: " + JSON.stringify(request));
+						console.log(error);
 					}
 				});
 
+				self.loadGetData();
+
 			};
+
+			// Given JSON of get parameters, load these settings
+
+			this.loadGetData = function(){
+
+				if(! get){
+					return false;
+				}
+
+				$(".format-select option[cup='"+get["cup"]+"'][value="+get["cp"]+"]").prop("selected", "selected");
+
+				$(".format-select").trigger("change");
+			}
 
 			// Event handler for changing the league select
 
@@ -45,8 +68,14 @@ var InterfaceMaster = (function () {
 				battle.setCP(cp);
 				battle.setCup(cup);
 
+				if(! battle.getCup().levelCap){
+					battle.setLevelCap(50);
+				}
+
 				loadOverrides();
 
+				$("a.rankersandbox-link").attr("href", webRoot+"rankersandbox.php?cup="+cup+"&cp="+cp);
+				$("a.rankings-link").attr("href", webRoot+"rankings/"+cup+"/"+cp+"/overall/");
 			}
 
 			// Load overrides for the currently selected league and cup

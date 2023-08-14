@@ -40,7 +40,7 @@ switch($cp){
 switch($cup){
 
 	case "premier":
-		$league = 'Premier';
+		$league = $league . ' Premier';
 		break;
 
 	case "premierclassic":
@@ -51,20 +51,38 @@ switch($cup){
 		$league = 'Master League Classic';
 		break;
 
-	case "willpower":
-		$league = 'Willpower Cup';
+	case "mega":
+		$league = 'Mega Master League';
 		break;
 
-	case "littlejungleremix":
-		$league = 'Little Jungle Cup Remix';
+	case "fantasy":
+		$league = 'Fantasy Cup';
 		break;
+
+
+	case "summer":
+		$league = 'Summer Cup';
+		break;
+
 
 	case "retro":
 		$league = 'Retro Cup';
 		break;
 
+	case "fossil":
+		$league = 'Fossil Cup';
+		break;
+
+	case "little":
+		$league = 'Little Cup';
+		break;
+
+	case "littlejungle":
+		$league = 'Little Jungle Cup';
+		break;
+
 	case "championship":
-		$league = '2022 Championship Series';
+		$league = '2023 Championship Series';
 		break;
 
 	case "mega":
@@ -72,18 +90,25 @@ switch($cup){
 		break;
 
 	case "factions":
-	case "primeval":
-	case "sorcerousfactions":
-	case "timelessfactions":
+	case "factionsgreat":
+	case "factionsultra":
+	case "factionsmaster":
+	case "echo":
+	case "ragnar":
 		$league = 'Silph Factions';
+		break;
+
+	case "ragnargymbreakers":
+	case "vanguardgymbreakers":
+		$league = 'Gymbreakers';
 		break;
 
 	case "element":
 		$league = 'Element Cup';
 		break;
 
-	case "halloween":
-		$league = 'Halloween Cup';
+	case "continentals":
+		$league = 'Silph Continentals';
 		break;
 
 	case "remix":
@@ -114,39 +139,58 @@ require_once 'header.php';
 
 <h1>Rankings</h1>
 <div class="section league-select-container white">
-	<?php require 'modules/formatselect.php'; ?>
-
-	<div class="ranking-categories">
-		<a class="selected" href="#" data="overall" scenario="leads">Overall</a>
-		<a href="#" data="leads" scenario="leads">Leads</a>
-		<a href="#" data="closers" scenario="closers">Closers</a>
-		<a href="#" data="switches" scenario="switches">Switches</a>
-		<a href="#" data="chargers" scenario="chargers">Chargers</a>
-		<a href="#" data="attackers" scenario="attackers">Attackers</a>
-		<a href="#" data="consistency" scenario="leads">Consistency</a>
+	<div class="ranking-filters flex">
+		<div class="ranking-filter">
+			<h4>Format</h4>
+			<?php require 'modules/formatselect.php'; ?>
+		</div>
+		<div class="ranking-filter">
+			<h4>Sort By</h4>
+			<select class="category-select">
+				<optgroup label="Categories">
+					<option value="overall" scenario="leads" sort="score">Overall</option>
+					<option value="leads" scenario="leads" sort="score">Leads</option>
+					<option value="closers" scenario="closers" sort="score">Closers</option>
+					<option value="switches" scenario="switches" sort="score">Switches</option>
+					<option value="chargers" scenario="chargers" sort="score">Chargers</option>
+					<option value="attackers" scenario="attackers" sort="score">Attackers</option>
+					<option value="consistency" scenario="leads" sort="score">Consistency</option>
+				</optgroup>
+				<optgroup label="Stats">
+					<option value="overall" scenario="leads" sort="statproduct">Stat Product</option>
+					<option value="overall" scenario="leads" sort="attack">Attack</option>
+					<option value="overall" scenario="leads" sort="defense">Defense</option>
+					<option value="overall" scenario="leads" sort="stamina">Stamina</option>
+				</optgroup>
+			</select>
+		</div>
 	</div>
 
-	<div class="clear"></div>
+	<p class="description small overall"><b>The best Pokemon overall across multiple roles.</b> They have the typing, moves, and stats to succeed as top contenders.</p>
 
-	<p class="description overall"><b>The best Pokemon overall across multiple roles.</b> They have the typing, moves, and stats to succeed as top contenders.</p>
+	<p class="description small closers hide"><b>The best Pokemon with no shields in play.</b> Bulk or hard-hitting moves allow them to close out matchups.</p>
 
-	<p class="description closers hide"><b>The best Pokemon with no shields in play.</b> Bulk or hard-hitting moves allow them to close out matchups.</p>
+	<p class="description small leads hide"><b>The best Pokemon with shields in play.</b> Capable of applying pressure or winning extended fights, they're ideal leads in battle.</p>
 
-	<p class="description leads hide"><b>The best Pokemon with shields in play.</b> Capable of applying pressure or winning extended fights, they're ideal leads in battle.</p>
+	<p class="description small attackers hide"><b>The best Pokemon against shielded opponents, while unshielded.</b> Their natural bulk, resistances, and strong attacks allow them to power through a disadvantage.</p>
 
-	<p class="description attackers hide"><b>The best Pokemon against shielded opponents, while unshielded.</b> Their natural bulk, resistances, and strong attacks allow them to power through a disadvantage.</p>
+	<p class="description small switches hide"><b>The best Pokemon to switch to from an unfavorable lead.</b> These Pokemon have safe matchups and can pressure shields or deal heavy damage even in their losses.</p>
 
-	<p class="description switches hide"><b>The best Pokemon to switch to from an unfavorable lead.</b> These Pokemon have safe matchups and can pressure shields or deal heavy damage even in their losses.</p>
+	<p class="description small chargers hide"><b>The best Pokemon with an energy advantage.</b> Fast energy gain or powerful moves make them dangerous after building up energy.</p>
 
-	<p class="description chargers hide"><b>The best Pokemon with an energy advantage.</b> Fast energy gain or powerful moves make them dangerous after building up energy.</p>
+	<p class="description small consistency hide"><b>These Pokemon perform the most dependably.</b> They provide consistent damage and rely less on baiting shields than other Pokemon. Shorter Fast Moves also help improve consistency.</p>
 
-	<p class="description consistency hide"><b>These Pokemon perform the most dependably.</b> They provide consistent damage and rely less on baiting shields than other Pokemon. Shorter Fast Moves also help improve consistency.</p>
+	<p class="description small statproduct hide"><b>The Pokemon with the highest overall stats.</b> They have the staying power to outlast their opponents in battle and potentially overcome type disadvantage.</p>
 
-	<p class="description link hide"><b>Tournament Info:</b> <a href="#" target="_blank"></a></p>
+	<p class="description small attack hide"><b>The Pokemon with the highest Attack stat.</b> They deal more damage and win Charged Move priority (CMP) against Pokemon with lower Attack stats. Stats can vary ~0-3 points depending on IV's.</p>
 
-	<p>Help provide usage data for the rankings at <a href="https://gobattlelog.com/pvpoke" target="_blank">gobattlelog.com</a>.</p>
+	<p class="description small defense hide"><b>The Pokemon with the highest Defense stat.</b> They take less damage from attacks.</p>
 
-	<p>Click or tap the rankings below for more details.</p>
+	<p class="description small stamina hide"><b>The Pokemon with the highest Stamina stat.</b> They have more HP and can absorb more damage than other Pokemon. Stamina-based bulk is more resilient to Fast Move damage.</p>
+
+	<p class="description small link hide"><b>Tournament Info:</b> <a href="#" target="_blank"></a></p>
+
+	<p class="small">Help provide usage data for the rankings at <a href="https://gobattlelog.com/pvpoke" target="_blank">gobattlelog.com</a>.</p>
 
 	<div class="ranking-checks flex">
 		<div class="check <?php if($_SETTINGS->xls): echo "on"; endif; ?> xl" style="margin-bottom:15px;"><span></span>Show XL Pokemon</div>
@@ -239,16 +283,8 @@ require_once 'header.php';
 </div>
 
 <?php require_once 'modules/search-string-help.php'; ?>
+<?php require_once 'modules/search-traits.php'; ?>
 
-<div class="search-traits-selector hide">
-	<p>Select the options below to search for Pokemon traits and playstyles.</p>
-
-	<div class="traits"></div>
-
-	<div class="center flex">
-		<div class="button search">Search</div>
-	</div>
-</div>
 
 
 <?php require_once 'modules/rankingdetails.php'; ?>

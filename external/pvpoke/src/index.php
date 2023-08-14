@@ -5,24 +5,66 @@
 	<p>Welcome to PvPoke.com! We're an open-source tool for simulating, ranking, and building teams for Pokemon GO PvP (player versus player) battles. Check out the links below to get started.</p>
 
 	<a href="<?php echo $WEB_ROOT; ?>battle/" class="button">
-		<h2 class="icon-battle">Battle</h2>
-		<p>Simulate a battle between two custom Pokemon.</p>
+		<span class="btn-content-wrap">
+			<span class="btn-icon btn-icon-battle"></span>
+			<span class="btn-label">
+				<h2>Battle</h2>
+				<p>Simulate a battle between two custom Pokemon.</p>
+			</span>
+		</span>
 	</a>
-	<a href="<?php echo $WEB_ROOT; ?>train/" class="button">
-		<h2 class="icon-train">Train</h2>
-		<p>Play real-time battle simulations against a CPU opponent.</p>
-	</a>
+
 	<a href="<?php echo $WEB_ROOT; ?>rankings/" class="button">
-		<h2 class="icon-rankings">Rankings</h2>
-		<p>Explore the rankings, movesets, and counters for the top Pokemon in each league.</p>
+		<span class="btn-content-wrap">
+			<span class="btn-icon btn-icon-rankings"></span>
+			<span class="btn-label">
+				<h2>Rankings</h2>
+				<p>Explore the rankings, movesets, and counters for the top Pokemon in each league.</p>
+			</span>
+		</span>
 	</a>
+
 	<a href="<?php echo $WEB_ROOT; ?>team-builder/" class="button">
-		<h2 class="icon-team">Team Builder</h2>
-		<p>Build your own team and see their type matchups and potential counters.</p>
+		<span class="btn-content-wrap">
+			<span class="btn-icon btn-icon-team"></span>
+			<span class="btn-label">
+				<h2>Team Builder</h2>
+				<p>Build your own team and see their type matchups and potential counters.</p>
+			</span>
+		</span>
 	</a>
+
+	<a href="<?php echo $WEB_ROOT; ?>train/" class="button">
+		<span class="btn-content-wrap">
+			<span class="btn-icon btn-icon-train"></span>
+			<span class="btn-label">
+				<h2>Train</h2>
+				<p>Play real-time battle simulations against a CPU opponent.</p>
+			</span>
+		</span>
+	</a>
+
+
 	<a href="<?php echo $WEB_ROOT; ?>contribute/" class="button">
-		<h2 class="icon-contribute">Contribute</h2>
-		<p>Check out the source code on Github or lend your support through Patreon.</p>
+		<span class="btn-content-wrap">
+			<span class="btn-icon btn-icon-heart"></span>
+			<span class="btn-label">
+				<h2>Contribute</h2>
+				<p>Check out the source code on Github or lend your support through Patreon.</p>
+			</span>
+		</span>
+	</a>
+
+	<h3>Pokemon Scarlet &amp; Violet</h3>
+
+	<a href="<?php echo $WEB_ROOT; ?>tera/" class="button tera-button">
+		<span class="btn-content-wrap">
+			<span class="btn-icon btn-icon-tera"></span>
+			<span class="btn-label">
+				<h2>Tera Raid Counter Calculator</h2>
+				<p>Take on Tera Raid bosses with this tool to look up Pokemon with the best type matchups.</p>
+			</span>
+		</span>
 	</a>
 
 	<?php require 'modules/ads/body-728.php'; ?>
@@ -34,42 +76,29 @@
 	<!--Update section for updates-->
 	<h3>What's New</h3>
 
-	<h4>v1.29.11 (September 3, 2022)</h4>
+	<h4>v1.30.6 (July 9, 2023)</h4>
 	<ul>
-		<li>Pokemon with moves that lower their Defense (such as Wild Charge and Close Combat) will now prefer to take early Charged Moves and use their shields after they are debuffed.</li>
-	</ul>
-
-
-	<h4>v1.29.10 (September 2, 2022)</h4>
-	<ul>
-		<li>Move updates for Season 12 are now live!</li>
-		<li>Switching modes on the Battle page will default to the 1 shield scenario.</li>
-		<li>Moves with a chance to buff or debuff now apply in the default sims.</li>
-		<ul>
-			<li>Previously, the default sims never activated random stat changes.</li>
-			<li>In the default sims, these stat changes activate in a deterministic order:</li>
-			<ul>
-				<li>Zap Cannon applies the debuff on the 1st, 3rd, 4th, and 6th activations.</li>
-				<li>Other moves with a 1 in N chance apply their stat changes every N activations.</li>
-			</ul>
-		</ul>
+		<li>Move counts now show counts for 4 cycles instead of 3.</li>
+		<li>Charged Move breakpoints can now be explored in Single Battle and Matrix Battle.</li>
+		<li>Fixed an issue where the mouse pointer covered part of the Charged Move damage tooltip.</li>
+		<li>Fixed an issue that caused faulty ranking search results after searching and then switching leagues.</li>
 	</ul>
 
 	<h3>Latest Article</h3>
-
+	
 	<div class="article-item flex">
-		<div class="col-3">
-			<a href="<?php echo $WEB_ROOT; ?>articles/community-day/22-10-litwick/">
-				<img src="<?php echo $WEB_ROOT; ?>articles/article-assets/community-day/22-10-litwick/thumb.jpg">
-			</a>
-		</div>
-		<div class="col-9">
-			<h4><a href="<?php echo $WEB_ROOT; ?>articles/community-day/22-10-litwick/">Litwick Community Day Guide for PvP</a></h4>
-			<div class="date">October 12, 2022</div>
-			<p>Will Litwick be able to haunt its way into PvP this Community Day? Let's shed some light on how Chandelure performs in PvP!</p>
-			<div class="tags"><a href="<?php echo $WEB_ROOT; ?>articles?tag=Community Day"># Community Day</a><a href="<?php echo $WEB_ROOT; ?>articles?tag=Infographic"># Infographic</a></div>
-		</div>
+	<div class="col-3">
+		<a href="<?php echo $WEB_ROOT; ?>articles/community-day/23-08-froakie/">
+			<img src="<?php echo $WEB_ROOT; ?>articles/article-assets/community-day/23-08-froakie/thumb.jpg">
+		</a>
 	</div>
+	<div class="col-9">
+		<h4><a href="<?php echo $WEB_ROOT; ?>articles/community-day/23-08-froakie/">Froakie Community Day Guide for PvP</a></h4>
+		<div class="date">August 9, 2023</div>
+		<p>Fan favorite Greninja is finally getting the level-up it needs! Will it be enough to become viable in PvP? Find out more about Greninja and IV's to look for during the upcoming Community Day!</p>
+		<div class="tags"><a href="<?php echo $WEB_ROOT; ?>articles?tag=Community Day"># Community Day</a><a href="<?php echo $WEB_ROOT; ?>articles?tag=Infographic"># Infographic</a></div>
+	</div>
+</div>
 </div>
 
 <?php
@@ -86,6 +115,15 @@ if (strpos($WEB_ROOT, 'src') !== false) : ?>
 	<script src="<?php echo $WEB_ROOT; ?>js/battle/Battle.js?v=<?php echo $SITE_VERSION; ?>"></script>
 	<script src="<?php echo $WEB_ROOT; ?>js/battle/TeamRanker.js?v=<?php echo $SITE_VERSION; ?>"></script>
 	<script src="<?php echo $WEB_ROOT; ?>js/RankingMain.js?v=<?php echo $SITE_VERSION; ?>"></script>
+
+<?php else: ?>
+
+	<script src="<?php echo $WEB_ROOT; ?>js/GameMaster.js?v=<?php echo $SITE_VERSION; ?>"></script>
+	<script src="<?php echo $WEB_ROOT; ?>js/pokemon/Pokemon.js?v=<?php echo $SITE_VERSION; ?>"></script>
+
+	<script>
+	var gm = GameMaster.getInstance();
+	</script>
 
 <?php endif; ?>
 

@@ -12,6 +12,8 @@ var GameMaster = (function () {
 		object.groups = [];
 		object.teamPools = [];
 		object.loadedData = 0;
+		// maps battle cp to list all pokemon objects for that cp
+		object.allPokemon = {}
 
 		if(settings.gamemaster == "gamemaster-mega"){
 			$(".mega-warning").show();
@@ -19,7 +21,7 @@ var GameMaster = (function () {
 
 		var gmVersion = settings.gamemaster;
 
-		if((gmVersion == "gamemaster-mega")||(gmVersion == "gamemaster-kalos")){
+		if((gmVersion == "gamemaster-mega")||(gmVersion == "gamemaster-paldea")){
 			gmVersion = "gamemaster";
 		}
 
@@ -28,49 +30,88 @@ var GameMaster = (function () {
 			gmVersion = "gamemaster.min";
 		}
 
-		$.getJSON( webRoot+"data/"+gmVersion+".json?v="+siteVersion, function( data ){
-			object.data = data;
+		console.log("loading gamemaster");
 
-			// Insert cup and format values into cup and format select dropdowns
-			if(typeof updateFormatSelect === "function"){
-				updateFormatSelect(object.data.formats, InterfaceMaster.getInstance());
-			}
+		$.ajax({
+			dataType: "json",
+			url: webRoot+"data/"+gmVersion+".json?v="+siteVersion,
+			mimeType: "application/json",
+			error: function(request, error) {
+				console.log("Request: " + JSON.stringify(request));
+				console.log(error);
+			},
+			success: function( data ) {
+				object.data = data;
 
-			if(typeof updateCupSelect === "function"){
-				updateCupSelect(object.data.formats, InterfaceMaster.getInstance());
-			}
+				console.log("gamemaster loaded");
 
-			if(settings.gamemaster == "gamemaster"){
-				// Sort Pokemon alphabetically for searching
-				object.data.pokemon.sort((a,b) => (a.speciesName > b.speciesName) ? 1 : ((b.speciesName > a.speciesName) ? -1 : 0));
-
-				InterfaceMaster.getInstance().init(object);
-
-				if(typeof customRankingInterface !== 'undefined'){
-					customRankingInterface.init(object);
+				// Insert cup and format values into cup and format select dropdowns
+				if(typeof updateFormatSelect === "function"){
+					updateFormatSelect(object.data.formats, InterfaceMaster.getInstance());
 				}
-			} else if(settings.gamemaster == "gamemaster-mega"){
-				// Load additional mega pokemon
-				$.getJSON( webRoot+"data/megas.json?v="+siteVersion, function( data ){
 
+				if(typeof updateCupSelect === "function"){
+					updateCupSelect(object.data.formats, InterfaceMaster.getInstance());
+				}
+
+				// Insert format links into ranking submenu
+				var formats = object.data.formats;
+
+				for(var i = formats.length - 1; i >= 0; i--){
+					if(formats[i].showFormat && ! formats[i].hideRankings && formats[i].title != "Custom"){
+						var $link = $("<a href=\""+(host + "rankings/" + formats[i].cup + "/" + formats[i].cp + "/overall/"+"\">"+formats[i].title+"</a>"));
+						$link.insertAfter($(".icon-rankings + .submenu a").eq(2));
+					}
+				}
+
+				if(settings.gamemaster == "gamemaster"){
 					// Sort Pokemon alphabetically for searching
-					object.data.pokemon = object.data.pokemon.concat(data);
 					object.data.pokemon.sort((a,b) => (a.speciesName > b.speciesName) ? 1 : ((b.speciesName > a.speciesName) ? -1 : 0));
 
-					InterfaceMaster.getInstance().init(object);
-				});
-			} else if(settings.gamemaster == "gamemaster-kalos"){
-				// Load additional mega pokemon
-				$.getJSON( webRoot+"data/kalos.json?v="+siteVersion, function( data ){
+					if(typeof InterfaceMaster !== 'undefined'){
+						InterfaceMaster.getInstance().init(object);
+					}
 
-					// Sort Pokemon alphabetically for searching
-					object.data.pokemon = object.data.pokemon.concat(data);
-					object.data.pokemon.sort((a,b) => (a.speciesName > b.speciesName) ? 1 : ((b.speciesName > a.speciesName) ? -1 : 0));
+					if(typeof customRankingInterface !== 'undefined'){
+						customRankingInterface.init(object);
+					}
+				} else if(settings.gamemaster == "gamemaster-mega"){
+					// Load additional mega pokemon
+					$.getJSON( webRoot+"data/megas.json?v="+siteVersion, function( data ){
 
-					InterfaceMaster.getInstance().init(object);
-				});
+						// Sort Pokemon alphabetically for searching
+						object.data.pokemon = object.data.pokemon.concat(data);
+						object.data.pokemon.sort((a,b) => (a.speciesName > b.speciesName) ? 1 : ((b.speciesName > a.speciesName) ? -1 : 0));
+
+						InterfaceMaster.getInstance().init(object);
+					});
+				} else if(settings.gamemaster == "gamemaster-paldea"){
+					// Load additional mega pokemon
+					$.getJSON( webRoot+"data/paldea.json?v="+siteVersion, function( data ){
+
+						// Sort Pokemon alphabetically for searching
+						object.data.pokemon = object.data.pokemon.concat(data);
+						object.data.pokemon.sort((a,b) => (a.speciesName > b.speciesName) ? 1 : ((b.speciesName > a.speciesName) ? -1 : 0));
+
+						InterfaceMaster.getInstance().init(object);
+					});
+				}
 			}
 		});
+
+		// function to help speed up searching by resuing Pokemon objects
+		// could likely be used in other instances where `new Pokemon` is called
+		object.getAllPokemon = function(battle) {
+			const key = battle.getCP();
+
+			if (!object.allPokemon.hasOwnProperty(key)) {
+				object.allPokemon[key] = object.data.pokemon.map(p => {
+					return new Pokemon(p.speciesId, 0, battle);
+				})
+			}
+			return object.allPokemon[key]
+		}
+
 
 		// Return a Pokemon object given species ID
 
@@ -88,6 +129,22 @@ var GameMaster = (function () {
 			});
 
 			return pokemon;
+		}
+
+		// Return all Pokemon entries that have the provided dex number
+
+		object.getPokemonForms = function(dex){
+			var list = [];
+
+			$.each(object.data.pokemon, function(index, poke){
+
+				if(poke.dex == dex){
+					list.push(poke);
+					return;
+				}
+			});
+
+			return list;
 		}
 
 		// Returns the point value of a Pokemon in a tiered meta
@@ -300,17 +357,21 @@ var GameMaster = (function () {
 					if(cp > leagues[i]){
 						var combo = object.generateDefaultIVCombo(pokemon, pokemon.levelCap, leagues[i], level45cp);
 
-						defaultIVs["cp"+leagues[i]] = [combo.level, combo.ivs.atk, combo.ivs.def, combo.ivs.hp]
+						if(combo){
+							defaultIVs["cp"+leagues[i]] = [combo.level, combo.ivs.atk, combo.ivs.def, combo.ivs.hp]
 
-						if(combo.level > 40){
-							if(level40cp > leagues[i]){
-								combo = object.generateDefaultIVCombo(pokemon, 40, leagues[i], level35cp);
+							if(combo.level > 40){
+								if(level40cp > leagues[i]){
+									combo = object.generateDefaultIVCombo(pokemon, 40, leagues[i], level35cp);
 
-								defaultIVs["cp"+leagues[i] + "l40"] = [combo.level, combo.ivs.atk, combo.ivs.def, combo.ivs.hp];
-							} else{
+									defaultIVs["cp"+leagues[i] + "l40"] = [combo.level, combo.ivs.atk, combo.ivs.def, combo.ivs.hp];
+								} else{
 
-								defaultIVs["cp"+leagues[i] + "l40"] = [40, 15, 15, 15];
+									defaultIVs["cp"+leagues[i] + "l40"] = [40, 15, 15, 15];
+								}
 							}
+						} else{
+							defaultIVs["cp"+leagues[i]] = [1, 0, 0, 0];
 						}
 					} else{
 						defaultIVs["cp"+leagues[i]] = [pokemon.levelCap, 15, 15, 15];
@@ -583,7 +644,7 @@ var GameMaster = (function () {
 							move.buffsOpponent = m.buffsOpponent;
 						}
 
-						if((move.buffTarget == "self")&&((move.buffs[0] < 0)||(move.buffs[1] < 0))){
+						if( move.buffTarget == "self" && move.moveId != "DRAGON_ASCENT" && (move.buffs[0] < 0 || move.buffs[1] < 0 )){
 							move.selfDebuffing = true;
 
 							// Mark if move debuffs attack
@@ -680,10 +741,14 @@ var GameMaster = (function () {
 					object.rankings[key] = data;
 					object.loadedData++;
 
-					caller.displayRankingData(data);
+					if(caller.displayRankingData){
+						caller.displayRankingData(data);
+					}
 				});
 			} else{
-				caller.displayRankingData(object.rankings[key]);
+				if(caller.displayRankingData){
+					caller.displayRankingData(object.rankings[key]);
+				}
 			}
 		}
 
@@ -812,13 +877,16 @@ var GameMaster = (function () {
 				minStats = 1370;
 			} else if(battle.getCP() == 2500){
 				minStats = 2800;
+			} else if (battle.getCup().name === "factionsmaster") {
+				// big boy megas need taller height limit
+				minStats = 5000;
 			}
 
 			if(! excludeByStatProduct){
 				minStats = 0;
 			}
 
-			var bannedList = ["mewtwo","mewtwo_armored","giratina_altered","groudon","kyogre","palkia","dialga","heatran","giratina_origin","darkrai","cobalion","terrakion","virizion","thundurus_incarnate","regigigas","tornadus_incarnate","tornadus_therian","tornadus_therian_xl","landorus_incarnate", "landorus_therian", "reshiram", "zekrom", "kyurem", "genesect_burn", "xerneas", "thundurus_therian", "yveltal", "meloetta_aria", "zacian", "zamazenta", "zacian_hero", "zamazenta_hero", "genesect_douse", "zarude", "hoopa_unbound", "genesect_shock", "tapu_koko", "tapu_lele", "tapu_bulu", "nihilego", "shaymin_sky", "genesect_chill", "braviary_hisuian", "kartana", "celesteela"];
+			var bannedList = ["mewtwo","mewtwo_armored","giratina_altered","groudon","kyogre","palkia","dialga","heatran","giratina_origin","darkrai","cobalion","terrakion","virizion","thundurus_incarnate","regigigas","tornadus_incarnate","tornadus_therian","tornadus_therian_xl","landorus_incarnate", "landorus_therian", "reshiram", "zekrom", "kyurem", "genesect_burn", "xerneas", "thundurus_therian", "yveltal", "meloetta_aria", "zacian", "zamazenta", "zacian_hero", "zamazenta_hero", "genesect_douse", "zarude", "hoopa_unbound", "genesect_shock", "tapu_koko", "tapu_lele", "tapu_bulu", "nihilego", "genesect_chill", "braviary_hisuian", "solgaleo", "lunala", "keldeo_ordinary", "avalugg_hisuian", "kyogre_primal", "groudon_primal", "kleavor", "zygarde_complete"];
 
 			// Aggregate filters
 
@@ -1000,17 +1068,35 @@ var GameMaster = (function () {
 			return pokemonList;
 		}
 
-		// Generate a list of Pokemon given a search string
+		// maps a search query to list of pokemon ids to avoid searching again
+		object.searchStringCache = {}
 
+		// Generate a list of Pokemon given a search string
 		object.generatePokemonListFromSearchString = function(str, battle){
+
+
 			// Break the search string up into queries
-			var str = str.replace(/, /g, '').toLowerCase();
-			var queries = str.split(',');
+			var queries = str.toLowerCase().split(/\s*,\s*/);
+			var searchKey = queries.join() + battle.getCP() + battle.getCup().name;
+
+			// don't bother searching if any of the terms are empty
+			// as all pokemon will be valid
+			if (str == "") {
+				return object.data.pokemon.map(p => p.speciesId)
+			}
+
+			// if you already searched, use cached list instead of regenerating
+			if (object.searchStringCache.hasOwnProperty(searchKey)) {
+				return object.searchStringCache[searchKey]
+			}
+
 			var results = []; // Store an array of qualifying Pokemon ID's
 
 			var types = ["bug","dark","dragon","electric","fairy","fighting","fire","flying","ghost","grass","ground","ice","normal","poison","psychic","rock","steel","water"];
 			var tags = object.data.pokemonTags;
 			var regions = object.data.pokemonRegions;
+
+			var metaKey = $(".format-select option:selected").first().attr("meta-group");
 
 			if(! battle){
 				battle = new Battle();
@@ -1018,10 +1104,15 @@ var GameMaster = (function () {
 
 			for(var i = 0; i < queries.length; i++){
 				var query = queries[i];
+
+				if(query == ""){
+					continue;
+				}
+
 				var params = query.split('&');
 
-				for(var n = 0; n < object.data.pokemon.length; n++){
-					var pokemon = new Pokemon(object.data.pokemon[n].speciesId, 0, battle);
+				// iterate over existing pokemon instead of creating new objects
+				for(const pokemon of object.getAllPokemon(battle)){
 
 					var paramsMet = 0;
 
@@ -1120,6 +1211,11 @@ var GameMaster = (function () {
 								valid = true;
 							}
 
+							// Nickname search
+							if (pokemon.nicknames.indexOf(param) > -1) {
+								valid = true;
+							}
+
 							// Dex number search
 
 							if(pokemon.dex == param){
@@ -1183,6 +1279,25 @@ var GameMaster = (function () {
 								}
 							}
 
+							// Meta group search
+							if(param == "meta"){
+								if(object.groups[metaKey] !== undefined){
+
+									var group = object.groups[metaKey];
+
+									valid = false;
+
+									for(k = 0; k < group.length; k++){
+										if(pokemon.speciesId.replace("_shadow", "") == group[k].speciesId.replace("_shadow", "")){
+											valid = true;
+										}
+									}
+								} else{
+									valid = true;
+								}
+							}
+
+
 							// Trait search
 
 							if((object.data.pokemonTraits.pros.indexOf(param) > -1)||(object.data.pokemonTraits.cons.indexOf(param) > -1)){
@@ -1233,6 +1348,7 @@ var GameMaster = (function () {
 				}
 			}
 
+			object.searchStringCache[searchKey] = results
 			return results;
 		}
 

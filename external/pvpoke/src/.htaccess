@@ -9,6 +9,9 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 # RewriteCond %{HTTP_HOST} ^www\.pvpoke\.com [NC]
 # RewriteRule ^(.*)$ https://pvpoke.com/$1 [L,R=301]
 
+RewriteRule ^season-13/(.*)$ /$1 [R,L]
+RewriteRule ^season-15/(.*)$ /$1 [R,L]
+
 Options -Indexes
 
 RewriteRule ^unite(.*)$ https://unite.pvpoke.com [R=301,L]
@@ -18,6 +21,8 @@ RewriteRule battle/multi/([\d-]+)/([a-zA-Z0-9-]+)/([a-zA-Z_\d\.-]+)/([\d-]+)/([\
 RewriteRule battle/multi/([\d-]+)/([a-zA-Z0-9-]+)/([a-zA-Z_\d\.-]+)/([\d-]+)/([\da-zA-Z_-]+)/([a-z\d-]+)/([a-zA-Z_]+).*$ battle.php?mode=multi&cp=$1&cup=$2&p1=$3&s=$4&m1=$5&cms=$6&g1=$7 [L,QSA]
 RewriteRule battle/multi/([\d-]+)/([a-zA-Z0-9-]+)/([a-zA-Z_\d\.-]+)/([\d-]+)/([\da-zA-Z_-]+)/([a-z\d-]+).*$ battle.php?mode=multi&cp=$1&cup=$2&p1=$3&s=$4&m1=$5&cms=$6 [L,QSA]
 RewriteRule battle/multi/([\d-]+)/([a-zA-Z0-9-]+)/([a-zA-Z_\d\.-]+)/([\d-]+)/([a-z\d-]+).*$ battle.php?mode=multi&cp=$1&cup=$2&p1=$3&s=$4&cms=$5 [L,QSA]
+
+RewriteRule battle/multi.*$ battle.php?mode=multi [L,QSA]
 
 RewriteRule battle/matrix.*$ battle.php?mode=matrix [L,QSA]
 
@@ -46,6 +51,22 @@ RewriteRule train/analysis.?$ train/analysis.php [L,QSA]
 RewriteRule ^train/analysis/([a-zA-Z0-9-]+)/(\d+).*$ train/analysis.php?cup=$1&cp=$2 [L,QSA]
 
 RewriteRule train/editor.?$ train/editor.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule tera/([\da-zA-Z_-]+)/([\da-zA-Z_-]+)/([\da-zA-Z_-]+)/([\da-zA-Z_-]+).*$ tera/index.php?p=$1&t=$2&a=$3&tr=$4 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule tera/([\da-zA-Z_-]+)/([\da-zA-Z_-]+)/([\da-zA-Z_-]+).*$ tera/index.php?p=$1&t=$2&a=$3 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule tera/([\da-zA-Z_-]+)/([\da-zA-Z_-]+).*$ tera/index.php?p=$1&t=$2 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule tera/([\da-zA-Z_-]+).*$ tera/index.php?p=$1 [L,QSA]
 
 RewriteRule moves/([a-zA-Z_]+).*$ moves.php?mode=$1 [L,QSA]
 RewriteRule moves.?$ moves.php [L,QSA]

@@ -115,10 +115,12 @@ require_once 'header.php'; ?>
 				<div class="field-container">
 					<div class="check" value="legendary"><span></span> Legendary</div>
 					<div class="check" value="mythical"><span></span> Mythical</div>
+					<div class="check" value="ultrabeast"><span></span> Ultra Beast</div>
 					<div class="check" value="alolan"><span></span> Alolan</div>
 					<div class="check" value="galarian"><span></span> Galarian</div>
 					<div class="check" value="hisuian"><span></span> Hisuian</div>
 					<div class="check" value="regional"><span></span> Regional</div>
+					<div class="check" value="starter"><span></span> Starter</div>
 					<div class="check" value="shadow"><span></span> Shadow</div>
 					<div class="check" value="shadoweligible"><span></span> Shadow Eligible</div>
 					<div class="check" value="mega"><span></span> Mega</div>
@@ -147,6 +149,7 @@ require_once 'header.php'; ?>
 				</ul>
 				<div class="field-container">
 					<input class="ids" placeholder="Pokemon ID's" />
+					<button class="import-custom-group">Import from Custom Group</button>
 				</div>
 			</div>
 
@@ -159,6 +162,7 @@ require_once 'header.php'; ?>
 					<li><strong>Generation 4:</strong> 387-493</li>
 					<li><strong>Generation 5:</strong> 494-649</li>
 					<li><strong>Generation 6:</strong> 650-721</li>
+					<li><strong>Generation 7:</strong> 722-807</li>
 					<li><strong>Generation 8:</strong> 808-898</li>
 				</ul>
 				<div class="field-container">
@@ -280,7 +284,9 @@ require_once 'header.php'; ?>
 
 <div class="section white custom-rankings-overrides">
 	<h3>Moveset Overrides</h3>
-	<p>The rankings generate recommended movesets for each Pokemon. A different moveset may be more optimal, so you can add a Pokemon below to override its ranked moveset.</p>
+	<p>The rankings generate recommended movesets for each Pokemon. A different moveset may be more optimal, so you can add a Pokemon below to override its ranked moveset. Any overrides below will take priority over the league default movesets.</p>
+
+	<div class="use-default-movesets check on"><span></span> Use League Default Movesets</div>
 	<?php require 'modules/pokemultiselect.php'; ?>
 </div>
 
@@ -290,6 +296,16 @@ require_once 'header.php'; ?>
 	<div class="center flex">
 		<div class="button yes">Yes</div>
 		<div class="button no">No</div>
+	</div>
+</div>
+
+<div class="import-group-modal hide">
+	<p>Select a custom group to import below.</p>
+
+	<select class="custom-group-list"></select>
+
+	<div class="center flex">
+		<div class="button import">Import Group</div>
 	</div>
 </div>
 
