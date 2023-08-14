@@ -57,9 +57,12 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Yamask (Galarian)','Runerigus'],
         ['Yamask','Cofagrigus'],
         ['Slowpoke','Slowbro'],
-#        ['Slowpoke','Slowking'], # No need for this it's the same stats as bro.
-#        ['Slowpoke (Galarian)','Slowbro (Galarian)'],
-#        ['Slowpoke (Galarian)','Slowking (Galarian)'],
+        ['Slowpoke','Slowking'], # No need for this it's the same stats as bro.
+        ['Slowpoke (Galarian)','Slowbro (Galarian)'],
+        ['Slowpoke (Galarian)','Slowking (Galarian)'],
+        ['Tapu Fini'],
+        ['Froakie','Frogadier','Greninja'],
+        ['Wooloo','Dubwool'],
         )
 
 
@@ -189,8 +192,8 @@ def ivs_to_stats(my_a, my_d, my_s, my_level,*,mon, max_level=40,max_cp=1500.99,
     stamina = my_s + base_stamina
     level = my_level#10
     cp = 10
-    level_attack, level_defense, level_stamina, stat_prod = 0,0,0,0
-    stats = (level, cp, level_attack, level_defense, level_stamina, stat_prod)
+    level_attack, level_defense, level_stamina, stat_prod, bulk_prod = 0,0,0,0,0
+    stats = (level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod)
     while level <= max_level:
         cpm = get_cpm(level)
         cp = (attack * defense**0.5 * stamina**0.5 * cpm**2) / 10
@@ -199,10 +202,11 @@ def ivs_to_stats(my_a, my_d, my_s, my_level,*,mon, max_level=40,max_cp=1500.99,
         level_stamina = stamina * cpm
         if cp <= max_cp:
             stat_prod = math.floor(level_attack*level_defense*math.floor(level_stamina))
+            bulk_prod = math.floor(level_defense*math.floor(level_stamina))
             #stat_prod = math.floor(level_attack*level_defense*level_stamina)
-            stats = level, cp, level_attack, level_defense, level_stamina, stat_prod
+            stats = level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod
         level = level + 0.5
-    level, cp, level_attack, level_defense, level_stamina, stat_prod  = stats
+    level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod  = stats
     #print(f'{level_attack}, {level_defense}, {level_stamina}, {level_attack*level_defense*level_stamina}')
     return stats
     #print(f'level {level} cp {cp:.0f} attack {level_attack:.1f} defense {level_defense:.1f} stamina {level_stamina:.0f}')
@@ -217,7 +221,7 @@ def mons_to_consider(df,mon):
     it's easier this way.
     """
     #evolution_line = [i for i in EVOLUTIONS if mon in i]
-    evolution_line = [i for i in EVOLUTIONS if mon in i[-1]]
+    evolution_line = [i for i in EVOLUTIONS if mon == i[-1]]
     if not len(evolution_line) == 1:
         raise Exception(f'Could not find evolution line for {mon}. got {evolution_line}')
     else:
@@ -600,7 +604,6 @@ All of this suggests that the Best Walrein PvP IVs for the Great League are eith
             'Bork':{'attack':136.6,'defense':82,'hp':134},
             }
         },
-
     'Trevenant':{
         'article':'https://gamepress.gg/pokemongo/trevenant-pvp-iv-deep-dive',
         'videos':('https://www.youtube.com/watch?v=-02-DBdvGJk&t=738s','https://www.youtube.com/watch?v=Y2tMAs-oZKQ&t=573s'),
@@ -807,6 +810,94 @@ Galarian Slowbro Bulk Focus 109 Def, 146 HP
 #            },
         },
         
+    'Tapu Fini':{
+        'article':'https://gamepress.gg/pokemongo/tapu-fini-pvp-iv-deep-dive#topic-445576',
+        'videos':('https://www.youtube.com/watch?v=4b_RuJMUFpI',),
+        'extrainfo':'''
+For GL:
+
+        * Higher Def > Higher HP, unless the HP is 110+
+        * You can thrift down to 105 HP if you’re tired of trading for Tapu Fini
+
+For UL
+
+        * 142 HP is notably better and only available through trading
+        * 147.59 Atk gets Poliwrath CMP (1-2) and an Aurorus Breakpoint (0-1)
+        * 149.39 Atk gets an Alolan Ninetales Breakpoints, enabling the 0-1 and 1-2 vs Powder         
+
+''',
+        'Great':{
+            'OMG beat medi (153.91 Def, 110 HP)':{'attack':0,'defense':153.91,'hp':110},
+            'General Good (153.91 Def, 107 HP)':{'attack':0,'defense':153.91,'hp':107},
+            'Thrift 105 HP (153.91 Def, 105 HP)':{'attack':0,'defense':153.91,'hp':107},
+            'all':{'attack':0,'defense':0,'hp':0},
+            },
+        'Ultra':{
+            'Better HP (198.9 Def, 142 HP)':{'attack':0,'defense':198.9,'hp':142},
+            'Poli and Aurorus Atk (147.49 Atk, 198.9 Def, 139 HP)':{'attack':147.59,'defense':198.9,'hp':139},
+            'Also A9 Atk (149.39 Atk, 198.9 Def, 139 HP)':{'attack':149.39,'defense':198.9,'hp':139},
+            'General Good (198.9 Def, 139 HP)':{'attack':0,'defense':198.9,'hp':139},
+            },
+        },
+
+    'Greninja':{
+        'article':'https://gamepress.gg/pokemongo/greninja-pvp-iv-deep-dive',
+        'videos':('https://www.youtube.com/watch?v=fkWByvRz44M&t=118s',),
+        'extrainfo':'''
+For GL:
+
+    * 140.51, 141.09, 141.38 are notable Atk BPs for Toxapex, Swampert, and Lanturn respectively See guide for details
+        
+    * 99.36 Def covers 121.9 Atk Froslass
+        
+    * 11356+ Bulk Product may cover the Diggersby 0-0
+        
+    * 110 HP is the absolute bare minimum recommendation if you have limited options
+
+For UL:
+
+    * Higher Def is more likely to handle the SC Giratina 2-2 and Shadow Machamp 1-0 (~131.48)
+        
+    * Higher Atk weights may get a Breakpoint to 1-1 some Cresselia
+
+Full list of GL atk benefits:
+
+    *     139.04, Pelipper 1-1 consistency (Hydro Cannon BP)
+        
+    *     139.33, Bastiodon 0-0 consistency (HC BP) & Togedemaru 1-1 (WS BP)
+        
+    *     139.59, Powder Snow Alolan Ninetales 2-2 (HC BP)
+        
+    *     140.08, Azumarill 2-1 (WS BP)
+        
+    *     140.27, Toxicroak 1-0 (WS BP)
+        
+    *     140.51, Toxapex 1-0 (NS BP)
+        
+    *     141.09, Swampert 1-1 potential (WS BP)
+        
+    *     141.38, Water Gun Lanturn 1-1 (NS BP)
+        
+    *     144.3, Skarmory 1-1 (WS BP)
+        
+    *     144.6, Shadow Alolan Sandslash 1-1 (WS BP)
+        
+        
+        
+''',
+        'Great':{
+            'GL- Bulk Focus (99.61 Def, 115 HP)':{'attack':0,'defense':99.61,'hp':115},
+            'GL- Azu Slayer (140.08 Atk, 99.36 Def, 111 HP)':{'attack':140.08,'defense':99.36,'hp':111},
+            'GL - stupid hi atk not filtered for bulk':{'attack':143.3,'defense':0,'hp':0},
+            'GL - STUPID hi atk not filtered for bulk':{'attack':144.6,'defense':0,'hp':0},
+            'GL - hi atk not filtered for bulk':{'attack':139.04,'defense':0,'hp':0},
+            },
+        'Ultra':{
+            'UL- Bulk Focus (130.62 Def, 149 HP)':{'attack':0,'defense':130.62,'hp':149},
+            'This list is also solid (132.53 Def, 147 HP), but 149 HP is safer':{'attack':0,'defense':132.53,'hp':149},
+            },
+        },
+
     'Bogus':{
         'article':'',
         'videos':('',),
@@ -875,11 +966,11 @@ def display_rs_info(df,mon):
         
 def get_max_stats(df, mon, max_level, max_cp):
     # Great League, allowing XL, allowing best buddy
-    d = {'CP':[],'max CP':[],'level':[],'attack':[],'defense':[],'stamina':[],'a':[],'d':[],'s':[],'statprod':[]}
+    d = {'CP':[],'max CP':[],'level':[],'attack':[],'defense':[],'stamina':[],'a':[],'d':[],'s':[],'statprod':[],'blkprod':[]}
     for row in df.iterrows():
         i,s = row
         orig_cp, my_a, my_d, my_s, my_level = s.CP, s['Atk IV'], s['Def IV'], s['Sta IV'], s['Level Min']
-        level, cp, attack, defense, stamina, stat_prod = ivs_to_stats(my_a, my_d, my_s,my_level = my_level,
+        level, cp, attack, defense, stamina, stat_prod ,bulk_prod= ivs_to_stats(my_a, my_d, my_s,my_level = my_level,
                                                                           max_level=max_level,max_cp=max_cp,mon=mon)
         #print('orig_cp',orig_cp,'my_a',my_a)
         d['CP'].append(orig_cp)
@@ -892,5 +983,6 @@ def get_max_stats(df, mon, max_level, max_cp):
         d['d'].append(my_d)
         d['s'].append(my_s)
         d['statprod'].append(stat_prod)
+        d['blkprod'].append(bulk_prod)
     mine = pd.DataFrame.from_dict(d)
     return mine
