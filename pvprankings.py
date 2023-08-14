@@ -898,6 +898,39 @@ Full list of GL atk benefits:
             },
         },
 
+    'Dubwool':{
+        'article':'https://gamepress.gg/pokemongo/dubwool-pvp-iv-deep-dive',
+        'videos':('https://www.youtube.com/watch?v=xTlYFqEzQdw',),
+        'extrainfo':'''
+
+GL - High Bulk (141.6 Def, 128 HP):
+
+    *    Sort list by Bulk Product- 18499+ is generally safe
+
+    *     130 HP is generally preferred
+
+    *     131 HP may 0-0 Water Gun Lanturn
+
+    * 109.3+ Atk may gain Charge Move Breakpoints vs Altaria, Shadow Venusaur, and Registeel
+
+    * 129 HP may prevent Medicham from straight farming you in the 0-0
+
+    
+UL - Nearly Hundo
+
+    *     14/15/15 is the preference
+
+    *     In general, 13/13/14 is a solid soft minimum
+        
+''',
+        'Great':{
+            'GL - High Bulk (141.6 Def, 128 HP) NEEDS blk prod 18499':{'attack':0,'defense':141.6,'hp':128},
+            },
+        'Ultra':{
+            'UL - Nearly Hundo':{'attack':0,'defense':178.3,'hp':160},
+            },
+        },
+        
     'Bogus':{
         'article':'',
         'videos':('',),
