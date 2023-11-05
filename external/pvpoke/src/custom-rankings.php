@@ -164,6 +164,8 @@ require_once 'header.php'; ?>
 					<li><strong>Generation 6:</strong> 650-721</li>
 					<li><strong>Generation 7:</strong> 722-807</li>
 					<li><strong>Generation 8:</strong> 808-898</li>
+					<li><strong>Legends (Hisui):</strong> 899-905</li>
+					<li><strong>Generation 9:</strong> 906-1008</li>
 				</ul>
 				<div class="field-container">
 					<input class="start-range" placeholder="Start #" />
@@ -269,6 +271,7 @@ require_once 'header.php'; ?>
 	<h3>Pokemon List (<span class="pokemon-count">0</span>)</h3>
 	<p>This list below contains eligible Pokemon for this cup. Pokemon that don't meet certain stat requirements, such as low CP Pokemon, aren't included for ranking purposes.</p>
 	<textarea class="pokemon-list"></textarea>
+	<a href="#" class="toggle-pokemon-list">Show Pokemon ID's</a>
 </div>
 
 <div class="section white custom-rankings-meta-group">

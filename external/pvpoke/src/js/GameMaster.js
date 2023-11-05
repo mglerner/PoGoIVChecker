@@ -131,6 +131,22 @@ var GameMaster = (function () {
 			return pokemon;
 		}
 
+		// Return a list of Pokemon belong to a give familyId
+
+		object.getPokemonByFamily = function(familyId){
+			var list = [];
+
+			$.each(object.data.pokemon, function(index, poke){
+
+				if(poke.family && poke.family.id == familyId && poke.speciesId.indexOf("_shadow") == -1){
+					list.push(poke);
+					return;
+				}
+			});
+
+			return list;
+		}
+
 		// Return all Pokemon entries that have the provided dex number
 
 		object.getPokemonForms = function(dex){
@@ -382,6 +398,10 @@ var GameMaster = (function () {
 
 				if(pokemon.speciesId == "trevenant"){
 					defaultIVs["cp1500"] = [22, 3, 13, 12];
+				}
+
+				if(pokemon.speciesId == "medicham"){
+					defaultIVs["cp1500"] = [49, 7, 15, 14];
 				}
 
 				entry.defaultIVs = defaultIVs;

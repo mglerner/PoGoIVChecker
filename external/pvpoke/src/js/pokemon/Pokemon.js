@@ -397,6 +397,10 @@ function Pokemon(id, i, b){
 			floor = 1;
 		}
 
+		if(self.hasTag("legendary") && self.shadowType == "shadow"){
+			floor = 6;
+		}
+
 		if(ivFloor){
 			floor = ivFloor;
 		}
@@ -522,6 +526,16 @@ function Pokemon(id, i, b){
 		results = combinations.splice(0, resultCount);
 
 		return results;
+	}
+
+	// Return the rank number of this Pokemon's IV combination for a given stat
+
+	this.getIVRank = function(sortStat){
+		var combinations = this.generateIVCombinations(sortStat, 1, 4096);
+		var rank = combinations.findIndex((combo) => combo.ivs.atk == this.ivs.atk && combo.ivs.def == this.ivs.def && combo.ivs.hp == this.ivs.hp);
+		rank++;
+
+		return { rank: rank, count: combinations.length };
 	}
 
 	// Given a defender, generate a list of Attack values that reach certain breakpoints
@@ -2157,6 +2171,23 @@ function Pokemon(id, i, b){
 		/*var fastMoveConsistency = .5 + (.5 * (1 / (fastMove.cooldown / 500)));
 
 		consistencyScore = ((consistencyScore * 6) + (fastMoveConsistency * 1)) / 7;*/
+
+		// Penalize specific moves
+		if(self.hasMove("POWER_UP_PUNCH")){
+			consistencyScore *= .85;
+		}
+
+		if(self.hasMove("LUNGE")){
+			consistencyScore *= .85;
+		}
+
+		if(self.hasMove("FEATHER_DANCE")){
+			consistencyScore *= .75;
+		}
+
+		if(self.hasMove("BUBBLE_BEAM")){
+			consistencyScore *= .75;
+		}
 
 		consistencyScore = Math.round(consistencyScore * 1000) / 10;
 

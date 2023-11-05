@@ -55,60 +55,40 @@ switch($cup){
 		$league = 'Mega Master League';
 		break;
 
-	case "fantasy":
-		$league = 'Fantasy Cup';
-		break;
-
-
-	case "summer":
-		$league = 'Summer Cup';
-		break;
-
-
 	case "retro":
 		$league = 'Retro Cup';
 		break;
 
-	case "fossil":
-		$league = 'Fossil Cup';
+	case "electric":
+		$league = 'Electric Cup';
+		break;
+
+	case "halloween":
+		$league = 'Halloween Cup';
+		break;
+
+	case "sunshine":
+		$league = 'Sunshine Cup';
 		break;
 
 	case "little":
 		$league = 'Little Cup';
 		break;
 
-	case "littlejungle":
-		$league = 'Little Jungle Cup';
-		break;
-
-	case "championship":
-		$league = '2023 Championship Series';
-		break;
-
 	case "mega":
 		$league = 'Mega Master League';
 		break;
 
-	case "factions":
-	case "factionsgreat":
-	case "factionsultra":
-	case "factionsmaster":
-	case "echo":
-	case "ragnar":
-		$league = 'Silph Factions';
+	case "aurora":
+		$league = 'Battle Frontier (Aurora Cup)';
 		break;
 
-	case "ragnargymbreakers":
-	case "vanguardgymbreakers":
+	case "savannah":
+		$league = 'Battle Frontier (Savannah Cup)';
+		break;
+
+	case "gbinvitational":
 		$league = 'Gymbreakers';
-		break;
-
-	case "element":
-		$league = 'Element Cup';
-		break;
-
-	case "continentals":
-		$league = 'Silph Continentals';
 		break;
 
 	case "remix":
@@ -176,7 +156,7 @@ require_once 'header.php';
 
 	<p class="description small switches hide"><b>The best Pokemon to switch to from an unfavorable lead.</b> These Pokemon have safe matchups and can pressure shields or deal heavy damage even in their losses.</p>
 
-	<p class="description small chargers hide"><b>The best Pokemon with an energy advantage.</b> Fast energy gain or powerful moves make them dangerous after building up energy.</p>
+	<p class="description small chargers hide"><b>The best Pokemon with an energy advantage.</b> Fast energy gain or powerful moves make them dangerous after building up energy. This category also factors in a Pokemon's ability to farm down weakened opponent or overfarm in advantageous matchups.</p>
 
 	<p class="description small consistency hide"><b>These Pokemon perform the most dependably.</b> They provide consistent damage and rely less on baiting shields than other Pokemon. Shorter Fast Moves also help improve consistency.</p>
 
@@ -213,7 +193,7 @@ require_once 'header.php';
 	</div>
 
 	<div class="poke-search-container">
-		<input class="poke-search" context="ranking-search" type="text" placeholder="Search Pokemon" />
+		<input class="poke-search" context="ranking-search" type="text" placeholder="Search Pokemon" autocomplete="off" />
 		<a href="#" class="search-info" title="Search Help">?</a>
 		<a href="#" class="search-traits" title="Search Traits">+</a>
 	</div>
