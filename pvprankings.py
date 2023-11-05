@@ -536,7 +536,7 @@ All of this suggests that the Best Walrein PvP IVs for the Great League are eith
         'Great':{
             'Basic Bulk':{'attack':0,'defense':110.63,'hp':185},
             'Premium Bulk':{'attack':0,'defense':111.14,'hp':186},
-            #'Premium Bulk, bulk sort':{'attack':102.78,'defense':97.85,'hp':186,'sort':'bulk'},
+            'Premium Bulk':{'attack':0,'defense':111.14,'hp':186,'sort':'blkprod'},
             }
         },
     'Stunfisk (Galarian)':{
@@ -924,7 +924,8 @@ UL - Nearly Hundo
         
 ''',
         'Great':{
-            'GL - High Bulk (141.6 Def, 128 HP) NEEDS blk prod 18499':{'attack':0,'defense':141.6,'hp':128},
+            'GL - High Bulk (141.6 Def, 128 HP) NEEDS blk prod 18499':{'attack':0,'defense':141.6,'hp':128,'sort':'blkprod'},
+            'GL all blkprod sort':{'attack':0,'defense':0,'hp':0,'sort':'blkprod'},
             },
         'Ultra':{
             'UL - Nearly Hundo':{'attack':0,'defense':178.3,'hp':160},
@@ -967,13 +968,13 @@ def display_rs_info(df,mon):
         }
     # Maybe rename this
     # TODO: Add ability to sort by atk or blkprod.
-    def get_mons(attack,defense,hp,mine,*,level_max=99):
+    def get_mons(attack,defense,hp,mine,*,level_max=99,sort='statprod'):
         these = mine[mine.attack >= attack]
         these = these[these.defense >= defense]
         these = these[these.stamina >= hp]
         these = these[these.level <= level_max]
-        these = these.sort_values('statprod',ascending=False)
-        return these.sort_values('statprod',ascending=False)
+        these = these.sort_values(sort,ascending=False)
+        return these.sort_values(sort,ascending=False)
         
     display(Markdown(f'# {mon}s you have, according to the Swag Man'))
     if 'article' in RS_INFO[mon]:
@@ -994,7 +995,11 @@ def display_rs_info(df,mon):
             if 'onlytop' in RS_INFO[mon][league][k]:
                 onlytop = RS_INFO[mon][league][k]['onlytop']
                 display(HTML(f'<p style="color:red">NOTE! Ryan says you only want the top {onlytop} mons in this category. This code does only checks IVs and stat products, so you want to double-check his actual article before evolving something!</p>'))
-            display(get_mons(attack, defense, hp, mon_stats[league]))
+            if 'sort' in RS_INFO[mon][league][k]:
+                sort = RS_INFO[mon][league][k]['sort']
+            else:
+                sort='statprod'
+            display(get_mons(attack, defense, hp, mon_stats[league],sort=sort))
                     
         
 def get_max_stats(df, mon, max_level, max_cp):
