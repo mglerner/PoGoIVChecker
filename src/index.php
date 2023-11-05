@@ -76,29 +76,28 @@
 	<!--Update section for updates-->
 	<h3>What's New</h3>
 
-	<h4>v1.30.6 (July 9, 2023)</h4>
+	<h4>v1.30.15 (October 11, 2023)</h4>
 	<ul>
-		<li>Move counts now show counts for 4 cycles instead of 3.</li>
-		<li>Charged Move breakpoints can now be explored in Single Battle and Matrix Battle.</li>
-		<li>Fixed an issue where the mouse pointer covered part of the Charged Move damage tooltip.</li>
-		<li>Fixed an issue that caused faulty ranking search results after searching and then switching leagues.</li>
+		<li>Pokemon selection now includes basic IV ranking and checking functionality under the "Edit/Check IVs" section.</li>
+		<li>Stat modifiers for assigning a Pokemon stat buffs or debuffs have been moved to the "Options" section.</li>
 	</ul>
 
 	<h3>Latest Article</h3>
-	
+
 	<div class="article-item flex">
-	<div class="col-3">
-		<a href="<?php echo $WEB_ROOT; ?>articles/community-day/23-08-froakie/">
-			<img src="<?php echo $WEB_ROOT; ?>articles/article-assets/community-day/23-08-froakie/thumb.jpg">
-		</a>
+		<div class="col-3">
+			<a href="<?php echo $WEB_ROOT; ?>articles/community-day/23-11-wooper/">
+				<img src="<?php echo $WEB_ROOT; ?>articles/article-assets/community-day/23-11-wooper/thumb.jpg">
+			</a>
+		</div>
+		<div class="col-9">
+			<h4><a href="<?php echo $WEB_ROOT; ?>articles/community-day/23-11-wooper/">Wooper Community Day Guide for PvP</a></h4>
+			<div class="date">November 2, 2023</div>
+			<p>The time has come to acquire the Sire! Clodsire makes its debut and Quagsire gets Aqua Tail in this exciting Community Day for PvP. What should you know about each Pokemon's PvP potential?</p>
+			<div class="tags"><a href="<?php echo $WEB_ROOT; ?>articles?tag=Community Day"># Community Day</a><a href="<?php echo $WEB_ROOT; ?>articles?tag=Infographic"># Infographic</a></div>
+		</div>
 	</div>
-	<div class="col-9">
-		<h4><a href="<?php echo $WEB_ROOT; ?>articles/community-day/23-08-froakie/">Froakie Community Day Guide for PvP</a></h4>
-		<div class="date">August 9, 2023</div>
-		<p>Fan favorite Greninja is finally getting the level-up it needs! Will it be enough to become viable in PvP? Find out more about Greninja and IV's to look for during the upcoming Community Day!</p>
-		<div class="tags"><a href="<?php echo $WEB_ROOT; ?>articles?tag=Community Day"># Community Day</a><a href="<?php echo $WEB_ROOT; ?>articles?tag=Infographic"># Infographic</a></div>
-	</div>
-</div>
+
 </div>
 
 <?php

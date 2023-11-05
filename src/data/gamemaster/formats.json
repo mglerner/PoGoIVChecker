@@ -46,50 +46,78 @@
 		"showMeta": true
 	},
 	{
-		"title": "Little Jungle Cup",
-		"cup": "littlejungle",
-		"cp": 500,
-		"meta": "littlejungle",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
-		"title": "Fantasy Cup (Ultra League)",
-		"cup": "fantasy",
-		"cp": 2500,
-		"meta": "fantasyultra",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
-		"title": "Gymbreakers (Ragnar)",
-		"cup": "ragnargymbreakers",
+		"title": "Halloween Cup",
+		"cup": "halloween",
 		"cp": 1500,
-		"meta": "ragnargymbreakers",
+		"meta": "halloween",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
 	},
 	{
-		"title": "Gymbreakers (Vanguard)",
-		"cup": "vanguardgymbreakers",
+		"title": "Electric Cup",
+		"cup": "electric",
 		"cp": 1500,
-		"meta": "vanguardgymbreakers",
+		"meta": "electric",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
 	},
 	{
-		"title": "GO Stadium Cliffhanger",
-		"cup": "cliffhanger",
+		"title": "P!P Championship Series",
+		"cup": "great",
 		"cp": 1500,
-		"meta": "great",
+		"meta": "championshipseries",
 		"showCup": false,
+		"showFormat": false,
+		"showMeta": true
+	},
+	{
+		"title": "Battle Frontier (Aurora)",
+		"cup": "aurora",
+		"cp": 1500,
+		"meta": "aurora",
+		"showCup": true,
 		"showFormat": true,
-		"showMeta": false,
+		"showMeta": true
+	},
+	{
+		"title": "Battle Frontier (Savannah)",
+		"cup": "savannah",
+		"cp": 1500,
+		"meta": "savannah",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
+	},
+	{
+		"title": "Battle Frontier (Ultra)",
+		"cup": "battlefrontierultra",
+		"cp": 2500,
+		"meta": "ultra",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true,
 		"hideRankings": true
+	},
+	{
+		"title": "Battle Frontier (Master)",
+		"cup": "battlefrontiermaster",
+		"cp": 10000,
+		"meta": "battlefrontiermaster",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true,
+		"hideRankings": true
+	},
+	{
+		"title": "Gymbreakers Invitational",
+		"cup": "gbinvitational",
+		"cp": 1500,
+		"meta": "gbinvitational",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
 	},
 	{
 		"title": "Custom",

@@ -1,5 +1,29 @@
 [
 	{
+		"id": "23-11-wooper",
+		"title": "Wooper Community Day Guide for PvP",
+		"description": "The time has come to acquire the Sire! Clodsire makes its debut and Quagsire gets Aqua Tail in this exciting Community Day for PvP. What should you know about each Pokemon's PvP potential?",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "November 2, 2023"
+	},
+	{
+		"id": "23-10-adventures-abound-great-league-starter-pack",
+		"title": "Great League Starter Pack for Season of Adventures Abound",
+		"description": "Check out the premiere and budget picks to get started in Great League and GO Battle League for Season of Adventures Abound!",
+		"path": "infographics",
+		"tags": ["Infographic", "Starter Pack"],
+		"date": "October 7, 2023"
+	},
+	{
+		"id": "23-09-grubbin",
+		"title": "Grubbin Community Day Guide for PvP",
+		"description": "Both Charjabug and Vikavolt are getting the exlusive treatment this Community Day! How will they fare in PvP with Volt Switch? Time to dig into the details and check the ins and outs of these Bug-type Pokemon!",
+		"path": "community-day",
+		"tags": ["Community Day", "Infographic"],
+		"date": "September 21, 2023"
+	},
+	{
 		"id": "23-08-froakie",
 		"title": "Froakie Community Day Guide for PvP",
 		"description": "Fan favorite Greninja is finally getting the level-up it needs! Will it be enough to become viable in PvP? Find out more about Greninja and IV's to look for during the upcoming Community Day!",
