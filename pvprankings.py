@@ -63,6 +63,8 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Tapu Fini'],
         ['Froakie','Frogadier','Greninja'],
         ['Wooloo','Dubwool'],
+        ['Wooper','Quagsire'],
+        ['Wooper (Paldea)','Clodsire']
         )
 
 
@@ -253,6 +255,8 @@ def _mons_to_consider(df,mon):
     elif form == 'Galarian':
         # This is to remind us that it's actually listed as galarian for zig and lin
         form = 'Galarian'
+    elif form == 'Paldea':
+        form = 'Paldea'
     #evolution_line = [i for i in EVOLUTIONS if mon in i]
     #if not len(evolution_line) == 1:
     #    raise Exception(f'Could not find evolution line for {mon}. got {evolution_line}')
@@ -929,6 +933,68 @@ UL - Nearly Hundo
             },
         'Ultra':{
             'UL - Nearly Hundo':{'attack':0,'defense':178.3,'hp':160},
+            },
+        },
+        
+    'Quagsire':{
+        'article':'https://gamepress.gg/pokemongo/quagsire-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+
+Non-shadow notes
+
+  *     113.66 Def > 112.68 Def w/164+ HP > 164+ HP
+
+  *     112 Def covers Rank 1/119.5 Atk Sableye
+
+  *     113.66 Def covers 121.4 Atk Sableye (Swamp/Venu CMP)
+
+  *     113.66 Def covers 108.9/AXN Medicham
+
+  *     112.68 Def covers 86-86.6 Atk Carbink
+
+Shadow high bulk notes
+
+
+  *     113.66 Def covers 121.4 Atk Sableye & possibly Froslass
+        
+  *     164 HP enables Vigoroth 1-1
+        
+  *     Higher Atk gives Shadow Venusaur 0-1, Medicham 2-1, & Noctowl 1-1 potential with Mud Bomb
+        
+  *         110 Atk vs Rank 1 Medicham, also Cofagrigus CMP potential
+        
+  *     Honorable mention to the 0/14/8 and 0/15/6 for their higher Def stats mostly making up for the HP drop
+        
+Carbink slayer notes
+
+
+  *     112.22 Atk covers Best Buddy Carbink
+        
+  *     17748+ Bulk Product is safer vs high Atk Carbink
+        
+  *     Going over 109 Def may maintain the Shadow Venusaur 1-0
+        
+  *     Going over 110.26 Def may enable the Emolga 1-2 (w/ Mud Bomb)
+        
+''',
+        'Great':{
+            'Non-Shadow, High Bulk: 112 Def, 163 HP':{'attack':0,'defense':112,'hp':163},
+            'Shadow, High Bulk: 112.68 Def, 163 HP':{'attack':0,'defense':112.68,'hp':163},
+            'Shadow, Slight Atk Weight: 110 Atk, 110.26 Def, 163 HP. High def better.':{'attack':110,'defense':110.26,'hp':163},
+            'Carbink Slayer: 111.89 Atk, 108 Def, 162 HP':{'attack':111.89,'defense':108,'hp':162},
+            },
+        },
+
+    'Clodsire':{
+        'article':'',
+        'videos':('',),
+        'extrainfo':'''
+''',
+        'Great':{
+            'Blk1':{'attack':0,'defense':119.42,'hp':212},
+            'Blk2':{'attack':0,'defense':121.23,'hp':210},
+            'Atk':{'attack':96.5,'defense':117,'hp':199},
             },
         },
         
