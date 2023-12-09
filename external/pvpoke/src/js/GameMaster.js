@@ -154,6 +154,10 @@ var GameMaster = (function () {
 
 			$.each(object.data.pokemon, function(index, poke){
 
+				if(poke.tags && poke.tags.indexOf("duplicate") > -1){
+					return;
+				}
+
 				if(poke.dex == dex){
 					list.push(poke);
 					return;
@@ -402,6 +406,10 @@ var GameMaster = (function () {
 
 				if(pokemon.speciesId == "medicham"){
 					defaultIVs["cp1500"] = [49, 7, 15, 14];
+				}
+
+				if(pokemon.speciesId == "typhlosion_hisuian"){
+					defaultIVs["cp1500"] = [20, 1, 1, 2];
 				}
 
 				entry.defaultIVs = defaultIVs;
@@ -936,6 +944,10 @@ var GameMaster = (function () {
 						continue;
 					}
 
+					if(pokemon.hasTag("duplicate1500") && (battle.getCP() != 1500 || battle.getCup().name != "all")){
+						continue;
+					}
+
 					// Process all filters
 					var allowed = false;
 					var includeIDFilter = false; // Flag to see if an ID filter should override other filters
@@ -1401,6 +1413,9 @@ var GameMaster = (function () {
 									pokemon.selectMove("charged", pokemonList[n].chargedMoves[j], j);
 								}
 
+								if(pokemonList[n].chargedMoves.length < 2){
+									pokemon.selectMove("charged", "none", 1);
+								}
 							}
 
 							// Set weight modifier
