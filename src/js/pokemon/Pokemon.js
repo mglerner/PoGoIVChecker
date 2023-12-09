@@ -26,8 +26,14 @@ function Pokemon(id, i, b){
 	this.data = data;
 	this.dex = data.dex;
 	this.speciesId = id;
+	this.aliasId = this.speciesId;
 	this.canonicalId = id.replace("_xs","");
 	this.speciesName = data.speciesName;
+
+	// Use an alias for duplicate Pokemon entries to redirect to the main Pokemon ID
+	if(data.aliasId){
+		this.aliasId = data.aliasId;
+	}
 
 	this.baseStats = { atk: data.baseStats.atk, def: data.baseStats.def, hp: data.baseStats.hp};
 	this.stats = { atk: 0, def: 0, hp: 0 };
@@ -393,11 +399,11 @@ function Pokemon(id, i, b){
 
 		var floor = 0;
 
-		if(self.hasTag("legendary")){
+		if(self.hasTag("legendary") || self.hasTag("ultrabeast")){
 			floor = 1;
 		}
 
-		if(self.hasTag("legendary") && self.shadowType == "shadow"){
+		if((self.hasTag("legendary") || self.hasTag("ultrabeast")) && self.shadowType == "shadow"){
 			floor = 6;
 		}
 
@@ -919,6 +925,8 @@ function Pokemon(id, i, b){
 
 				if(r.moveset.length > 2){
 					self.selectMove("charged", r.moveset[2], 1);
+				} else{
+					self.selectMove("charged", "none", 1);
 				}
 
 				self.resetMoves();
@@ -1964,7 +1972,7 @@ function Pokemon(id, i, b){
 	// Output a string of numbers for URL building and recreating a Pokemon
 
 	this.generateURLPokeStr = function(context){
-		var pokeStr = self.speciesId;
+		var pokeStr = self.aliasId;
 
 		if((self.isCustom)||(self.startStatBuffs[0] != 0)||(self.startStatBuffs[1] != 0)){
 			var arr = [self.level];

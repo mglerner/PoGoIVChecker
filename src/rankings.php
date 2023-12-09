@@ -63,12 +63,12 @@ switch($cup){
 		$league = 'Electric Cup';
 		break;
 
-	case "halloween":
-		$league = 'Halloween Cup';
+	case "holiday":
+		$league = 'Holiday Cup';
 		break;
 
-	case "sunshine":
-		$league = 'Sunshine Cup';
+	case "catch":
+		$league = 'Catch Cup';
 		break;
 
 	case "little":
@@ -105,6 +105,10 @@ if(isset($_GET['p'])){
 	// Put Pokemon names in the meta title
 
 	$name = ucwords(str_replace('_',' ', explode('-', htmlspecialchars($_GET['p']))[0]));
+
+	if($name == 'Lanturnw'){
+		$name = 'Lanturn';
+	}
 
 	$META_TITLE = $name . ' ' . $league . ' PvP Rankings';
 
