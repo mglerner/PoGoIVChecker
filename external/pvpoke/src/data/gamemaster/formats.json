@@ -46,28 +46,37 @@
 		"showMeta": true
 	},
 	{
-		"title": "Retro Cup",
-		"cup": "retro",
-		"cp": 1500,
-		"meta": "retro",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
-		"title": "Holiday Cup",
-		"cup": "holiday",
-		"cp": 1500,
-		"meta": "holiday",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
 		"title": "Little Holiday Cup",
 		"cup": "holiday",
 		"cp": 500,
 		"meta": "littleholiday",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
+	},
+	{
+		"title": "Great League Remix",
+		"cup": "remix",
+		"cp": 1500,
+		"meta": "remix",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
+	},
+	{
+		"title": "Fantasy Cup",
+		"cup": "fantasy",
+		"cp": 1500,
+		"meta": "fantasy",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
+	},
+	{
+		"title": "Gymbreakers Invitational",
+		"cup": "gbinvitational",
+		"cp": 1500,
+		"meta": "gbinvitational",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
@@ -82,13 +91,40 @@
 		"showMeta": true
 	},
 	{
-		"title": "Battle Frontier (Ultra)",
-		"cup": "battlefrontierultra",
+		"title": "Battle Frontier (Enchanted)",
+		"cup": "enchanted",
 		"cp": 2500,
-		"meta": "ultra",
+		"meta": "enchanted",
 		"showCup": true,
 		"showFormat": true,
-		"showMeta": true,
+		"showMeta": true
+	},
+	{
+        "title": "Battle Frontier (Primordial)",
+        "cup": "primordial",
+        "cp": 1500,
+        "meta": "primordial",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true
+    },
+	{
+        "title": "Battle Frontier (Serene)",
+        "cup": "serene",
+        "cp": 1500,
+        "meta": "serene",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true
+    },
+	{
+		"title": "Battle Frontier (Great)",
+		"cup": "battlefrontiergreat",
+		"cp": 1500,
+		"meta": "great",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": false,
 		"hideRankings": true
 	},
 	{
@@ -101,6 +137,15 @@
 		"showMeta": true,
 		"hideRankings": true
 	},
+	{
+        "title": "Devon Knockout Cup",
+        "cup": "knockout",
+        "cp": 1500,
+        "meta": "knockout",
+        "showCup": true,
+        "showFormat": true,
+        "showMeta": true
+    },
 	{
 		"title": "Custom",
 		"cup": "custom",

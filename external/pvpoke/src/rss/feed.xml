@@ -3,6 +3,78 @@
 
 	<channel>
 		<item>
+			<title>Fantasy Cup Rankings</title>
+			<description>
+				<![CDATA[Fantasy Cup returns in a few weeks, this time in Great League! This cup includes Dragon, Steel, and Fairy types with no bans. At first glance, Registeel + Azumarill and Galarian Stunfisk + Azumarill are the cores to look out for with few corebreakers between them. Overall, Fantasy Cup will likely be a concentrated meta which has an emphasis on mirror matchups. Prepare your sword and shield accordingly!]]>
+			</description>
+			<link>https://pvpoke.com/rankings/fantasy/1500/overall/</link>
+			<pubDate>Fri, 29 Dec 2023 21:28:07 GMT</pubDate>
+		</item>
+		<item>
+			<title>Added Frenzy Plant Decidueye</title>
+			<description>
+				<![CDATA[During Community Day on January 6th, Decidueye will debut with the exclusive move, Frenzy Plant, alongside its signature move, Spirit Shackle. Frenzy Plant will be enough to make Decidueye playable, but it will generally fall behind Trevenant in viability. It does have some advantages with its Grass oriented attacks, which make it better against Normal types and bulky Water types.<br><br>Presently, Spirit Shackle has low enough power that resisted Frenzy Plants are still better. If Spirit Shackle remains as is, Brave Bird is likely to be preferred as the secondary move instead. Time permitting, I'll be looking to post a brief article for Decidueye Community Day soon!]]>
+			</description>
+			<link>https://pvpoke.com/rankings/all/1500/overall/decidueye/</link>
+			<pubDate>Wed, 27 Dec 2023 22:57:09 GMT</pubDate>
+		</item>
+		<item>
+			<title>Top Performers Updated for All Leagues</title>
+			<description>
+				<![CDATA[All three leagues return today, and I've updated the top performers page with data from the past several weeks of training. In Great League, Shadow Dragonair was the star of the show as a corebreaker to popular picks like Lanturn and Talonflame, while Skarmory dropped in performance. Will the meta developments from Play Pokemon tournaments carry over to GO Battle League? If so, expect more Charjabug, Lickitung, and Poliwrath to take the field.]]>
+			</description>
+			<link>https://pvpoke.com/train/analysis/</link>
+			<pubDate>Fri, 22 Dec 2023 16:30:53 GMT</pubDate>
+		</item>
+		<item>
+			<title>Great League Remix Rankings</title>
+			<description>
+				<![CDATA[Great League Remix will be making a return in January! The banlist allows some powerful new picks to slip through the cracks, including Skarmory, Vigoroth, and Swampert. Only a handful of Steel types are in play, so similar to Retro Cup, there is room for Dragon and Ice types to thrive. Happy holidays and happy studying!]]>
+			</description>
+			<link>https://pvpoke.com/rankings/remix/1500/overall/</link>
+			<pubDate>Tue, 19 Dec 2023 01:57:43 GMT</pubDate>
+		</item>
+		<item>
+			<title>Ultra League Top Performers Updated</title>
+			<description>
+				<![CDATA[Ultra League top performers have been updated with early training battle results. Poliwrath is the biggest topic of the new Ultra League, and it's having all of its expected success as an individual performer and on teams. Fire and Water are duking it out among top Pokemon, while Ultra League staples like Giratina and Cresselia continue to remain strong option. More data to come later in the season!]]>
+			</description>
+			<link>https://pvpoke.com/rankings/all/2500/overall/</link>
+			<pubDate>Thu, 14 Dec 2023 02:12:47 GMT</pubDate>
+		</item>
+		<item>
+			<title>Cetitan Rankings, Battle Logic Tweaks</title>
+			<description>
+				<![CDATA[Cetoddle and Cetitan debut soon! These pure Ice types are comparable to Avalugg with high HP instead of Defense, and an overall lower stat product. They're unlikely to see competitive use but are plenty playable and worth holding onto for the future.<br><br>In the latest update, I've also tweaked the simulations to address Skarmory's move usage, particularly Brave Bird against bulky targets like Toxapex or Giratina. Skarmory will now prefer Sky Attack against these opponents, slightly improving its matchups and rankings.]]>
+			</description>
+			<link>https://pvpoke.com/rankings/all/1500/overall/cetitan/</link>
+			<pubDate>Wed, 13 Dec 2023 15:56:35 GMT</pubDate>
+		</item>
+		<item>
+			<title>Retro Cup Top Performers</title>
+			<description>
+				<![CDATA[I've posted top performers from a small sample of Retro Cup training battles and updated the Retro Cup rankings with weightings based on the past week of usage. Top performing teams include fewer Dragons and double-Dragons than I was expecting, and instead highlight Lanturn, Froslass, Jellicent, and bulky Normal types as potential team-building glue. Your mileage may vary.<br><br>High Lanturn, Altaria, and Froslass usage shed light on anti-meta opportunities in the rankings, including Pokemon like Abomasnow or Trevenant. Dragon types will continue to reign supreme in Retro Cup thanks to the absence of resistances, so choose your dragons wisely. Enjoy your battles!]]>
+			</description>
+			<link>https://pvpoke.com/train/analysis/retro/1500/</link>
+			<pubDate>Mon, 11 Dec 2023 23:43:49 GMT</pubDate>
+		</item>
+		<item>
+			<title>Great League Rankings Updated</title>
+			<description>
+				<![CDATA[I've updated the Great League rankings with new weightings based on Pokemon usage in the first week of GO Battle League and usage in the Stuttgart Regional Tournament. This update places more emphasis on matchups against Pokemon like Lanturn, Azumarill, Skarmory, and Talonflame, and factors in a reduced usage of Grass and Dark types. As always, the rankings are just a starting point and a guideline for exploring the meta. Happy studying!]]>
+			</description>
+			<link>https://pvpoke.com/rankings/all/1500/overall/</link>
+			<pubDate>Sun, 10 Dec 2023 16:59:10 GMT</pubDate>
+		</item>
+		<item>
+			<title>Little Holiday Cup Rankings</title>
+			<description>
+				<![CDATA[Holiday Cup will be going fun sized in the Little Cup later this month. At the time of writing, Little Holiday Cup allows all Normal, Grass, Electric, Flying, Ghost, and Ice-type Pokemon at 500 CP or under. With no explicit bans, this would include Smeargle, which has yet to be eligible in a Little Cup format. Smeargle boasts a strong set of potential moves including Lock-On, Incinerate, Flying Press, V-Create, Sacred Sword, and more. This combined with its stat product should make it the dominant Pokemon if it is indeed allowed.<br><br>Beyond Smeargle, several Great League Pokemon such as Vigoroth and Alolan Marowak should make the jump to compete with Little Cup staples like Ducklett, Vulpix, Cottonee, and Litwick. Check out the rankings for more details!]]>
+			</description>
+			<link>https://pvpoke.com/rankings/holiday/500/overall/</link>
+			<pubDate>Sat, 09 Dec 2023 22:45:44 GMT</pubDate>
+		</item>
+		<item>
 			<title>Great League Top Performers Update</title>
 			<description>
 				<![CDATA[Training Analysis has been updated with an early look at the Great League meta! The meta is still developing, and so far some of the obvious suspects top the charts including Lanturn and Skarmory. Talonflame neither overperformed nor underperformed, perhaps thanks to a surge in Lanturn and a developing Dragon anti-meta.<br><br>One big surprise is a plummet in both Sableye usage and performance. Its key target, Medicham, has been nerfed this season, coupled with a buff to Azumarill has spelled trouble for Sableye in the early goings.<br><br>Thanks for your hard practice and good luck through the start of the season!]]>
@@ -58,85 +130,12 @@
 			<link>https://pokemongolive.com/post/go-battle-league-timeless-travels?hl=en</link>
 			<pubDate>Tue, 28 Nov 2023 14:19:54 GMT</pubDate>
 		</item>
-		<item>
-			<title>Top Performers Updated for All Leagues</title>
-			<description>
-				<![CDATA[With just over a week in the season to go, I've updated the top performers lists for all three leagues. Check them out if you need some Pokemon or team ideas to cross the finish line! This will likely be my last update for the season, so catch you on December 1st for the new season updates. Good luck!]]>
-			</description>
-			<link>https://pvpoke.com/train/analysis/</link>
-			<pubDate>Wed, 22 Nov 2023 17:31:40 GMT</pubDate>
-		</item>
-		<item>
-			<title>Catch Cup Rankings</title>
-			<description>
-				<![CDATA[Catch Cup rankings are now available! These rankings include most Great League Pokemon and are scored against the most used Pokemon in Catch Cup so far, including Clodsire, Quagsire, and Gligar. Special thanks to GOBattleLog for the usage data!]]>
-			</description>
-			<link>https://pvpoke.com/rankings/catch/1500/overall/</link>
-			<pubDate>Sat, 18 Nov 2023 14:22:28 GMT</pubDate>
-		</item>
-		<item>
-			<title>Ultra League Top Performers Updated</title>
-			<description>
-				<![CDATA[Ultra League top performers have been updated with the past month of training data. Golisopod has continued to prove its part in the meta, and top teams are showing variety with Cresselia and Steelix as common anchors in the back. Take a look!]]>
-			</description>
-			<link>https://pvpoke.com/train/analysis/all/2500/</link>
-			<pubDate>Mon, 13 Nov 2023 18:56:10 GMT</pubDate>
-		</item>
-		<item>
-			<title>Site Update 1.31.0 - RSS News Feed</title>
-			<description>
-				<![CDATA[Site updates will now appear in a news feed on the homepage! I've previously posted these updates to Twitter, but as Twitter has become less accessible, I've been looking to make them available on the website itself. Subscribe with any RSS reader to stay updated on new rankings, top performer teams, and other site updates!]]>
-			</description>
-			<link>https://pvpoke.com/#news</link>
-			<pubDate>Sun, 12 Nov 2023 15:33:09 GMT</pubDate>
-		</item>
+
 		<title>PvPoke</title>
 		<link>https://pvpoke.com/</link>
 		<description>
 			<![CDATA[Website updates for PvPoke.com and other news for Pokemon GO PvP.]]>
 		</description>
-
-		<item>
-			<title>Mega Garchomp Added</title>
-			<description>
-				<![CDATA[Mega Garchomp has been added to the main site! It boasts incredible stats, but lives in Rayquaza's shadow, and has tough moveset choices to make. Happy raiding!]]>
-			</description>
-			<link>https://pvpoke.com/battle/multi/10000/custom/garchomp_mega/11/0-2-5/2-1/mastermega/</link>
-			<pubDate>Thu, 9 Nov 2023 14:48:47 GMT</pubDate>
-		</item>
-		<item>
-			<title>Great League Top Performers Update</title>
-			<description>
-				<![CDATA[Coming at you with a mid-week top performer update featuring Clodsire! Mud Shot has an early lead over Poison Sting, but overall, multiple movesets look viable. Dewgong and Jellicent stand to gain if Clodsire hangs around (and Regi doesn't).]]>
-			</description>
-			<link>https://pvpoke.com/train/analysis/</link>
-			<pubDate>Wed, 8 Nov 2023 14:53:57 GMT</pubDate>
-		</item>
-		<item>
-			<title>Bellibolt Rankings</title>
-			<description>
-				<![CDATA[Bellibolt has been added to the rankings. It's bulkier than most Electric types with play in both Great and Ultra League. Unfortunately it lacks any coverage, so it will be hindered until a future update. Few can say that Bellibolt doesn't spark joy, though!]]>
-			</description>
-			<link>https://pvpoke.com/rankings/all/2500/overall/bellibolt/</link>
-			<pubDate>Mon, 6 Nov 2023 14:56:13 GMT</pubDate>
-		</item>
-		<item>
-			<title>Great League Top Performers Update</title>
-			<description>
-				<![CDATA[I've updated top performers with data from the past few weeks of Great League training. With Medicham, Sableye, Lickitung, and Serperior all solidifying their places in the meta, Noctowl showed strong anti-meta potential. Good luck in your battles!]]>
-			</description>
-			<link>https://pvpoke.com/train/analysis/</link>
-			<pubDate>Fri, 3 Nov 2023 14:57:29 GMT</pubDate>
-		</item>
-		<item>
-			<title>Wooper Community Day PvP Guide</title>
-			<description>
-				<![CDATA[A PvP guide for Wooper Community Day is now available! Both evolutions are excellent additions for your roster. I've included some specialized IV spreads for the Clodsire mirror matchup, and a Quagsire spread that's more consistent
-				against Gligar. Have fun!]]>
-			</description>
-			<link>https://pvpoke.com/articles/community-day/23-11-wooper/</link>
-			<pubDate>Thu, 2 Nov 2023 14:58:56 GMT</pubDate>
-		</item>
 
 	</channel>
 </rss>
