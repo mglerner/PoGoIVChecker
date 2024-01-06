@@ -59,12 +59,16 @@ switch($cup){
 		$league = 'Retro Cup';
 		break;
 
-	case "electric":
-		$league = 'Electric Cup';
+	case "fantasy":
+		$league = 'Fantasy Cup';
 		break;
 
 	case "holiday":
 		$league = 'Holiday Cup';
+		break;
+
+	case "knockout":
+		$league = 'Devon Knockout Cup';
 		break;
 
 	case "catch":
@@ -79,12 +83,16 @@ switch($cup){
 		$league = 'Mega Master League';
 		break;
 
-	case "aurora":
-		$league = 'Battle Frontier (Aurora Cup)';
+	case "enchanted":
+		$league = 'Battle Frontier (Enchanted)';
 		break;
 
-	case "savannah":
-		$league = 'Battle Frontier (Savannah Cup)';
+	case "primordial":
+		$league = 'Battle Frontier (Primordial)';
+		break;
+
+	case "serene":
+		$league = 'Battle Frontier (Serene)';
 		break;
 
 	case "gbinvitational":
