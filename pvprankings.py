@@ -64,7 +64,10 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Froakie','Frogadier','Greninja'],
         ['Wooloo','Dubwool'],
         ['Wooper','Quagsire'],
-        ['Wooper (Paldea)','Clodsire']
+        ['Wooper (Paldea)','Clodsire'],
+        ['Grubbin','Charjabug'],
+        ['Grubbin','Charjabug','Vikavolt'],
+        ['Snorunt','Froslass'],
         )
 
 
@@ -175,7 +178,44 @@ def get_cpm(level):
         }
     return d[level]
 
-def ivs_to_stats(my_a, my_d, my_s, my_level,*,mon, max_level=40,max_cp=1500.99, 
+
+OVERALL_RANK = {
+    'statprod': {},
+    'bulkprod': {},
+    }
+    
+def add_to_rank(mon,max_level=40,max_cp=1500.99):
+    if mon not in OVERALL_RANK['statprod']:
+        OVERALL_RANK['statprod'][mon] = {}
+    if mon not in OVERALL_RANK['bulkprod']:
+        OVERALL_RANK['bulkprod'][mon] = {}
+    stat = []
+    bulk = []
+    for atk in range(16):
+        for defense in range(16):
+            for hp in range(16):
+                stats = ivs_to_stats(atk,defense,hp,
+                                         my_level=10,# Just make it up since we're just ranking.
+                                         mon=mon,max_level=max_level,max_cp=max_cp,
+                                         rankby=None)
+                level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod, bogus_rank = stats
+                stat.append((stat_prod, (atk, defense, hp)))
+                bulk.append((bulk_prod, (atk, defense, hp)))
+    stat.sort(reverse=True)
+    bulk.sort(reverse=True)
+    for (i,(stat_prod, (atk, defense, hp))) in enumerate(stat,start=1):
+        OVERALL_RANK['statprod'][mon][(atk,defense,hp)] = i
+    for (i,(bulk_prod, (atk, defense, hp))) in enumerate(bulk,start=1):
+        OVERALL_RANK['bulkprod'][mon][(atk,defense,hp)] = i
+
+    # Now just debugging
+    if 1:
+        for i in range(1,11):
+            print(f"The rank {i} {mon} at max_level {max_level} is {stat[i-1]}")
+                            
+def ivs_to_stats(my_a, my_d, my_s, my_level,*,mon,
+                     max_level=40,max_cp=1500.99,
+                     rankby='statprod', # can be None, statprod, or bulkprod. If it's None, we're probably calculating ranks.
                  ):
     """convert ivs to stat. what a mess.
 
@@ -194,8 +234,16 @@ def ivs_to_stats(my_a, my_d, my_s, my_level,*,mon, max_level=40,max_cp=1500.99,
     stamina = my_s + base_stamina
     level = my_level#10
     cp = 10
+
+    if rankby is None:
+        rank = None
+    else:
+        if mon not in OVERALL_RANK[rankby]:
+            add_to_rank(mon,max_level=max_level,max_cp=max_cp)
+        rank = OVERALL_RANK[rankby][mon][(my_a,my_d,my_s)]
+    
     level_attack, level_defense, level_stamina, stat_prod, bulk_prod = 0,0,0,0,0
-    stats = (level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod)
+    stats = (level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod, rank)
     while level <= max_level:
         cpm = get_cpm(level)
         cp = (attack * defense**0.5 * stamina**0.5 * cpm**2) / 10
@@ -206,9 +254,9 @@ def ivs_to_stats(my_a, my_d, my_s, my_level,*,mon, max_level=40,max_cp=1500.99,
             stat_prod = math.floor(level_attack*level_defense*math.floor(level_stamina))
             bulk_prod = math.floor(level_defense*math.floor(level_stamina))
             #stat_prod = math.floor(level_attack*level_defense*level_stamina)
-            stats = level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod
+            stats = level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod, rank
         level = level + 0.5
-    level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod  = stats
+    level, cp, level_attack, level_defense, level_stamina, stat_prod, bulk_prod, rank  = stats
     #print(f'{level_attack}, {level_defense}, {level_stamina}, {level_attack*level_defense*level_stamina}')
     return stats
     #print(f'level {level} cp {cp:.0f} attack {level_attack:.1f} defense {level_defense:.1f} stamina {level_stamina:.0f}')
@@ -987,30 +1035,77 @@ Carbink slayer notes
         },
 
     'Clodsire':{
-        'article':'',
+        'article':'https://gamepress.gg/pokemongo/clodsire-pvp-iv-deep-dive',
         'videos':('',),
         'extrainfo':'''
 ''',
         'Great':{
-            'Blk1':{'attack':0,'defense':119.42,'hp':212},
+            'Blk1':{'attack':0,'defense':119.51,'hp':212},
             'Blk2':{'attack':0,'defense':121.23,'hp':210},
             'Atk':{'attack':96.5,'defense':117,'hp':199},
+            'all20':{'attack':0,'defense':0,'hp':0,'onlytop':20}
             },
         },
         
-    'Bogus':{
+    'Charjabug':{
         'article':'',
         'videos':('',),
         'extrainfo':'''
+        Here's a slight CMP list that covers the aforementioned losses (atk is cut at Umbreon BP) https://pvpivs.com/?mon=Charjabug&r=11&cp=1500&mA=114.51&mD=136.09&mHP=124&dec=2
 ''',
         'Great':{
-            '':{'attack':102.97,'defense':149.02,'hp':139},
+            'Mirror Slayerish':{'attack':116.27,'defense':136.09,'hp':120},
+            'Mirror Slayerish slight CMP want rank 194 or better':{'attack':114.51,'defense':136.09,'hp':124},
+            'all':{'attack':0,'defense':0,'hp':0},
             },
         'Ultra':{
             '':{'attack':102.97,'defense':149.02,'hp':139},
             },
         },
         
+    'Froslass':{
+        'article':'https://gamepress.gg/pokemongo/froslass-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+        Premium CMP 121.6 Atk, 113 Def, 131 HP
+
+    Rank 8 is likely the “best”
+    HP > Atk > Def for tiebreakers
+
+General Bulk 113 Def, 131 HP
+
+    Same list, but without the Atk weights restricting higher SP
+    Ranks 6 & 7 are probably fine, but that HP hit isn’t “high bulk” quality
+
+Higher Atk 123.12 Atk, 113 Def, 127 HP
+
+    This list thins bulk out to the limit while pushing for CMP
+    Probably better in Froslass dominant metas rather than Open GL
+
+''',
+        'Great':{
+            'Premium CMP 121.6 Atk, 113 Def, 131 HP':{'attack':121.6,'defense':113,'hp':131},
+            'General Bulk 113 Def, 131 HP':{'attack':0,'defense':113,'hp':131},
+            'Higher Atk 123.12 Atk, 113 Def, 127 HP':{'attack':123.12,'defense':113,'hp':127},
+            },
+        #'Ultra':{
+            #'':{'attack':0,'defense':0,'hp':0},
+            #},
+        },
+
+    'Bogus':{
+        'article':'',
+        'videos':('',),
+        'extrainfo':'''
+''',
+        'Great':{
+            '':{'attack':0,'defense':0,'hp':0},
+            },
+        'Ultra':{
+            '':{'attack':0,'defense':0,'hp':0},
+            },
+        },
+
 
     }
 
@@ -1070,12 +1165,14 @@ def display_rs_info(df,mon):
         
 def get_max_stats(df, mon, max_level, max_cp):
     # Great League, allowing XL, allowing best buddy
-    d = {'CP':[],'max CP':[],'level':[],'attack':[],'defense':[],'stamina':[],'a':[],'d':[],'s':[],'statprod':[],'blkprod':[]}
+    rankstr = f'rank{max_level}'
+    d = {'CP':[],'max CP':[],'level':[],'attack':[],'defense':[],'stamina':[],'a':[],'d':[],'s':[],'statprod':[],'blkprod':[],rankstr:[]}
     for row in df.iterrows():
         i,s = row
         orig_cp, my_a, my_d, my_s, my_level = s.CP, s['Atk IV'], s['Def IV'], s['Sta IV'], s['Level Min']
-        level, cp, attack, defense, stamina, stat_prod ,bulk_prod= ivs_to_stats(my_a, my_d, my_s,my_level = my_level,
-                                                                          max_level=max_level,max_cp=max_cp,mon=mon)
+        level, cp, attack, defense, stamina, stat_prod, bulk_prod, rank= ivs_to_stats(my_a, my_d, my_s,my_level = my_level,
+                                                                            max_level=max_level,max_cp=max_cp,mon=mon,
+                                                                                          rankby='statprod')
         #print('orig_cp',orig_cp,'my_a',my_a)
         d['CP'].append(orig_cp)
         d['max CP'].append(int(np.floor(cp)))
@@ -1088,5 +1185,6 @@ def get_max_stats(df, mon, max_level, max_cp):
         d['s'].append(my_s)
         d['statprod'].append(stat_prod)
         d['blkprod'].append(bulk_prod)
+        d[rankstr].append(rank)
     mine = pd.DataFrame.from_dict(d)
     return mine
