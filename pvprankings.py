@@ -68,6 +68,7 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Grubbin','Charjabug'],
         ['Grubbin','Charjabug','Vikavolt'],
         ['Snorunt','Froslass'],
+        ['Rowlet','Dartrix','Decidueye'],
         )
 
 
@@ -1093,6 +1094,75 @@ Higher Atk 123.12 Atk, 113 Def, 127 HP
             #},
         },
 
+    'Decidueye':{
+        'article':'',
+        'videos':('',),
+        'extrainfo':'''
+        
+
+ * General Good - All Fast Moves (115.29 Def, 118 HP)
+
+    * Note: may bring Def down to 113.7 for 120 HP (extra list)
+
+ * Astonish - General Good (115.52 Def, 118 HP)
+
+    * 127.61 Atk for Trevenant CMP, Gligar 2-1 and Artibax 2-1 potential
+
+        * 127.84 Atk for Lickitung 1-0 potential (FP) and Emolga CMP
+
+    * ">" 116 Def for Shadow Dragonair 0-0, 1-1, and 2-1 potential
+
+        * Note: 0/15/10 may 1-1 Vigoroth
+
+    * 119-120 HP for Cresselia 2-2 consistency (FP BB)
+
+    * 120 HP for Trevenant 2-1 potential (no BB), Lickitung 1-0 potential (FP), and Sableye 2-1 consistency
+
+        * Note: may bring Def down to 113.7 for 120 HP (extra list)
+
+ * Leafage - Slight Atk Weight (127.61 Atk, 115.29 Def, 118 HP)
+
+    * 119 HP Shadow Poliwrath 1-2 potential
+
+        * Tie or win, Shadow Poliwrath IVs depending
+
+    * Highlight: 113.7 Def w/ 121 HP may 2-1 Bronzong and have greater Shadow Poliwrath 1-2 potential
+
+        * 1/9/15 (Rank 9) > 0/10/15 (Rank 8) but both are great
+
+    * Highlight: 116.71+ Def may 1-0 and 2-1 Shadow Dragonair and 2-2 Sir Fetch'd
+
+        * 0/14/11 (Rank 1) for general use, 0/15/10 (Rank 7) has more Def but 1 less HP
+
+''',
+        'Great':{
+            'General Good - All Fast Moves':{'attack':0,'defense':115.29,'hp':118},
+            'General Good - All Fast Moves low def high hp':{'attack':0,'defense':113.7,'hp':120},
+            'Astonish':{'attack':0,'defense':115.52,'hp':118},
+            'Astonish high atk':{'attack':127.61,'defense':115.52,'hp':118},
+            'Astonish high def':{'attack':0,'defense':116,'hp':118},
+            'Astonish high hp':{'attack':0,'defense':113.7,'hp':120},
+            'Leafage - Slight atk':{'attack':127.61,'defense':115.29,'hp':118},
+            'Leafage - Slight atk - s-poli':{'attack':127.61,'defense':115.29,'hp':119},
+            'Leafage - Slight atk - zong/poli':{'attack':127.61,'defense':113.7,'hp':118},
+            'Leafage - Slight atk - s-dnair, sirfetch':{'attack':127.61,'defense':116.71,'hp':118},
+            },
+        },
+
+    'Lanturn':{
+        'article':'https://gamepress.gg/pokemongo/pvp-iv-deep-dive-lanturn',
+        'videos':('',),
+        'extrainfo':'''
+''',
+        'Great':{
+            'General Bulk (take the one with highest def)':{'attack':0,'defense':105.5,'hp':196},
+            'Premium Bulk/Def focus':{'attack':0,'defense':106.04,'hp':192},
+            },
+        'Ultra':{
+            '':{'attack':0,'defense':0,'hp':0},
+            },
+        },
+
     'Bogus':{
         'article':'',
         'videos':('',),
@@ -1105,7 +1175,6 @@ Higher Atk 123.12 Atk, 113 Def, 127 HP
             '':{'attack':0,'defense':0,'hp':0},
             },
         },
-
 
     }
 
