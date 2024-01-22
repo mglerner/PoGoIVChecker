@@ -64,7 +64,7 @@
         "include": [],
         "exclude": [{
             "filterType": "id",
-            "values": ["gengar_mega", "swampert_mega", "gardevoir_mega", "latios_mega", "latias_mega", "charizard_mega_y", "gyarados_mega", "groudon_primal", "kyogre_primal", "zygarde_complete", "rayquaza_mega", "garchomp_mega", "tyranitar_mega"]
+            "values": ["gengar_mega", "swampert_mega", "gardevoir_mega", "latios_mega", "latias_mega", "charizard_mega_y", "gyarados_mega", "groudon_primal", "kyogre_primal", "zygarde_complete", "rayquaza_mega", "garchomp_mega", "tyranitar_mega", "palkia_origin", "dialga_origin"]
         }],
         "tierRules": {
             "max": 8,
@@ -184,6 +184,16 @@
         }],
         "partySize": 3,
         "presetOnly": true
+    }, {
+        "name": "hisui",
+        "title": "Hisui Cup",
+        "include": [{
+            "filterType": "id",
+            "values": ["rowlet", "dartrix", "decidueye_hisuian", "cyndaquil", "quilava", "typhlosion_hisuian", "oshawott", "dewott", "samurott_hisuian", "bidoof", "bibarel", "starly", "staravia", "staraptor", "shinx", "luxio", "luxray", "wurmple", "silcoon", "beautifly", "cascoon", "dustox", "ponyta", "rapidash", "eevee", "vaporeon", "jolteon", "flareon", "espeon", "umbreon", "leafeon", "glaceon", "sylveon", "zubat", "golbat", "crobat", "drifloon", "drifblim", "kricketot", "kricketune", "buizel", "floatzel", "burmy_plant", "burmy_sandy", "burmy_trash", "wormadam_plant", "wormadam_sandy", "wormadam_trash", "mothim", "geodude", "graveler", "golem", "stantler", "wyrdeer", "munchlax", "snorlax", "paras", "parasect", "pichu", "pikachu", "raichu", "abra", "kadabra", "alakazam", "chimchar", "monferno", "infernape", "buneary", "lopunny", "cherubi", "cherrim_sunny", "cherrim_overcast", "psyduck", "golduck", "combee", "vespiquen", "scyther", "kleavor", "scizor", "heracross", "mime_jr", "mr_mime", "aipom", "ambipom", "magikarp", "gyarados", "shellos", "gastrodon", "qwilfish", "overqwil", "happiny", "chansey", "blissey", "budew", "roselia", "roserade", "carnivine", "petilil", "lilligant", "tangela", "tangrowth", "barboach", "whiscash", "croagunk", "toxicroak", "ralts", "kirlia", "gardevoir", "gallade", "yanma", "yanmega", "hippopotas", "hippowdon", "pachirisu", "stunky", "skuntank", "teddiursa", "ursaring", "ursaluna", "goomy", "sliggoo_hisuian", "goodra_hisuian", "basculegion", "onix", "steelix", "rhyhorn", "rhydon", "rhyperior", "bonsly", "sudowoodo", "lickitung", "lickilicky", "togepi", "togetic", "togekiss", "turtwig", "grotle", "torterra", "porygon", "porygon2", "porygon_z", "gastly", "haunter", "gengar", "spiritomb", "murkrow", "honchkrow", "unown", "spheal", "sealeo", "walrein", "remoraid", "octillery", "skorupi", "drapion", "growlithe_hisuian", "arcanine_hisuian", "glameow", "purugly", "machop", "machoke", "machamp", "chatot", "duskull", "dusknoir", "dusclops", "piplup", "empoleon", "prinplup", "mantyke", "mantine", "basculin", "vulpix", "ninetales", "tentacool", "tentacruel", "finneon", "lumineon", "magby", "magmar", "magmortar", "magnemite", "magneton", "magnezone", "bronzor", "bronzong", "elekid", "electabuzz", "electivire", "gligar", "gliscor", "gible", "gabite", "garchomp", "nosepass", "probopass", "voltorb_hisuian", "electrode_hisuian", "rotom", "rotom_fan", "rotom_frost", "rotom_mow", "rotom_heat", "rotom_wash", "chingling", "chimecho", "misdreavus", "mismagius", "cleffa", "clefairy", "clefable", "sneasel_hisuian", "sneasler", "weavile", "snorunt", "glalie", "froslass", "cranidos", "rampardos", "shieldon", "bastiodon", "swinub", "piloswine", "mamoswine", "bergmite", "avalugg", "snover", "abomasnow", "zorua_hisuian", "zoroark_hisuian", "rufflet", "braviary_hisuian", "riolu", "lucario", "uxie", "mesprit", "azelf", "heatran", "regigigas", "cresselia", "tornadus_incarnate", "tornadus_therian", "thundurus_incarnate", "thundurus_therian", "landorus_incarnate", "landorus_therian", "enamorus_therian", "enamorus_incarnate", "dialga", "dialga_origin", "palkia", "palkia_origin", "giratina_altered", "giratina_origin", "arceus", "phione", "manaphy", "shaymin_land", "shaymin_sky", "darkrai"],
+            "includeShadows": true
+        }],
+        "exclude": [],
+        "overrides": []
     }, {
         "name": "holiday",
         "title": "Holiday Cup",
@@ -365,22 +375,6 @@
         "showFormat": false,
         "showMeta": true
     }, {
-        "title": "Little Holiday Cup",
-        "cup": "holiday",
-        "cp": 500,
-        "meta": "littleholiday",
-        "showCup": true,
-        "showFormat": true,
-        "showMeta": true
-    }, {
-        "title": "Great League Remix",
-        "cup": "remix",
-        "cp": 1500,
-        "meta": "remix",
-        "showCup": true,
-        "showFormat": true,
-        "showMeta": true
-    }, {
         "title": "Fantasy Cup",
         "cup": "fantasy",
         "cp": 1500,
@@ -389,10 +383,10 @@
         "showFormat": true,
         "showMeta": true
     }, {
-        "title": "Gymbreakers Invitational",
-        "cup": "gbinvitational",
+        "title": "Hisui Cup",
+        "cup": "hisui",
         "cp": 1500,
-        "meta": "gbinvitational",
+        "meta": "hisui",
         "showCup": true,
         "showFormat": true,
         "showMeta": true
@@ -444,8 +438,7 @@
         "meta": "battlefrontiermaster",
         "showCup": true,
         "showFormat": true,
-        "showMeta": true,
-        "hideRankings": true
+        "showMeta": true
     }, {
         "title": "Devon Knockout Cup",
         "cup": "knockout",
@@ -9313,7 +9306,7 @@
         "levelFloor": 20,
         "buddyDistance": 3,
         "thirdMoveCost": 10000,
-        "released": false,
+        "released": true,
         "family": {
             "id": "FAMILY_CYNDAQUIL",
             "parent": "quilava"
@@ -28051,7 +28044,8 @@
         },
         "types": ["flying", "none"],
         "fastMoves": ["ASTONISH", "GUST"],
-        "chargedMoves": ["HEAT_WAVE", "PSYCHIC", "FOCUS_BLAST", "HURRICANE"],
+        "chargedMoves": ["HEAT_WAVE", "PSYCHIC", "FOCUS_BLAST", "HURRICANE", "BLEAKWIND_STORM"],
+        "eliteMoves": ["BLEAKWIND_STORM"],
         "defaultIVs": {
             "cp500": [6, 6, 12, 9],
             "cp1500": [17.5, 4, 7, 13],
@@ -28093,7 +28087,8 @@
         },
         "types": ["electric", "flying"],
         "fastMoves": ["BITE", "VOLT_SWITCH"],
-        "chargedMoves": ["SLUDGE_WAVE", "THUNDER", "FOCUS_BLAST", "THUNDERBOLT"],
+        "chargedMoves": ["SLUDGE_WAVE", "THUNDER", "FOCUS_BLAST", "THUNDERBOLT", "WILDBOLT_STORM"],
+        "eliteMoves": ["WILDBOLT_STORM"],
         "defaultIVs": {
             "cp500": [5, 15, 14, 12],
             "cp1500": [15, 6, 12, 12],
@@ -33001,8 +32996,8 @@
             "hp": 167
         },
         "types": ["poison", "none"],
-        "fastMoves": ["STRUGGLE"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["POISON_JAB", "PECK"],
+        "chargedMoves": ["SLUDGE_BOMB", "SLUDGE_WAVE", "FELL_STINGER"],
         "defaultIVs": {
             "cp500": [11.5, 6, 14, 10],
             "cp1500": [39.5, 4, 13, 13],
@@ -33026,8 +33021,8 @@
             "hp": 177
         },
         "types": ["poison", "dragon"],
-        "fastMoves": ["STRUGGLE"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["POISON_JAB", "AIR_SLASH"],
+        "chargedMoves": ["SLUDGE_BOMB", "ACROBATICS", "FELL_STINGER", "DRAGON_PULSE"],
         "defaultIVs": {
             "cp500": [6, 5, 12, 15],
             "cp1500": [17.5, 4, 15, 9],
@@ -33051,8 +33046,8 @@
             "hp": 156
         },
         "types": ["rock", "steel"],
-        "fastMoves": ["STRUGGLE"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["ROCK_THROW", "TAKE_DOWN"],
+        "chargedMoves": ["FLASH_CANNON", "STONE_EDGE", "BULLDOZE"],
         "defaultIVs": {
             "cp500": [6, 4, 13, 5],
             "cp1500": [16.5, 7, 15, 15],
@@ -33072,8 +33067,8 @@
             "hp": 142
         },
         "types": ["fire", "ghost"],
-        "fastMoves": ["STRUGGLE"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["INCINERATE", "ASTONISH"],
+        "chargedMoves": ["MYSTICAL_FIRE", "SHADOW_BALL", "OVERHEAT"],
         "defaultIVs": {
             "cp500": [5.5, 15, 14, 15],
             "cp1500": [16.5, 6, 15, 12],
@@ -33093,8 +33088,8 @@
             "hp": 204
         },
         "types": ["electric", "none"],
-        "fastMoves": ["STRUGGLE"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["SPARK", "VOLT_SWITCH"],
+        "chargedMoves": ["THUNDER_PUNCH", "DISCHARGE", "WILD_CHARGE"],
         "defaultIVs": {
             "cp500": [5.5, 12, 10, 15],
             "cp1500": [16, 5, 15, 12],
@@ -37882,7 +37877,7 @@
         },
         "types": ["fighting", "ghost"],
         "fastMoves": ["LOW_KICK", "COUNTER"],
-        "chargedMoves": ["CLOSE_COMBAT", "LOW_SWEEP", "NIGHT_SLASH", "ICE_PUNCH"],
+        "chargedMoves": ["CLOSE_COMBAT", "LOW_SWEEP", "NIGHT_SLASH", "ICE_PUNCH", "SHADOW_BALL"],
         "defaultIVs": {
             "cp500": [6, 4, 4, 15],
             "cp1500": [17, 5, 15, 8],
@@ -37890,7 +37885,7 @@
         },
         "buddyDistance": 3,
         "thirdMoveCost": 50000,
-        "released": false,
+        "released": true,
         "family": {
             "id": "FAMILY_MANKEY",
             "parent": "primeape"
@@ -38404,16 +38399,16 @@
         }
     }, {
         "dex": 1001,
-        "speciesName": "Wochien",
-        "speciesId": "wochien",
+        "speciesName": "Wo-Chien",
+        "speciesId": "wo_chien",
         "baseStats": {
             "atk": 186,
             "def": 242,
             "hp": 198
         },
         "types": ["dark", "grass"],
-        "fastMoves": ["SPLASH"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["MAGICAL_LEAF", "SNARL"],
+        "chargedMoves": ["DARK_PULSE", "GRASS_KNOT", "LEAF_STORM"],
         "defaultIVs": {
             "cp500": [6.5, 7, 9, 14],
             "cp1500": [19, 4, 14, 12],
@@ -38424,16 +38419,16 @@
         "released": false
     }, {
         "dex": 1002,
-        "speciesName": "Chienpao",
-        "speciesId": "chienpao",
+        "speciesName": "Chien-Pao",
+        "speciesId": "chien_pao",
         "baseStats": {
             "atk": 261,
             "def": 167,
             "hp": 190
         },
         "types": ["dark", "ice"],
-        "fastMoves": ["SPLASH"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["POWDER_SNOW", "SNARL"],
+        "chargedMoves": ["DARK_PULSE", "AVALANCHE", "BLIZZARD"],
         "defaultIVs": {
             "cp500": [6, 4, 4, 6],
             "cp1500": [16.5, 5, 14, 12],
@@ -38444,16 +38439,16 @@
         "released": false
     }, {
         "dex": 1003,
-        "speciesName": "Tinglu",
-        "speciesId": "tinglu",
+        "speciesName": "Ting-Lu",
+        "speciesId": "ting_lu",
         "baseStats": {
             "atk": 194,
             "def": 203,
             "hp": 321
         },
         "types": ["dark", "ground"],
-        "fastMoves": ["SPLASH"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["MUD_SHOT", "SNARL"],
+        "chargedMoves": ["DARK_PULSE", "BULLDOZE", "EARTHQUAKE"],
         "defaultIVs": {
             "cp500": [5.5, 6, 15, 7],
             "cp1500": [16, 4, 6, 15],
@@ -38464,16 +38459,16 @@
         "released": false
     }, {
         "dex": 1004,
-        "speciesName": "Chiyu",
-        "speciesId": "chiyu",
+        "speciesName": "Chi-Yu",
+        "speciesId": "chi_yu",
         "baseStats": {
             "atk": 269,
             "def": 221,
             "hp": 146
         },
         "types": ["dark", "fire"],
-        "fastMoves": ["SPLASH"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["INCINERATE", "SNARL"],
+        "chargedMoves": ["FLAME_CHARGE", "DARK_PULSE", "FLAME_WHEEL"],
         "defaultIVs": {
             "cp500": [5.5, 7, 15, 13],
             "cp1500": [16, 6, 13, 10],
@@ -38532,8 +38527,8 @@
             "hp": 205
         },
         "types": ["fighting", "dragon"],
-        "fastMoves": ["SPLASH"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["ROCK_SMASH", "DRAGON_TAIL"],
+        "chargedMoves": ["GIGA_IMPACT", "DRAGON_CLAW", "CLOSE_COMBAT", "OUTRAGE"],
         "defaultIVs": {
             "cp500": [5, 5, 9, 7],
             "cp1500": [14, 5, 10, 10],
@@ -38552,8 +38547,8 @@
             "hp": 205
         },
         "types": ["fighting", "dragon"],
-        "fastMoves": ["SPLASH"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["ROCK_SMASH", "DRAGON_TAIL"],
+        "chargedMoves": ["GIGA_IMPACT", "DRAGON_CLAW", "CLOSE_COMBAT", "OUTRAGE"],
         "defaultIVs": {
             "cp500": [5, 5, 9, 7],
             "cp1500": [14, 5, 10, 10],
@@ -38572,8 +38567,8 @@
             "hp": 205
         },
         "types": ["electric", "dragon"],
-        "fastMoves": ["SPLASH"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["THUNDER_SHOCK", "DRAGON_TAIL"],
+        "chargedMoves": ["HYPER_BEAM", "DRAGON_PULSE", "THUNDER", "OUTRAGE"],
         "defaultIVs": {
             "cp500": [5, 5, 9, 7],
             "cp1500": [14, 5, 10, 10],
@@ -38592,8 +38587,8 @@
             "hp": 205
         },
         "types": ["electric", "dragon"],
-        "fastMoves": ["SPLASH"],
-        "chargedMoves": ["STRUGGLE"],
+        "fastMoves": ["THUNDER_SHOCK", "DRAGON_TAIL"],
+        "chargedMoves": ["HYPER_BEAM", "DRAGON_PULSE", "THUNDER", "OUTRAGE"],
         "defaultIVs": {
             "cp500": [5, 5, 9, 7],
             "cp1500": [14, 5, 10, 10],
