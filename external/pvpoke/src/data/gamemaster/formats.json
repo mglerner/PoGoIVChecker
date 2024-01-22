@@ -46,24 +46,6 @@
 		"showMeta": true
 	},
 	{
-		"title": "Little Holiday Cup",
-		"cup": "holiday",
-		"cp": 500,
-		"meta": "littleholiday",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
-		"title": "Great League Remix",
-		"cup": "remix",
-		"cp": 1500,
-		"meta": "remix",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
 		"title": "Fantasy Cup",
 		"cup": "fantasy",
 		"cp": 1500,
@@ -73,10 +55,10 @@
 		"showMeta": true
 	},
 	{
-		"title": "Gymbreakers Invitational",
-		"cup": "gbinvitational",
+		"title": "Hisui Cup",
+		"cup": "hisui",
 		"cp": 1500,
-		"meta": "gbinvitational",
+		"meta": "hisui",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
@@ -134,8 +116,7 @@
 		"meta": "battlefrontiermaster",
 		"showCup": true,
 		"showFormat": true,
-		"showMeta": true,
-		"hideRankings": true
+		"showMeta": true
 	},
 	{
         "title": "Devon Knockout Cup",
