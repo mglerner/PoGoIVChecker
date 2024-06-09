@@ -27,7 +27,7 @@ function PokeSelect(element, i){
 
 	var ivCombinationCount = 4096;
 
-	this.init = function(pokes, b){
+	this.init = function(pokes, b, filterData){
 		pokemon = pokes;
 		battle = b;
 
@@ -35,6 +35,12 @@ function PokeSelect(element, i){
 
 			if(poke.tags && poke.tags.indexOf("duplicate") > -1 && context != "modaloverrides"){
 				return;
+			}
+
+			if(filterData){
+				if(filterData.filter(p => p.speciesId == poke.speciesId).length == 0){
+					return;
+				}
 			}
 
 			var priority = 1;
@@ -66,11 +72,15 @@ function PokeSelect(element, i){
 
 		$el.find(".check.auto-level").addClass("on");
 		$el.find(".poke-search").val("");
+		$el.attr("context", context);
 
 		searchArr.sort((a,b) => (a.priority > b.priority) ? -1 : ((b.priority > a.priority) ? 1 : 0));
 
 		interface = InterfaceMaster.getInstance();
-		pokebox = new Pokebox($el.find(".pokebox"), self, "single", b);
+
+		if(typeof Pokebox === 'function'){
+			pokebox = new Pokebox($el.find(".pokebox"), self, "single", b);
+		}
 
 		self.clear();
 	}
@@ -151,6 +161,12 @@ function PokeSelect(element, i){
 				$el.find(".check.optimize-timing").addClass("on");
 			} else{
 				$el.find(".check.optimize-timing").removeClass("on");
+			}
+
+			if(selectedPokemon.startCooldown == 1000){
+				$el.find(".check.switch-delay").addClass("on");
+			} else{
+				$el.find(".check.switch-delay").removeClass("on");
 			}
 
 			if($el.find("input.level:focus, input.iv:focus").length == 0){
@@ -611,6 +627,7 @@ function PokeSelect(element, i){
 		$el.find(".move-select").html('');
 		$el.find(".starting-health").val(selectedPokemon.stats.hp);
 		$el.find(".check.optimize-timing").removeClass("on");
+		$el.find(".check.switch-delay").removeClass("on");
 		$el.find(".check.priority").removeClass("on");
 		$el.find(".check.negate-fast-moves").addClass("on");
 		$el.find(".hp .bar.damage").hide();
@@ -750,6 +767,14 @@ function PokeSelect(element, i){
 
 	this.resetShields = function(){
 		$el.find(".shield-picker .option.on").trigger("click");
+	}
+
+	// Remove specific Pokemon from the selectable list
+	this.removePokemonFromOptions = function(pokemonList){
+		for(var i = 0; i < pokemonList.length; i++){
+			$el.find(".poke-select option[value='"+pokemonList[i].speciesId+"']").remove();
+			searchArr.splice(searchArr.findIndex(p => p.speciesId == pokemonList[i].speciesId), 1);
+		}
 	}
 
 	// Select different Pokemon
@@ -1061,6 +1086,15 @@ function PokeSelect(element, i){
 	$el.find(".form-group.bait-picker .option").on("click", function(e){
 		selectedPokemon.baitShields = parseInt($(e.target).attr("value"));
 
+		selectedPokemon.isCustom = true;
+		isCustom = true;
+	});
+
+	// Turn switch delay on or off
+
+	$el.find(".check.switch-delay").on("click", function(e){
+		// Cooldown decreases at the start of the battle step, so a start value of 1000 will result in a 500 ms delay
+		selectedPokemon.startCooldown = selectedPokemon.startCooldown == 0 ? selectedPokemon.startCooldown = 1000 : selectedPokemon.startCooldown = 0;
 		selectedPokemon.isCustom = true;
 		isCustom = true;
 	});

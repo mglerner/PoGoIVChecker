@@ -559,7 +559,7 @@ function Pokemon(id, i, b){
 
 		for(var i = minDamage; i <= maxDamage; i++){
 			var breakpoint = battle.calculateBreakpoint(self, defender, i, defender.stats.def * defender.shadowDefMult, effectiveness, move);
-			var maxDefenseBreakpoint = battle.calculateBreakpoint(self, defender, i, maxDefense, effectiveness, move);
+			var maxDefenseBreakpoint = battle.calculateBreakpoint(self, defender, i, maxDefense * defender.shadowDefMult, effectiveness, move);
 
 			if(maxDefenseBreakpoint > maxAttack){
 				maxDefenseBreakpoint = -1;
@@ -588,7 +588,7 @@ function Pokemon(id, i, b){
 
 		for(var i = minDamage; i <= maxDamage; i++){
 			var bulkpoint = battle.calculateBulkpoint(attacker, self, i, attacker.stats.atk * attacker.shadowAtkMult, effectiveness, move);
-			var maxAttackBulkpoint = battle.calculateBulkpoint(attacker, self, i, maxAttack, effectiveness, move);
+			var maxAttackBulkpoint = battle.calculateBulkpoint(attacker, self, i, maxAttack  * attacker.shadowAtkMult, effectiveness, move);
 
 			if(maxAttackBulkpoint > maxDefense){
 				maxAttackBulkpoint = -1;
@@ -1988,6 +1988,10 @@ function Pokemon(id, i, b){
 
 		if(self.priority != 0){
 			pokeStr += "-p";
+		}
+
+		if(self.startCooldown == 1000){
+			pokeStr += "-d-1000";
 		}
 
 		if((self.shadowType != "normal")&&(self.speciesId.indexOf("_shadow") == -1)){

@@ -19,15 +19,6 @@
 		"showMeta": true
 	},
 	{
-		"title": "Ultra Premier",
-		"cup": "premier",
-		"cp": 2500,
-		"meta": "premierultra",
-		"showCup": false,
-		"showFormat": false,
-		"showMeta": true
-	},
-	{
 		"title": "Master League (Megas)",
 		"cup": "mega",
 		"cp": 10000,
@@ -37,39 +28,30 @@
 		"showMeta": true
 	},
 	{
-		"title": "Master Premier",
-		"cup": "premier",
-		"cp": 10000,
-		"meta": "premiermaster",
-		"showCup": false,
-		"showFormat": false,
-		"showMeta": true
-	},
-	{
-		"title": "Fantasy Cup",
-		"cup": "fantasy",
-		"cp": 1500,
-		"meta": "fantasy",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
-		"title": "Hisui Cup",
-		"cup": "hisui",
-		"cp": 1500,
-		"meta": "hisui",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": true
-	},
-	{
 		"title": "P!P Championship Series",
 		"cup": "great",
 		"cp": 1500,
 		"meta": "championshipseries",
 		"showCup": false,
 		"showFormat": false,
+		"showMeta": true
+	},
+	{
+		"title": "Summer Cup",
+		"cup": "summer",
+		"cp": 1500,
+		"meta": "summer",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
+	},
+	{
+		"title": "Master Premier Cup",
+		"cup": "premier",
+		"cp": 10000,
+		"meta": "premiermaster",
+		"showCup": true,
+		"showFormat": true,
 		"showMeta": true
 	},
 	{
@@ -103,7 +85,7 @@
 		"title": "Battle Frontier (Great)",
 		"cup": "battlefrontiergreat",
 		"cp": 1500,
-		"meta": "great",
+		"meta": "battlefrontiergreat",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": false,
@@ -119,14 +101,41 @@
 		"showMeta": true
 	},
 	{
-        "title": "Devon Knockout Cup",
-        "cup": "knockout",
+        "title": "Devon Genetic Cup",
+        "cup": "genetic",
         "cp": 1500,
-        "meta": "knockout",
+        "meta": "genetic",
         "showCup": true,
         "showFormat": true,
         "showMeta": true
     },
+	{
+		"title": "Devon Tundra Cup",
+		"cup": "tundra",
+		"cp": 1500,
+		"meta": "tundra",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
+	},
+	{
+		"title": "UFC Untapped (Master)",
+		"cup": "ufc-untapped-master",
+		"cp": 10000,
+		"meta": "ufc-untapped-master",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
+	},
+	{
+		"title": "Little",
+		"cup": "little",
+		"cp": 500,
+		"meta": "little",
+		"showCup": false,
+		"showFormat": false,
+		"showMeta": false
+	},
 	{
 		"title": "Custom",
 		"cup": "custom",
