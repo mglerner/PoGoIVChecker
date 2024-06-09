@@ -2,7 +2,6 @@
 
 # TODO
 # * Make it so that for shadows, you also see the purified IVs
-# * Add rankings. 
 # * Some PVP IV Deep Dives, like Medicham, use the "top N" pokemon in addition to stats cutoffs. We should do that or a stat product cutoff.
 # * Figure out if we're actually calculating things correctly, since we disagree very slightly with pvpivs.com
 
@@ -69,6 +68,7 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Grubbin','Charjabug','Vikavolt'],
         ['Snorunt','Froslass'],
         ['Rowlet','Dartrix','Decidueye'],
+        ['Mankey','Primeape','Annihilape'],
         )
 
 
@@ -1163,6 +1163,65 @@ Higher Atk 123.12 Atk, 113 Def, 127 HP
             },
         },
 
+    'Annihilape':{
+        'article':'https://gamepress.gg/pokemongo/annihilape-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+
+
+* GL-General Good (122.94 Atk, 106.17 Def, 136 HP)
+
+    * 136 HP is safer with >107.1 Def
+        
+    * Higher Def is more consistent for the Altaria 2-2
+        
+    * 122.94 Atk is for the Rank 1 Whiscash 2-2 and CMP
+        
+        * Higher Atk can get BPs on Sableye, Wigglytuff, Zweilous, Cresselia, and more
+        
+    * 124.4 Atk can full farm Shadow Poliwrath in the 1-0 and may 0-0 Clodsire
+        
+
+* GL-Lickitung Slayer (127.23 Atk, 102.26 Def, 132 HP)
+
+    * 127.23 Atk for the Rank 1 non-Best Buddy Lickitung 1-1 (127.09 Def)
+        
+        * 128.31 Atk covers the Rank 1 Best Buddy Lickitung (128.1 Def)
+        
+    * 102.26 Def to 2-2 98.26 Atk Lickitung (10/15/13)
+        
+        * 102.55 Def covers 98.5 Atk Lickitung (10/14/13)
+        
+    * 103.54 Def for the mirror BP vs 127.23 Atk Annihilape (2-2 no bait, 2-1 farm, 0-0 Ice Punch only)
+        
+        103.64 Def for 127.51 Atk Annihilape
+
+* UL-General Good (159.7 Atk, 134.5 Def, 178 HP)
+
+    * Higher Atk covers Swampert, Shadow Gliscor, and Talonflame better
+        
+        * 160.46 for 0/15/12 Swampert, Rank 1 Shadow Gliscor, and non-BB Rank 1 Talonflame CMP
+        
+    * 134.95 Def covers 138.2 Atk Greedent (6/15/15) for the 0-0
+        
+
+* ML Min IVs - 15/15/14 (ideal), 14/14/14 (ok)
+
+    * 15 HP is an empty IV at level 50
+        
+    * 15 Atk for CMP and Charge Move Breakpoints
+        
+    * 15 Def can come up for Shadow Ball in the mirror
+''',
+        'Great':{
+            'GL-General Good (122.94 Atk, 106.17 Def, 136 HP)':{'attack':122.94,'defense':106.17,'hp':136},
+            'GL-Lickitung Slayer (127.23 Atk, 102.26 Def, 132 HP)':{'attack':127.23,'defense':102.26,'hp':132},
+            },
+        'Ultra':{
+            'UL-General Good (159.7 Atk, 134.5 Def, 178 HP)':{'attack':159.7,'defense':134.5,'hp':178},
+            },
+        },
+        
     'Bogus':{
         'article':'',
         'videos':('',),
