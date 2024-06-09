@@ -510,6 +510,31 @@ var GameMaster = (function () {
 			console.log("Family validation complete");
 		}
 
+		// Check parent and evolution IDs to validate Pokemon family data
+
+		object.generatePokemonMovesetCSV = function(){
+
+			var csv = 'Pokemon,Fast Moves,Charged Moves'
+
+			$.each(object.data.pokemon, function(index, poke){
+				var pokemon = new Pokemon(poke.speciesId, 0, new Battle());
+				var fastNames = [];
+				var chargedNames = [];
+
+				$.each(pokemon.fastMovePool, function(i, move){
+					fastNames.push(move.name);
+				});
+
+				$.each(pokemon.chargedMovePool, function(i, move){
+					chargedNames.push(move.name);
+				});
+
+				csv += '\n'+pokemon.speciesName+','+fastNames.join("|")+','+chargedNames.join("|");
+			});
+
+			console.log(csv);
+		}
+
 		// Analyze Charged Moves and bucket them into archetypes
 
 		object.generateMoveArchetypes = function(){
@@ -672,7 +697,7 @@ var GameMaster = (function () {
 							move.buffsOpponent = m.buffsOpponent;
 						}
 
-						if( move.buffTarget == "self" && move.moveId != "DRAGON_ASCENT" && (move.buffs[0] < 0 || move.buffs[1] < 0 )){
+						if( move.buffTarget == "self" && move.buffApplyChance >= .5 && move.moveId != "DRAGON_ASCENT" && (move.buffs[0] < 0 || move.buffs[1] < 0 )){
 							move.selfDebuffing = true;
 
 							// Mark if move debuffs attack
@@ -695,7 +720,7 @@ var GameMaster = (function () {
 				}
 			});
 
-			if(!move){
+			if(!move && id != "none"){
 				console.error(id + " missing");
 			}
 
@@ -914,7 +939,7 @@ var GameMaster = (function () {
 				minStats = 0;
 			}
 
-			var bannedList = ["mewtwo","mewtwo_armored","giratina_altered","groudon","kyogre","palkia","dialga","heatran","giratina_origin","darkrai","cobalion","terrakion","virizion","thundurus_incarnate","regigigas","tornadus_incarnate","tornadus_therian","tornadus_therian_xl","landorus_incarnate", "landorus_therian", "reshiram", "zekrom", "kyurem", "genesect_burn", "xerneas", "thundurus_therian", "yveltal", "meloetta_aria", "zacian", "zamazenta", "zacian_hero", "zamazenta_hero", "genesect_douse", "zarude", "hoopa_unbound", "genesect_shock", "tapu_koko", "tapu_lele", "tapu_bulu", "nihilego", "genesect_chill", "braviary_hisuian", "solgaleo", "lunala", "keldeo_ordinary", "avalugg_hisuian", "kyogre_primal", "groudon_primal", "kleavor", "zygarde_complete"];
+			var bannedList = ["mewtwo","mewtwo_armored","giratina_altered","groudon","kyogre","palkia","dialga","cobalion","terrakion","virizion","thundurus_incarnate","regigigas","tornadus_incarnate","tornadus_therian","tornadus_therian_xl","landorus_incarnate", "landorus_therian", "reshiram", "zekrom", "kyurem", "genesect_burn", "xerneas", "thundurus_therian", "yveltal", "meloetta_aria", "zacian", "zamazenta", "zacian_hero", "zamazenta_hero", "genesect_douse", "zarude", "hoopa_unbound", "genesect_shock", "tapu_koko", "tapu_lele", "tapu_bulu", "nihilego", "genesect_chill", "braviary_hisuian", "solgaleo", "lunala", "keldeo_ordinary", "kyogre_primal", "groudon_primal", "zygarde_complete", "enamorus_therian", "enamorus_incarnate", "dialga_origin", "palkia_origin", "blacephalon", "stakataka", "necrozma", "necrozma_dawn_wings", "necrozma_dusk_mane", "marshadow"];
 
 			// Aggregate filters
 
@@ -1215,15 +1240,26 @@ var GameMaster = (function () {
 
 							// move name/type serach
 							else {
-								for(var k = 0; k < pokemon.fastMovePool.length; k++){
-									if((pokemon.fastMovePool[k].name.toLocaleLowerCase().startsWith(param))||(pokemon.fastMovePool[k].type == param)){
-										valid = true;
+								const fastOnly = (param.charAt(0) === "1")
+								const chargedOnly = (param.charAt(0) === "2")
+								if (fastOnly || chargedOnly) {
+									param = param.substr(1, param.length-1)
+								}
+								// skip fast moves if @2
+								if (!chargedOnly) {
+									for(var k = 0; k < pokemon.fastMovePool.length; k++){
+										if((pokemon.fastMovePool[k].name.toLocaleLowerCase().startsWith(param))||(pokemon.fastMovePool[k].type == param)){
+											valid = true;
+										}
 									}
 								}
 
-								for(var k = 0; k < pokemon.chargedMovePool.length; k++){
-									if((pokemon.chargedMovePool[k].name.toLocaleLowerCase().startsWith(param))||(pokemon.chargedMovePool[k].type == param)){
-										valid = true;
+								// skip charged moves if @1
+								if (!fastOnly) {
+									for(var k = 0; k < pokemon.chargedMovePool.length; k++){
+										if((pokemon.chargedMovePool[k].name.toLocaleLowerCase().startsWith(param))||(pokemon.chargedMovePool[k].type == param)){
+											valid = true;
+										}
 									}
 								}
 							}

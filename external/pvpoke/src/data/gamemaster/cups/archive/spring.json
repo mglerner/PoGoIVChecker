@@ -10,6 +10,8 @@
         "values": ["mega"]
     }, {
         "filterType": "id",
-        "values": ["toxapex"]
-    }]
+        "values": ["toxapex", "mantine"]
+    }],
+	"partySize": 3,
+	"presetOnly": true
 }
