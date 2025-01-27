@@ -19,6 +19,30 @@
 		"showMeta": true
 	},
 	{
+		"title": "Master Premier",
+		"cup": "premier",
+		"cp": 10000,
+		"meta": "premiermaster",
+		"showCup": true,
+		"showFormat": false,
+		"showMeta": true,
+		"hideRankings": true
+	},
+	{
+		"title": "Little Jungle Cup",
+		"cup": "littlejungle",
+		"cp": 500,
+		"meta": "littlejungle",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true,
+		"rules": [
+			"Pokémon must be at or below 500 CP to enter.",
+			"Only Normal-, Grass-, Electric-, Poison-, Ground-, Flying-, Bug-, and Dark-type Pokémon are eligible.",
+			"Gligar and Galarian Stunfisk are not allowed."
+		]
+	},
+	{
 		"title": "Master League (Megas)",
 		"cup": "mega",
 		"cp": 10000,
@@ -37,59 +61,31 @@
 		"showMeta": true
 	},
 	{
-		"title": "Summer Cup",
-		"cup": "summer",
+		"title": "Battle Frontier (Cascade)",
+		"cup": "cascade",
 		"cp": 1500,
-		"meta": "summer",
+		"meta": "cascade",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
 	},
 	{
-		"title": "Master Premier Cup",
-		"cup": "premier",
-		"cp": 10000,
-		"meta": "premiermaster",
+		"title": "Battle Frontier (Iridescent)",
+		"cup": "iridescent",
+		"cp": 1500,
+		"meta": "iridescent",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
 	},
 	{
-		"title": "Battle Frontier (Enchanted)",
-		"cup": "enchanted",
+		"title": "Battle Frontier (Solstice)",
+		"cup": "solstice",
 		"cp": 2500,
-		"meta": "enchanted",
+		"meta": "solstice",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
-	},
-	{
-        "title": "Battle Frontier (Primordial)",
-        "cup": "primordial",
-        "cp": 1500,
-        "meta": "primordial",
-        "showCup": true,
-        "showFormat": true,
-        "showMeta": true
-    },
-	{
-        "title": "Battle Frontier (Serene)",
-        "cup": "serene",
-        "cp": 1500,
-        "meta": "serene",
-        "showCup": true,
-        "showFormat": true,
-        "showMeta": true
-    },
-	{
-		"title": "Battle Frontier (Great)",
-		"cup": "battlefrontiergreat",
-		"cp": 1500,
-		"meta": "battlefrontiergreat",
-		"showCup": true,
-		"showFormat": true,
-		"showMeta": false,
-		"hideRankings": true
 	},
 	{
 		"title": "Battle Frontier (Master)",
@@ -101,28 +97,28 @@
 		"showMeta": true
 	},
 	{
-        "title": "Devon Genetic Cup",
-        "cup": "genetic",
-        "cp": 1500,
-        "meta": "genetic",
-        "showCup": true,
-        "showFormat": true,
-        "showMeta": true
-    },
-	{
-		"title": "Devon Tundra Cup",
-		"cup": "tundra",
+		"title": "Devon Pillar Cup",
+		"cup": "pillar",
 		"cp": 1500,
-		"meta": "tundra",
+		"meta": "pillar",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true
 	},
 	{
-		"title": "UFC Untapped (Master)",
-		"cup": "ufc-untapped-master",
-		"cp": 10000,
-		"meta": "ufc-untapped-master",
+		"title": "Devon Tundra Cup (Gymbreakers Remix V2)",
+		"cup": "tundraremixv2",
+		"cp": 1500,
+		"meta": "tundraremixv2",
+		"showCup": true,
+		"showFormat": true,
+		"showMeta": true
+	},
+	{
+		"title": "Gymbreakers Invitational",
+		"cup": "gbinvitational",
+		"cp": 1500,
+		"meta": "gbinvitational",
 		"showCup": true,
 		"showFormat": true,
 		"showMeta": true

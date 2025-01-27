@@ -37,24 +37,6 @@
     },
     "eliteMoves": ["PSYSTRIKE", "SHADOW_BALL", "HYPER_BEAM"]
 }, {
-    "dex": 303,
-    "speciesName": "Mawile (Mega)",
-    "speciesId": "mawile_mega",
-    "baseStats": {
-        "atk": 188,
-        "def": 217,
-        "hp": 137
-    },
-    "types": ["steel", "fairy"],
-    "fastMoves": ["ASTONISH", "BITE", "FIRE_FANG", "ICE_FANG", "FAIRY_WIND"],
-    "chargedMoves": ["IRON_HEAD", "PLAY_ROUGH", "VICE_GRIP", "POWER_UP_PUNCH"],
-    "defaultIVs": {
-        "cp1500": [23.5, 6, 5, 15],
-        "cp2500": [40, 15, 15, 15]
-    },
-    "level25CP": 1446,
-    "tags": ["shadoweligible", "mega"]
-}, {
     "dex": 319,
     "speciesName": "Sharpedo (Mega)",
     "speciesId": "sharpedo_mega",
@@ -124,40 +106,4 @@
     "level25CP": 3136,
     "tags": ["shadoweligible", "mega"],
     "eliteMoves": ["METEOR_MASH"]
-}, {
-    "dex": 448,
-    "speciesName": "Lucario (Mega)",
-    "speciesId": "lucario_mega",
-    "baseStats": {
-        "atk": 310,
-        "def": 175,
-        "hp": 172
-    },
-    "types": ["fighting", "steel"],
-    "fastMoves": ["BULLET_PUNCH", "COUNTER"],
-    "chargedMoves": ["CLOSE_COMBAT", "FLASH_CANNON", "SHADOW_BALL", "POWER_UP_PUNCH", "AURA_SPHERE"],
-    "defaultIVs": {
-        "cp1500": [14.5, 7, 5, 13],
-        "cp2500": [23.5, 11, 9, 15]
-    },
-    "tags": ["mega"]
-}, {
-    "dex": 475,
-    "speciesName": "Gallade (Mega)",
-    "speciesId": "gallade_mega",
-    "baseStats": {
-        "atk": 326,
-        "def": 230,
-        "hp": 169
-    },
-    "types": ["psychic", "fighting"],
-    "fastMoves": ["CONFUSION", "LOW_KICK", "CHARM"],
-    "chargedMoves": ["CLOSE_COMBAT", "LEAF_BLADE", "PSYCHIC", "SYNCHRONOISE"],
-    "defaultIVs": {
-        "cp1500": [12, 6, 8, 15],
-        "cp2500": [20, 6, 10, 15]
-    },
-    "level25CP": 2867,
-    "tags": ["shadoweligible", "mega"],
-    "eliteMoves": ["SYNCHRONOISE"]
 }]
