@@ -1,0 +1,13 @@
+{
+	"name": "willpower",
+	"title": "Willpower Cup",
+	"include": [{
+		"filterType": "type",
+		"values": ["dark", "psychic", "fighting"]
+	}],
+	"exclude": [{
+		"filterType": "tag",
+		"values": ["mega"]
+	}],
+	"partySize": 3
+}

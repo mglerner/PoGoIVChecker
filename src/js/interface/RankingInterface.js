@@ -22,6 +22,7 @@ var InterfaceMaster = (function () {
 			var metaGroupData = [];
 			var csv = '';
 			var showMoveCounts = false;
+			var rankingDisplayInterval;
 
 			// Show move counts if previously set
 			if(window.localStorage.getItem("rankingsShowMoveCounts") == "true"){
@@ -80,8 +81,17 @@ var InterfaceMaster = (function () {
 
 				var gm = GameMaster.getInstance();
 
+				clearInterval(rankingDisplayInterval);
 				$(".rankings-container").html('');
 				$(".loading").show();
+
+				var format = gm.getFormat(cup, league);
+
+				if(format && format.rules){
+					$("a.format-rules").show();
+				} else{
+					$("a.format-rules").hide();
+				}
 
 				// Force 1500 if not general
 
@@ -224,184 +234,226 @@ var InterfaceMaster = (function () {
 
 				metaGroup = [];
 
-				for(var i = 0; i < rankings.length; i++){
-					var r = rankings[i];
-
-					var pokemon = new Pokemon(r.speciesId, 0, battle);
-
-					if(! pokemon.speciesId){
-						rankings.splice(i, 1);
-						i--;
-						continue;
-					}
-
-					pokemon.initialize(true);
-					pokemon.selectMove("fast", r.moveset[0]);
-					pokemon.selectMove("charged", r.moveset[1], 0);
-
-					if(r.moveset.length > 2){
-						pokemon.selectMove("charged", r.moveset[2],1);
-					} else{
-						pokemon.selectMove("charged", "none", 1);
-					}
-
-					if(! pokemon.speciesId){
-						continue;
-					}
-
-					// Construct meta group from ranked Pokemon
-					if((i < 100)&&(context == "custom")){
-						metaGroup.push(pokemon);
-					}
-
-					if(context != "custom"){
-						for(var n = 0; n < metaGroupData.length; n++){
-							if(metaGroupData[n].speciesId == pokemon.speciesId){
-								pokemon.score = r.score;
-								metaGroup.push(pokemon);
-								break;
-							}
-						}
-					}
-
-					// Get names of of ranking moves
-
-					var moveNameStr = "";
-
-					// Put together the recommended moveset string
-					for(var n = 0; n < r.moveset.length; n++){
-						if(n == 0){
-							for(var j = 0; j < pokemon.fastMovePool.length; j++){
-								if(r.moveset[n] == pokemon.fastMovePool[j].moveId){
-									moveNameStr += pokemon.fastMovePool[j].displayName;
-
-									moveNameStr += "<span class=\"count fast\">"+(pokemon.fastMovePool[j].cooldown / 500)+"</span>";
-									break;
-								}
-							}
-						} else{
-							for(var j = 0; j < pokemon.chargedMovePool.length; j++){
-								if(r.moveset[n] == pokemon.chargedMovePool[j].moveId){
-									moveNameStr += pokemon.chargedMovePool[j].displayName;
-
-									var moveCounts = Pokemon.calculateMoveCounts(pokemon.fastMove, pokemon.chargedMovePool[j]);
-									var moveCount = moveCounts[0];
-
-									if(moveCounts[0] > moveCounts[1]){
-										moveCount+="-";
-									}
-
-									if(moveCounts[2] < moveCounts[1] && moveCounts[1] == moveCounts[0]){
-										moveCount+=".";
-									}
-
-									moveNameStr += "<span class=\"count\">"+moveCount+"</span>";
-									break;
-								}
-							}
-						}
-
-						if(n < r.moveset.length - 1){
-							moveNameStr += ", "
-						}
-					}
-
-					// Is this the best way to add HTML content? I'm gonna go with no here. But does it work? Yes!
-
-					var $el = $("<div class=\"rank " + pokemon.types[0] + "\" type-1=\""+pokemon.types[0]+"\" type-2=\""+pokemon.types[1]+"\" data=\""+pokemon.speciesId+"\"><div class=\"expand-label\"></div><div class=\"name-container\"><span class=\"number\">#"+(i+1)+"</span><span class=\"name\">"+pokemon.speciesName+"</span><div class=\"moves\">"+moveNameStr+"</div></div><div class=\"rating-container\"><div class=\"rating score-rating\">"+r.score+"</span></div><div class=\"clear\"></div></div><div class=\"details\"></div>");
-
-					switch(sort){
-						case "statproduct":
-							$el.find(".rating").html(r.stats.product);
-							break;
-
-						case "attack":
-							$el.find(".rating").html(r.stats.atk);
-							break;
-
-						case "defense":
-							$el.find(".rating").html(r.stats.def);
-							break;
-
-						case "stamina":
-							$el.find(".rating").html(r.stats.hp);
-							break;
-					}
-
-					if(showMoveCounts){
-						$el.find(".count").removeClass("hide");
-					}
-
-					// Match both shadow and non shadow versions on restricted list
-
-					if(limitedPokemon.indexOf(pokemon.speciesId.replace("_shadow", "")) > -1){
-						$el.addClass("limited-rank");
-					}
-
-					// Show points if applicable
-					if(battle.getCup().tierRules){
-						var points = gm.getPokemonTier(pokemon.speciesId, battle.getCup());
-						var ptStr = " pts";
-
-						if(points == 1){
-							ptStr = " pt";
-						}
-
-						$el.find(".moves").prepend("<span class=\"cliffhanger-points\">"+points+ptStr+"</span>");
-					}
-
-					if(battle.getCup().slots){
-						let slotNumber = 0;
-
-						for(var n = 0; n < battle.getCup().slots.length; n++){
-							let slot = battle.getCup().slots[n];
-
-							if((slot.pokemon.indexOf(pokemon.speciesId) > -1)||(slot.pokemon.indexOf(pokemon.speciesId.replace("_shadow","")) > -1)){
-								slotNumber = n + 1;
-								break;
-							}
-						}
-
-						$el.attr("slot", slotNumber);
-					}
-
-					$(".section.white > .rankings-container").append($el);
-
-					// Determine XL category
-
-					if(pokemon.needsXLCandy()){
-						$el.find(".name").append("<span class=\"xl-info-icon\">XL</span>");
-					}
-
-					// For Prismatic Cup, show color category
-
-					if(battle.getCup().slots){
-						var slots = battle.getCup().slots;
-
-						for(var n = 0; n < slots.length; n++){
-							if((slots[n].pokemon.indexOf(pokemon.speciesId) > -1)||(slots[n].pokemon.indexOf(pokemon.speciesId.replace("_shadow",""))) > -1){
-								$el.find(".moves").prepend("<b>Slot " + (n+1) + ".</b>&nbsp;");
-								break;
-							}
-						}
-					}
-
-					var chargedMove2Name = '';
-					var chargedMove1Count = Math.ceil(pokemon.chargedMoves[0].energy / pokemon.fastMove.energyGain);
-					var chargedMove2Count = 0;
-
-					if(pokemon.chargedMoves.length > 1){
-						chargedMove2Name = pokemon.chargedMoves[1].name;
-						chargedMove2Count = Math.ceil(pokemon.chargedMoves[1].energy / pokemon.fastMove.energyGain);
-					}
-
-
-
-					csv += pokemon.speciesName+','+r.score+','+pokemon.dex+','+pokemon.types[0]+','+pokemon.types[1]+','+(Math.round(pokemon.stats.atk*10)/10)+','+(Math.round(pokemon.stats.def*10)/10)+','+Math.round(pokemon.stats.hp)+','+Math.round(pokemon.stats.atk*pokemon.stats.def*pokemon.stats.hp)+','+pokemon.level+','+pokemon.cp+','+pokemon.fastMove.name+','+pokemon.chargedMoves[0].name+','+chargedMove2Name+','+chargedMove1Count+','+chargedMove2Count+','+pokemon.buddyDistance+','+pokemon.thirdMoveCost+'\n';
-				}
 
 				$(".loading").hide();
-				$(".rank").on("click", selectPokemon);
+
+				var i = 0;
+				var rankingDisplayIncrement = 15;
+
+				if(settings.performanceMode){
+					rankingDisplayIncrement = 5;
+				}
+
+				rankingDisplayInterval = setInterval(function(){
+					for(var index = i; index < rankings.length && index < i + rankingDisplayIncrement; index++){
+						try {
+							self.displayRankingEntry(rankings[index], index);
+						} catch{
+							console.error(rankings[index].speciesId + " could not be displayed");
+						}
+
+					}
+
+					i = index;
+
+					if(i >= rankings.length){
+						clearInterval(rankingDisplayInterval);
+						self.completeRankingDisplay();
+					}
+				}, i);
+			}
+
+			this.displayRankingEntry = function(r, index){
+				var pokemon = new Pokemon(r.speciesId, 0, battle);
+
+				pokemon.initialize(true);
+				pokemon.selectMove("fast", r.moveset[0]);
+				pokemon.selectMove("charged", r.moveset[1], 0);
+
+				if(r.moveset.length > 2){
+					pokemon.selectMove("charged", r.moveset[2],1);
+				} else{
+					pokemon.selectMove("charged", "none", 1);
+				}
+
+				if(! pokemon.speciesId){
+					return;
+				}
+
+				// Construct meta group from ranked Pokemon
+				if((index < 100)&&(context == "custom")){
+					metaGroup.push(pokemon);
+				}
+
+				if(context != "custom"){
+					for(var n = 0; n < metaGroupData.length; n++){
+						if(metaGroupData[n].speciesId == pokemon.speciesId){
+							pokemon.score = r.score;
+							metaGroup.push(pokemon);
+							break;
+						}
+					}
+				}
+
+				// Get names of of ranking moves
+
+				var moveNameStr = "";
+
+				// Put together the recommended moveset string
+				for(var n = 0; n < r.moveset.length; n++){
+					if(n == 0){
+						for(var j = 0; j < pokemon.fastMovePool.length; j++){
+							if(r.moveset[n] == pokemon.fastMovePool[j].moveId){
+								moveNameStr += pokemon.fastMovePool[j].displayName;
+
+								moveNameStr += "<span class=\"count fast\">"+(pokemon.fastMovePool[j].cooldown / 500)+"</span>";
+								break;
+							}
+						}
+					} else{
+						for(var j = 0; j < pokemon.chargedMovePool.length; j++){
+							if(r.moveset[n] == pokemon.chargedMovePool[j].moveId){
+								moveNameStr += pokemon.chargedMovePool[j].displayName;
+
+								var moveCounts = Pokemon.calculateMoveCounts(pokemon.fastMove, pokemon.chargedMovePool[j]);
+								var moveCount = moveCounts[0];
+
+								if(moveCounts[0] > moveCounts[1]){
+									moveCount+="-";
+								}
+
+								if(moveCounts[2] < moveCounts[1] && moveCounts[1] == moveCounts[0]){
+									moveCount+=".";
+								}
+
+								moveNameStr += "<span class=\"count\">"+moveCount+"</span>";
+								break;
+							}
+						}
+					}
+
+					if(n < r.moveset.length - 1){
+						moveNameStr += ", "
+					}
+				}
+
+				// Is this the best way to add HTML content? I'm gonna go with no here. But does it work? Yes!
+
+				var $el = $("<div class=\"rank " + pokemon.types[0] + "\" type-1=\""+pokemon.types[0]+"\" type-2=\""+pokemon.types[1]+"\" data=\""+pokemon.speciesId+"\"><div class=\"expand-label\"></div><div class=\"name-container\"><span class=\"number\">#"+(index+1)+"</span><span class=\"name\">"+pokemon.speciesName+"</span><div class=\"moves\">"+moveNameStr+"</div></div><div class=\"rating-container\"><div class=\"rating score-rating\">"+r.score+"</span></div><div class=\"clear\"></div></div><div class=\"details\"></div>");
+
+				var sort = $(".category-select option:selected").attr("sort");
+
+				switch(sort){
+					case "statproduct":
+						$el.find(".rating").html(r.stats.product);
+						break;
+
+					case "attack":
+						$el.find(".rating").html(r.stats.atk);
+						break;
+
+					case "defense":
+						$el.find(".rating").html(r.stats.def);
+						break;
+
+					case "stamina":
+						$el.find(".rating").html(r.stats.hp);
+						break;
+				}
+
+				if(showMoveCounts){
+					$el.find(".count").removeClass("hide");
+				}
+
+				// Match both shadow and non shadow versions on restricted list
+
+				if(limitedPokemon.indexOf(pokemon.speciesId.replace("_shadow", "")) > -1){
+					$el.addClass("limited-rank");
+				}
+
+				// Show points if applicable
+				if(battle.getCup().tierRules){
+					var points = gm.getPokemonTier(pokemon.speciesId, battle.getCup());
+					var ptStr = " pts";
+
+					if(points == 1){
+						ptStr = " pt";
+					}
+
+					$el.find(".moves").prepend("<span class=\"cliffhanger-points\">"+points+ptStr+"</span>");
+				}
+
+				if(battle.getCup().slots){
+					let slotNumber = 0;
+
+					for(var n = 0; n < battle.getCup().slots.length; n++){
+						let slot = battle.getCup().slots[n];
+
+						if((slot.pokemon.indexOf(pokemon.speciesId) > -1)||(slot.pokemon.indexOf(pokemon.speciesId.replace("_shadow","")) > -1)){
+							slotNumber = n + 1;
+							break;
+						}
+					}
+
+					$el.attr("slot", slotNumber);
+				}
+
+				$(".section.white > .rankings-container").append($el);
+
+				if(settings.performanceMode){
+					var list = pokeSearch.getSearchList();
+					if(list.indexOf(pokemon.speciesId) > -1 || list.length == 0){
+						$el.show();
+					} else{
+						$el.hide();
+					}
+				}
+
+				// Determine XL category
+
+				if(pokemon.needsXLCandy()){
+					$el.find(".name").append("<span class=\"xl-info-icon\">XL</span>");
+				}
+
+				// For Prismatic Cup, show color category
+
+				if(battle.getCup().slots){
+					var slots = battle.getCup().slots;
+
+					for(var n = 0; n < slots.length; n++){
+						if((slots[n].pokemon.indexOf(pokemon.speciesId) > -1)||(slots[n].pokemon.indexOf(pokemon.speciesId.replace("_shadow",""))) > -1){
+							$el.find(".moves").prepend("<b>Slot " + (n+1) + ".</b>&nbsp;");
+							break;
+						}
+					}
+				}
+
+				var chargedMove2Name = '';
+				var chargedMove1Count = Math.ceil(pokemon.chargedMoves[0].energy / pokemon.fastMove.energyGain);
+				var chargedMove2Count = 0;
+
+				if(pokemon.chargedMoves.length > 1){
+					chargedMove2Name = pokemon.chargedMoves[1].name;
+					chargedMove2Count = Math.ceil(pokemon.chargedMoves[1].energy / pokemon.fastMove.energyGain);
+				}
+
+				$el.on("click", selectPokemon);
+
+				csv += pokemon.speciesName+','+r.score+','+pokemon.dex+','+pokemon.types[0]+','+pokemon.types[1]+','+(Math.round(pokemon.stats.atk*10)/10)+','+(Math.round(pokemon.stats.def*10)/10)+','+Math.round(pokemon.stats.hp)+','+Math.round(pokemon.stats.atk*pokemon.stats.def*pokemon.stats.hp)+','+pokemon.level+','+pokemon.cp+','+pokemon.fastMove.name+','+pokemon.chargedMoves[0].name+','+chargedMove2Name+','+chargedMove1Count+','+chargedMove2Count+','+pokemon.buddyDistance+','+pokemon.thirdMoveCost+'\n';
+
+
+				// If a Pokemon has been selected via URL parameters, jump to it
+
+				if(jumpToPoke && jumpToPoke == pokemon.speciesId){
+					setTimeout(function(){
+						self.jumpToPokemon(jumpToPoke);
+
+						jumpToPoke = false;
+					}, 50);
+				}
+			}
+
+			this.completeRankingDisplay = function(){
 
 				// Update download link with new data
 				const cupName = battle.getCup().name;
@@ -438,13 +490,8 @@ var InterfaceMaster = (function () {
 					toggleXLPokemon();
 				}
 
-
-				// If a Pokemon has been selected via URL parameters, jump to it
-
-				if(jumpToPoke){
-					self.jumpToPokemon(jumpToPoke);
-
-					jumpToPoke = false;
+				if(context == "custom"){
+					customRankingInterface.setMetaGroup(metaGroup);
 				}
 			}
 
@@ -712,23 +759,24 @@ var InterfaceMaster = (function () {
 				$rank.toggleClass("selected");
 				$rank.find(".details").toggleClass("active");
 
-				var index = $(".rankings-container > .rank").index($rank);
-				var $details = $(".details").eq(index);
+				var speciesId = $rank.attr("data");
 
 				// Only execute if this was a direct action and not loaded from URL parameters, otherwise pushes infinite states when the user navigates back
 				if($rank.hasClass("selected")){
-					if((get)&&(data[index])&&(get.p == data[index].speciesId)){
+					if(get && get.p == speciesId){
 						get.p = false; // Unset this so URL properly sets if reselected
 					} else{
-						self.pushHistoryState(cup, battle.getCP(), category, data[index].speciesId);
+						self.pushHistoryState(cup, battle.getCP(), category, speciesId);
 					}
 				}
+
+				var $details = $rank.find(".details");
 
 				if($details.html() != ''){
 					return;
 				}
 
-				var r = data[index];
+				var r = data.find(r => r.speciesId == speciesId)
 				var pokemon = new Pokemon(r.speciesId, 0, battle);
 				pokemon.initialize(battle.getCP(), "gamemaster");
 				pokemon.selectMove("fast", r.moveset[0]);
@@ -1015,7 +1063,12 @@ var InterfaceMaster = (function () {
 					if(scenario.energy[0] == 0){
 						battleLink += "0";
 					} else{
-						battleLink += Math.min(pokemon.fastMove.energyGain * (Math.floor((scenario.energy[0] * 500) / pokemon.fastMove.cooldown)), 100);
+						var fastMoveCount = Math.floor((scenario.energy[0] * 500) / pokemon.fastMove.cooldown);
+						if(fastMoveCount == 0){
+							fastMoveCount = 1;
+						}
+
+						battleLink += Math.min(pokemon.fastMove.energyGain * fastMoveCount, 100);
 					}
 
 					battleLink += "-";
@@ -1259,7 +1312,7 @@ var InterfaceMaster = (function () {
 				}
 
 				// Display partner pokemon
-				if((gm.rankings[key])&&(context != "custom")){
+				if(gm.rankings[key] && context != "custom" && ! settings.performanceMode){
 
 					setTimeout(function(){
 						var partnerPokemonMax = 5;
@@ -1291,7 +1344,7 @@ var InterfaceMaster = (function () {
 				}
 
 				// Display similar pokemon
-				if((gm.rankings[key])&&(context != "custom")){
+				if(gm.rankings[key] && context != "custom" && ! settings.performanceMode){
 					// Delay this to avoid tying up the interface
 					setTimeout(function(){
 						var similarPokemon = pokemon.generateSimilarPokemon(traits);
@@ -1387,6 +1440,14 @@ var InterfaceMaster = (function () {
 					if(pokemon.hasTag("mega") && partner.hasTag("mega")){
 						partner.partnerScore = 0;
 					}
+
+					// Exclude partners in point based metas which exceed the point limit
+					if(battle.getCup().tierRules){
+						var remainingPoints = battle.getCup().tierRules.max - gm.getPokemonTier(pokemon.speciesId, battle.getCup());
+						if(gm.getPokemonTier(partner.speciesId, battle.getCup()) > remainingPoints){
+							partner.partnerScore = 0;
+						}
+					}
 				}
 
 				metaGroup.sort((a,b) => (a.partnerScore > b.partnerScore) ? -1 : ((b.partnerScore > a.partnerScore) ? 1 : 0));
@@ -1405,7 +1466,7 @@ var InterfaceMaster = (function () {
 				$movesTab.find(".moveset.charged .move-detail-template:not(.hide)").each(function(index, value){
 					var chargedMove = gm.getMoveById($(this).attr("data"));
 					var moveCounts = Pokemon.calculateMoveCounts(fastMove, chargedMove);
-					$(this).find(".move-count span").html(moveCounts[0] + " - " + moveCounts[1] + " - " + moveCounts[2]);
+					$(this).find(".move-count span").html(moveCounts[0] + " - " + moveCounts[1] + " - " + moveCounts[2] + " - " + moveCounts[3]);
 				});
 
 				// Display this Fast Move as the selected move
@@ -1583,6 +1644,22 @@ var InterfaceMaster = (function () {
 					closeModalWindow();
 				});
 			}
+
+			// Open format rules modal
+
+			$("a.format-rules").click(function(e){
+				e.preventDefault();
+
+				var format = gm.getFormat(battle.getCup().name, battle.getCP());
+				var $modalContent = $("<ul></ul>");
+
+				for(var i = 0; i < format.rules.length; i++){
+					$modalContent.append("<li>" + format.rules[i] + "</li>");
+				}
+
+				modalWindow(format.title + " Rules", $modalContent);
+
+			});
 		};
 
         return object;

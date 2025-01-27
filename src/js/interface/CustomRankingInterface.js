@@ -263,10 +263,11 @@ function interfaceObject(){
 			gm.rankings[key] = data[0];
 
 			rankingInterface.displayRankingData(data[0]);
-
-			customMetaSelector.setPokemonList(rankingInterface.getMetaGroup());
 		}
+	}
 
+	this.setMetaGroup = function(group){
+		customMetaSelector.setPokemonList(group);
 	}
 
 	// Import settings and set up displayed filters to match new data
@@ -427,19 +428,6 @@ function interfaceObject(){
 		self.updateFilterValues($el);
 		$el.find("a.toggle .name").html(filter.name);
 		$el.attr("type",filter.filterType);
-	}
-
-	// Confirm whether or not to delete a filter
-
-	function deleteFilterConfirm(e){
-		var $el = $(e.target).closest(".filter");
-		var listIndex = $el.closest(".filters").attr("list-index");
-
-		selectedElement = $el;
-		selectedListIndex = listIndex;
-		selectedFilterIndex = parseInt($el.attr("index"));
-
-		modalWindow("Remove Filter", $(".delete-filter-confirm"));
 	}
 
 	// Confirm whether or not to delete a filter

@@ -1,5 +1,5 @@
 <?php require_once 'modules/config.php';
-$SITE_VERSION = '1.31.10.2';
+$SITE_VERSION = '1.32.6.20';
 
 // This prevents caching on local testing
 if (strpos($WEB_ROOT, 'src') !== false) {
@@ -48,6 +48,13 @@ if(isset($_COOKIE['settings'])){
 		$_SETTINGS->colorblindMode = 0;
 	}
 
+	if(! isset($_SETTINGS->performanceMode)){
+		$_SETTINGS->performanceMode = 0;
+	}
+
+	if(! isset($_SETTINGS->theme)){
+		$_SETTINGS->theme = 'default';
+	}
 
 	// Validate the gamemaster setting, only allow these options
 	$gamemasters = ["gamemaster", "gamemaster-mega", "gamemaster-paldea"];
@@ -66,7 +73,8 @@ if(isset($_COOKIE['settings'])){
 		'xls' => 1,
 		'rankingDetails' => 'one-page',
 		'hardMovesetLinks' => 0,
-		'colorblindMode' => 0
+		'colorblindMode' => 0,
+		'performanceMode' => 0
 	];
 }
 
@@ -133,14 +141,14 @@ if(! isset($OG_IMAGE)){
 
 <link id="favicon" rel="icon" href="<?php echo $WEB_ROOT; ?>img/themes/sunflower/favicon.png">
 
-<link rel="stylesheet" type="text/css" href="<?php echo $WEB_ROOT; ?>css/style.css?v=186">
+<link rel="stylesheet" type="text/css" href="<?php echo $WEB_ROOT; ?>css/style.css?v=196">
 
 <?php if(strpos($META_TITLE, 'Train') !== false): ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo $WEB_ROOT; ?>css/train.css?v=21">
 <?php endif; ?>
 
 <?php if(strpos($_SERVER['REQUEST_URI'], 'articles') !== false): ?>
-	<link rel="stylesheet" type="text/css" href="<?php echo $WEB_ROOT; ?>css/article-extras.css?v=20">
+	<link rel="stylesheet" type="text/css" href="<?php echo $WEB_ROOT; ?>css/article-extras.css?v=21">
 <?php endif; ?>
 
 <?php if((isset($_SETTINGS->theme))&&($_SETTINGS->theme != "default")): ?>
@@ -171,6 +179,7 @@ if(! isset($OG_IMAGE)){
 			rankingDetails: "<?php echo htmlspecialchars($_SETTINGS->rankingDetails); ?>",
 			hardMovesetLinks: <?php echo intval($_SETTINGS->hardMovesetLinks); ?>,
 			colorblindMode: <?php echo intval($_SETTINGS->colorblindMode); ?>,
+			performanceMode: <?php echo intval($_SETTINGS->performanceMode); ?>,
 		};
 	<?php else: ?>
 
@@ -184,7 +193,8 @@ if(! isset($OG_IMAGE)){
 			xls: true,
 			rankingDetails: "one-page",
 			hardMovesetLinks: 0,
-			colorblindMode: 0
+			colorblindMode: 0,
+			performanceMode: 0
 		};
 
 	<?php endif; ?>
@@ -214,7 +224,7 @@ if(! isset($OG_IMAGE)){
 	<?php  if(false): // Removing this but saving code for future use ?>
 		<?php if(strpos($_SERVER['REQUEST_URI'], 'shared-skies') == false): ?>
 			<div class="header-ticker">
-				<a href="https://pvpoke.com/shared-skies/rankings/">Preview next season</a>
+				<a href="https://pvpoke.com/new-season/rankings/">Preview next season</a>
 			</div>
 		<?php else: ?>
 			<div class="header-ticker old-version">
@@ -287,9 +297,8 @@ if(! isset($OG_IMAGE)){
 						<div class="submenu-wrap">
 							<a href="<?php echo $WEB_ROOT; ?>moves/">Moves</a>
 							<a href="<?php echo $WEB_ROOT; ?>articles/">Articles</a>
-							<a class="icon-heart" href="<?php echo $WEB_ROOT; ?>contribute/">Contribute</a>
 							<a href="<?php echo $WEB_ROOT; ?>settings/">Settings</a>
-							<a class="twitter" href="https://twitter.com/pvpoke" target="_blank">Twitter</a>
+							<a class="icon-heart" href="<?php echo $WEB_ROOT; ?>contact/">Contact</a>
 							<a class="tera" href="<?php echo $WEB_ROOT; ?>tera/">Tera Raid Counters</a>
 							<div class="latest-section mobile">
 								<h4>Latest <a href="<?php echo $WEB_ROOT; ?>#news"></a></h4>

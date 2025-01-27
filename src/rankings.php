@@ -59,68 +59,108 @@ switch($cup){
 		$league = 'Retro Cup';
 		break;
 
-	case "electric":
-		$league = 'Electric Cup';
+	case "fossil":
+		$league = 'Fossil Cup';
 		break;
 
-	case "summer":
-		$league = 'Summer Cup';
+	case "sunshine":
+		$league = 'Sunshine Cup';
 		break;
 
-	case "zodiac":
-		$league = 'Devon Zodiac Cup';
+	case "pillar":
+		$league = 'Devon Pillar Cup';
 		break;
 
-	case "sovereign":
-		$league = 'Devon Sovereign Cup';
+	case "devonchampionship":
+		$league = 'devonchampionship';
 		break;
 
-	case "rainstorm":
-		$league = 'Devon Rainstorm Cup';
-		break;
-
-	case "tundra":
-		$league = 'Devon Tundra Cup';
-		break;
-
-	case "ufc-untapped-master":
-		$league = 'UFC Untapped (Master)';
+	case "tundraremixv2":
+		$league = 'Devon Tundra Cup (Gymbreakers Remix V2)';
 		break;
 
 	case "catch":
 		$league = 'Catch Cup';
 		break;
 
+	case "color":
+		$league = 'Color Cup';
+		break;
+
 	case "little":
 		$league = 'Little Cup';
+		break;
+
+	case "littlejungle":
+		$league = 'Little Jungle Cup';
 		break;
 
 	case "mega":
 		$league = 'Mega Master League';
 		break;
 
-	case "enchanted":
-		$league = 'Battle Frontier (Enchanted)';
+	case "gbinvitational":
+		$league = 'Gymbreakers Invitational';
 		break;
 
-	case "primordial":
-		$league = 'Battle Frontier (Primordial)';
+	case "battlefrontiergreat":
+		$league = 'Battle Frontier (Great)';
 		break;
 
-	case "serene":
-		$league = 'Battle Frontier (Serene)';
+	case "battlefrontierultra":
+		$league = 'Battle Frontier (Ultra)';
 		break;
 
 	case "battlefrontiermaster":
 		$league = 'Battle Frontier (Master)';
 		break;
 
+	case "cascade":
+		$league = 'Battle Frontier (Cascade)';
+		break;
+
+	case "iridescent":
+		$league = 'Battle Frontier (Iridescent)';
+		break;
+
+	case "solstice":
+		$league = 'Battle Frontier (Solstice)';
+		break;
+
 	case "littlecatch":
 		$league = 'Little Catch Cup';
 		break;
 
-	case "evolution":
-		$league = 'Evolution Cup';
+	case "halloween":
+		if($cp == "500"){
+			$league = 'Little Halloween Cup';
+		} else {
+			$league = 'Halloween Cup';
+		}
+		break;
+
+	case "fantasy":
+		$league = 'Fantasy Cup';
+		break;
+
+	case "psychic":
+		$league = 'Psychic Cup';
+		break;
+
+	case "holiday":
+		if($cp == "500"){
+			$league = 'Little Holiday Cup';
+		} else {
+			$league = 'Holiday Cup';
+		}
+		break;
+
+	case "galar":
+		if($cp == "500"){
+			$league = 'Little Galar Cup';
+		} else {
+			$league = 'Galar Cup';
+		}
 		break;
 
 	case "remix":
@@ -157,7 +197,11 @@ require_once 'header.php';
 <div class="section league-select-container white">
 	<div class="ranking-filters flex">
 		<div class="ranking-filter">
-			<h4>Format</h4>
+			<div class="flex">
+				<h4>Format</h4>
+				<a class="format-rules" href="#">Rules</a>
+			</div>
+
 			<?php require 'modules/formatselect.php'; ?>
 		</div>
 		<div class="ranking-filter">
@@ -314,6 +358,7 @@ require_once 'header.php';
 <script src="<?php echo $WEB_ROOT; ?>js/interface/ModalWindow.js?v=<?php echo $SITE_VERSION; ?>"></script>
 <script src="<?php echo $WEB_ROOT; ?>js/interface/PokeSearch.js?v=<?php echo $SITE_VERSION; ?>"></script>
 <script src="<?php echo $WEB_ROOT; ?>js/interface/PokeSelect.js?v=<?php echo $SITE_VERSION; ?>"></script>
+<script src="<?php echo $WEB_ROOT; ?>js/interface/PokeMultiSelect.js?v=<?php echo $SITE_VERSION; ?>"></script>
 <script src="<?php echo $WEB_ROOT; ?>js/battle/TimelineEvent.js?v=<?php echo $SITE_VERSION; ?>"></script>
 <script src="<?php echo $WEB_ROOT; ?>js/battle/TimelineAction.js?v=<?php echo $SITE_VERSION; ?>"></script>
 <script src="<?php echo $WEB_ROOT; ?>js/battle/Battle.js?v=<?php echo $SITE_VERSION; ?>"></script>
