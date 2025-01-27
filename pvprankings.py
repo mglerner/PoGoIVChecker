@@ -69,6 +69,8 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Snorunt','Froslass'],
         ['Rowlet','Dartrix','Decidueye'],
         ['Mankey','Primeape','Annihilape'],
+        ['Goomy','Sliggoo','Goodra'],
+        ['Carbink',],
         )
 
 
@@ -1215,13 +1217,43 @@ Higher Atk 123.12 Atk, 113 Def, 127 HP
 ''',
         'Great':{
             'GL-General Good (122.94 Atk, 106.17 Def, 136 HP)':{'attack':122.94,'defense':106.17,'hp':136},
-            'GL-Lickitung Slayer (127.23 Atk, 102.26 Def, 132 HP)':{'attack':127.23,'defense':102.26,'hp':132},
+            'GL-Lickitung Slayer [stop at rank 2829/34] (127.23 Atk, 102.26 Def, 132 HP)':{'attack':127.23,'defense':102.26,'hp':132},
+            'GL-Lickitung Slayer bulk [stop at rank 2829/24] (127.23 Atk, 102.26 Def, 132 HP)':{'attack':127.23,'defense':102.55,'hp':132},
             },
         'Ultra':{
             'UL-General Good (159.7 Atk, 134.5 Def, 178 HP)':{'attack':159.7,'defense':134.5,'hp':178},
             },
         },
         
+    'Goodra':{
+        'article':'',
+        'videos':('',),
+        'extrainfo':'''
+''',
+        'Great':{
+            'Swag':{'attack':0,'defense':135.72,'hp':117},
+            'Swag licki':{'attack':122,'defense':125.2,'hp':115},
+            },
+        'Ultra':{
+            '':{'attack':0,'defense':0,'hp':0},
+            },
+        },
+
+    'Carbink':{
+        'article':'https://gamepress.gg/pokemongo/carbink-pvp-iv-deep-dive',
+        'videos':('',),
+        'extrainfo':'''
+''',
+        'Great':{
+            'Premium Bulk (247.67 Def, 128 HP) [Best in general]':{'attack':81.38,'defense':247.67,'hp':128},
+            'Slight Atk Weight (85.81 Atk, 239.06 Def, 124 HP) [Good for Rock Throw]':{'attack':85.81,'defense':239.06,'hp':124},
+            'General Good (246 Def, 124 HP)':{'attack':82.83,'defense':246,'hp':124},
+            },
+#        'Ultra':{
+#
+        '':{'attack':0,'defense':0,'hp':0},
+#            },
+        },
     'Bogus':{
         'article':'',
         'videos':('',),
@@ -1234,7 +1266,7 @@ Higher Atk 123.12 Atk, 113 Def, 127 HP
             '':{'attack':0,'defense':0,'hp':0},
             },
         },
-
+        
     }
 
 
