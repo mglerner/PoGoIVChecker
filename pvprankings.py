@@ -71,6 +71,7 @@ EVOLUTIONS = ( ['Spheal', 'Sealeo','Walrein'],
         ['Mankey','Primeape','Annihilape'],
         ['Goomy','Sliggoo','Goodra'],
         ['Carbink',],
+        ['Rookidee','Corvisquire','Corviknight'],
         )
 
 
@@ -1254,10 +1255,32 @@ Higher Atk 123.12 Atk, 113 Def, 127 HP
         '':{'attack':0,'defense':0,'hp':0},
 #            },
         },
+    'Corviknight':{
+        'article':'',
+        'videos':('https://www.youtube.com/watch?v=QinH_6YqGDE',),
+        'extrainfo':'''
+''',
+        'Great':{
+            'A-ape 1-1':{'attack':0,'defense':134.61,'hp':0},
+            'Bink, want high HP':{'attack':0,'defense':130.7,'hp':0},
+            'Cress':{'attack':0,'defense':134.55,'hp':0},
+            'G-cors':{'attack':0,'defense':130.34,'hp':0},
+            'mandi':{'attack':0,'defense':132.17,'hp':0},
+            'a dig':{'attack':110,'defense':0,'hp':0},
+            'a drap':{'attack':111.4,'defense':0,'hp':0},
+            'a s-aslash':{'attack':124,'defense':0,'hp':0},
+            'a pex nice':{'attack':112.54,'defense':0,'hp':0},
+            'a azu 1-1':{'attack':108.75,'defense':0,'hp':0},
+            },
+#        'Ultra':{
+#            '':{'attack':0,'defense':0,'hp':0},
+#            },
+        },
     'Bogus':{
         'article':'',
         'videos':('',),
         'extrainfo':'''
+        Really want 130+ defense
 ''',
         'Great':{
             '':{'attack':0,'defense':0,'hp':0},

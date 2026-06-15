@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# --- Personal data / analysis artifacts — keep LOCAL (Time Machine), never publish.
+# This repo is public; these hold real account data and personal team work. ---
+.DS_Store
+poke_genie_export.csv
+swag.csv
+Serp_OGL_Team.xlsx
+*.png
+Team DD - The Book of Ashief.ipynb
+Team DD - The Book of Ashief.pdf
